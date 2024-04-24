@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { checkConnection, syncModels } = require('./db/index.db.js')
-//const addRelationsToModels = require('./db/models')
+const { addRelationsToModels } = require('./db/relations')
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -12,8 +12,8 @@ async function dbConnect() {
 
     try {
         await checkConnection()
-        //addRelationsToModels()
-        //await syncModels('alter') 
+        addRelationsToModels()
+        await syncModels('force') 
     } catch (error) {
         console.log('Something has gone very wrong 😱', error)  
     }

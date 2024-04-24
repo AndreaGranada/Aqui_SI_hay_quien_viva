@@ -4,12 +4,12 @@ const { sequelize } = require ( '../../db/index.db')
 const Apartment = sequelize.define('apartment', {
 
     road:{
-        type: DataTypes.ENUM('Calle', 'Avenida', 'plaza'),
+        type: DataTypes.ENUM('Calle', 'Avenida', 'Plaza'),
         allowNull: false,
     },
 
     roadName:{
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(200),
         allowNull: false, 
     }, 
 

@@ -4,7 +4,7 @@ const District = sequelize.define(
 	'district',
 	{
 		name: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(90),
 			allowNull: false,
 		}
 		

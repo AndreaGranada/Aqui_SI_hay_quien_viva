@@ -54,25 +54,27 @@ DELETE | /reviews/:reviewId   | YES   | admin | Delete a review          |   `pa
 
 
 
-### Sports Endpoints
+### Districts Endpoints
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
-GET    | /sports                   | NO   | user | Get all sports          |                                  | { message: 'List of all sports availables', data: [`sports`]}
-POST   | /sports/:sportId    | YES   | admin | Create a sport apartment          |   `params: sportId`                         | { message: 'Sport created successfully', data: [`sports`]}
-PATCH    | /sports/:sportId    | YES   | admin | Edit a sport          |    `params: sportId`                             | { message: 'Sport updated successfully', data: `sports`}
-DELETE | /sports/:sportId    | YES   | admin | Delete Sport          |    `params: sportId`                               | { message: 'Sport deleted successfully', data: `sports`}
+GET    | /districts              | NO   | user | See all districts          |                                  | { message: 'Here are all the districts', data: [`districts`]}
+GET    | /districts              | YES   | admin | See all districts          |                                  | { message: 'Here are all the districts', data: [`districts`]}
+POST   | /districts  | YES   | admin | Create a district        |   `district`                         | { message: 'district created successfully', data: [`districts`]}
+PATCH  |/districts/:districtId    | YES   | admin | Edit a district          |    `params: districtId`                             | { message: 'District updated successfully', data: `districts`}
+DELETE | /districts/:districtId    | YES   | admin | Delete district          |    `params: districtId`                               | { message: 'District deleted successfully', data: `districts`}
 
 
-### Room Endpoints
+
+### LegalDocs Endpoints
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
-GET    | /rooms                    | YES   | admin | Get all rooms          |                                  | { message: 'List of rooms', data: [`room`]}
-GET    | /rooms/:roomId          | YES   | admin | Get one room      |   `params: reviewsId, sportId`     | { message: 'Room fetched successfully', data: [`room`]}
-POST   | /rooms/         | YES   | admin | create a room                           |   `params: userId, reviewsId`      | { message: 'Room created successfully', data: [`room`]}
-PATCH    | /rooms/:roomId    | YES   | admin| Edit one room          | `params: fullName`, `email`, `password`, `dni` , `phone`                    | { message: 'Room updated successfully', data: [`room`]}
-DELETE | /rooms/:roomId        | YES   | admin | delete a room                   |   `params: userId, reviewsId`      | { message: 'Room deleted successfully', data: [`room`]}
+GET    | /legalDocs                    | YES   | admin | Get all legalDocs          |                                  | { message: 'List of legalDocs', data: [`room`]}
+GET    | /legalDocs/:roomId          | YES   | admin | Get one room      |   `params: reviewsId, districtId`     | { message: 'Room fetched successfully', data: [`room`]}
+POST   | /:reviewId/legalDocs         | YES   | admin | Ad legal info to a review                           |   `params: reviewId` `document`      | { message: 'Legal documentation added successfully', data: [`room`]}
+PATCH    | /legalDocs/:roomId    | YES   | admin| Edit one room          | `params: fullName`, `email`, `password`, `dni` , `phone`                    | { message: 'Room updated successfully', data: [`room`]}
+DELETE | /legalDocs/:roomId        | YES   | admin | delete a room                   |   `params: userId, reviewsId`      | { message: 'Room deleted successfully', data: [`room`]}
 
 ### materials Endpoints
 
@@ -80,7 +82,7 @@ METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
 GET    | /materials                    | YES   | admin | Get all material                |                                  | { message: 'List of materials availables', data: [`material`]}
 GET    | /materials/:roomId          | YES   | admin | Get all material from a room      |   `params: roomId`     | { message: 'List of materials available in a room', data: [`material`]}
-GET    | /materials/:name          | YES   | admin | Get all material of the same type   |   `params: materialName`     | { message: 'Material of the same type available in all rooms', data: [`material`]}
+GET    | /materials/:name          | YES   | admin | Get all material of the same type   |   `params: materialName`     | { message: 'Material of the same type available in all legalDocs', data: [`material`]}
 POST   | /materials/:roomId         | YES   | admin | Add material to a room             |   `params: roomId`      | { message: 'Material added successfully', data: [`material`]}
 PATCH    | /materials/:materialId    | YES   | admin| Update material                      | `params: materialName`, `description`, `roomId`      | { message: 'Material updated successfully', data: [`material`]}
 DELETE | /materials/:materialId        | YES   | admin | delete a material               |   `params: materialId`      | { message: 'Material deleted successfully', data: [`material`]}

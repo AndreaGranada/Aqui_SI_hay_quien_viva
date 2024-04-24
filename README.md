@@ -70,20 +70,10 @@ DELETE | /districts/:districtId    | YES   | admin | Delete district          | 
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
-GET    | /legalDocs                    | YES   | admin | Get all legalDocs          |                                  | { message: 'List of legalDocs', data: [`room`]}
-GET    | /legalDocs/:roomId          | YES   | admin | Get one room      |   `params: reviewsId, districtId`     | { message: 'Room fetched successfully', data: [`room`]}
-POST   | /:reviewId/legalDocs         | YES   | admin | Ad legal info to a review                           |   `params: reviewId` `document`      | { message: 'Legal documentation added successfully', data: [`room`]}
-PATCH    | /legalDocs/:roomId    | YES   | admin| Edit one room          | `params: fullName`, `email`, `password`, `dni` , `phone`                    | { message: 'Room updated successfully', data: [`room`]}
-DELETE | /legalDocs/:roomId        | YES   | admin | delete a room                   |   `params: userId, reviewsId`      | { message: 'Room deleted successfully', data: [`room`]}
-
-### materials Endpoints
-
-METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
--------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
-GET    | /materials                    | YES   | admin | Get all material                |                                  | { message: 'List of materials availables', data: [`material`]}
-GET    | /materials/:roomId          | YES   | admin | Get all material from a room      |   `params: roomId`     | { message: 'List of materials available in a room', data: [`material`]}
-GET    | /materials/:name          | YES   | admin | Get all material of the same type   |   `params: materialName`     | { message: 'Material of the same type available in all legalDocs', data: [`material`]}
-POST   | /materials/:roomId         | YES   | admin | Add material to a room             |   `params: roomId`      | { message: 'Material added successfully', data: [`material`]}
-PATCH    | /materials/:materialId    | YES   | admin| Update material                      | `params: materialName`, `description`, `roomId`      | { message: 'Material updated successfully', data: [`material`]}
-DELETE | /materials/:materialId        | YES   | admin | delete a material               |   `params: materialId`      | { message: 'Material deleted successfully', data: [`material`]}
+GET    | /legalDocs              | YES   | admin | See all legalDocs       |                                  | { message: 'List of all legal documents', data: [`room`]}
+GET    | /legalDocs/:Id    | YES   | admin | See the legal documentation of one review     |   `params: reviewId`     | { message: 'This is the legal document of this ${reviewId} review', data: [`room`]}
+POST   | /legalDocs/:Id   | YES   | user | Add legal info to a review  |   `params: reviewId` `document`      | { message: 'Legal documentation added successfully', data: [`room`]}
+POST   | /legalDocs/:Id   | YES   | admin | Add legal info to a review   |   `params: reviewId` `document, status`      | { message: 'Legal documentation added successfully', data: [`room`]}
+PATCH  | /legalDocs/:Id   | YES   | admin| Accept or decline onew review and edit  | `params: reviewId` `document, status`| { message: 'Room updated successfully', data: [`room`]}
+DELETE | /legalDocs/:I d  | YES   | admin | Delete legal documentation of a review  |   `params: reviewId`      | { message: 'Legal Doc deleted successfully', data: [`room`]}
 

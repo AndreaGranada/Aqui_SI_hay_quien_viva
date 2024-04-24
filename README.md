@@ -1,7 +1,5 @@
 # Aqui sí hay quien viva
 Project 3 of Reboot Academy 
-# Sportify
-Project 2: Backend 
 
 
 METHOD | ENDPOINT         | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                                                 | RETURNS
@@ -16,12 +14,12 @@ POST   | /auth/login      | YES   | admin| Admin Login              | `email`,  
 METHOD | ENDPOINT         | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                                                 | RETURNS
 -------|------------------|-------|------|--------------------------|-----------------------------------------------------------------------------|--------------------
 GET    | /users/profile    | YES   | user | Can read/see own profile |                                                                             |  { message: 'Here is your profile', data: [`user`]}
-PATCH  | /users/profile    | YES   | user | Update/edit own profile  | `name`, `surname` `email`, `password`, `dni` , `phone`                     | { message: 'Profile edited succesfully', data: [`user`]}
-DELETE | /users/profile    | YES   | user | Delete own profile       | `params: userId`                                                            | { message: 'Account deleted successfully', data: [`user`]}
-GET    | /users            | YES   | admin| Get All Users           |                                                                             | { message: 'List of all users', data: [`users`]}
+PATCH  | /users/profile    | YES   | user | Update/edit own profile  | `name`, `surname` `email`, `password`, `dni` , `phone`                     | { message: 'You have edited your profile succesfully', data: [`user`]}
+DELETE | /users/profile    | YES   | user | Delete own profile       | `params: userId`                                                            | { message: 'You have deleted your account successfully', data: [`user`]}
+GET    | /users            | YES   | admin| Get All Users           |                                                                             | { message: 'Here are all users', data: [`users`]}
 GET    | /users/:userId    | YES   | admin | Get One User            | `params: userId`                                                            |  { message: 'Here is the ${userId} profile ', data: [`user:id`]}
-POST   | /users            | YES   | admin | Create one User         |  `name`, `surname` `email`, `password`, `dni` , `phone`                    |{ message: 'User created successfully', data: [`user`]}
-PATCH  | /users/:userId    | YES   | admin| Update one user          | `params: fullName`, `email`, `password`, `dni` , `phone`                    | { message: 'User updated successfully', data: [`user`]}
+POST   | /users            | YES   | admin | Create one User         | `name`, `surname` `email`, `password`, `dni` , `phone`                    |{ message: 'User created successfully', data: [`user`]}
+PATCH  | /users/:userId    | YES   | admin| Update one user          | `params: userId` `fullName`, `email`, `password`, `dni` , `phone`                    | { message: 'User updated successfully', data: [`user`]}
 DELETE | /users/:userId    | YES   | admin| Delete one user          | `params: userId`                                                            | { message: 'User deleted successfully', data: [`user`]}
 
 
@@ -29,13 +27,17 @@ DELETE | /users/:userId    | YES   | admin| Delete one user          | `params: 
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION                     | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|---------------------------------|-------------------------------------------------|--------------------
-GET    | /suscriptions            | NO    | user | Get all suscriptions            |                                                    | { message: 'List of suscriptions', data: [`suscription`]}
-POST   | /suscriptions/:userId    | YES   | user | Choose one Suscription          |   `params: userId, type`                         | { message: 'Suscription choosed successfully', data: [`suscription`]}
-PATCH    | /suscriptions/:userId    | YES   | user | Change own suscription          |   `params: userId, type`                            | { message: 'Suscription changed successfully', data: `suscription`}
-DELETE | /suscriptions/:userId    | YES   | user | Delete own suscription          |   `params: userId`                               | { message: 'Suscription deleted successfully', data: `suscription`}
+GET    | /apartments             | NO    | user |Can see all apartments            |                                                    | { message: 'List of apartments', data: [`apartment`]}
+GET    | /apartments/:apartmentId| NO    | user | Can see one apartment            | `params: apartmentId`                           | { message: 'Here is the ${aprtmentId} apartment', data: [`apartment`]}
+GET    | /apartments             | YES    | admin |Can see all apartments        |                                                    | { message: 'List of apartments', data: [`apartment`]}
+GET    | /apartments/:apartmentId| YES    | admin |Can see one apartment         | `params: apartmentId`                           | { message: 'Here is the ${aprtmentId} apartment', data: [`apartment`]}
+POST   | /apartments/            | YES   | user | Can Create an apartment         |  `districtId, road, roadName, postalCode, extraInfo`                       | { message: 'apartment created succesfully', data: [`apartment`]}
+POST   | /apartments/            | YES   | admin |Can Create an apartment         |  `districtId, road, roadName, postalCode, extraInfo`                       | { message: 'apartment created succesfully', data: [`apartment`]}
+PATCH  | /apartments/:apartmentId| YES   | admin | Change/edit one apartment      |  `params: apartmentId' `districtId, road, roadName, postalCode, extraInfo` | { message: 'apartment edited successfully', data: `apartment`}
+DELETE | /apartments/:apartmentId| YES   | user | Delete one apartment          |   `params: apartmentId`                               | { message: 'apartment deleted successfully', data: `apartment`}
 
 
-### Class Endpoints
+### Reviews Endpoints
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
@@ -54,7 +56,7 @@ DELETE | /class/:classId/:userId        | YES   | user | cancel a booked class  
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
 GET    | /sports                   | NO   | user | Get all sports          |                                  | { message: 'List of all sports availables', data: [`sports`]}
-POST   | /sports/:sportId    | YES   | admin | Create a sport Suscription          |   `params: sportId`                         | { message: 'Sport created successfully', data: [`sports`]}
+POST   | /sports/:sportId    | YES   | admin | Create a sport apartment          |   `params: sportId`                         | { message: 'Sport created successfully', data: [`sports`]}
 PATCH    | /sports/:sportId    | YES   | admin | Edit a sport          |    `params: sportId`                             | { message: 'Sport updated successfully', data: `sports`}
 DELETE | /sports/:sportId    | YES   | admin | Delete Sport          |    `params: sportId`                               | { message: 'Sport deleted successfully', data: `sports`}
 

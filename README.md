@@ -18,7 +18,7 @@ PATCH  | /users/profile    | YES   | user | Update/edit own profile  | `name`, `
 DELETE | /users/profile    | YES   | user | Delete own profile       | `params: userId`                                                            | { message: 'You have deleted your account successfully', data: [`user`]}
 GET    | /users/profile/reviews    | YES   | user | Can see all his/her reviews |                                                                   |  { message: 'Here are your reviews, data: [`user`]}
 GET    | /users/profile/reviews/:reviewId    | YES   | user | Can see one review | `params: reviewId`                                              |  { message: 'Here is your review ${reviewId}', data: [`user`]}
-DELETE | /users/profile/reviews/:reviewID    | YES   | user | Delete one of his/her reviews       | `params: reviewId`                              | { message: 'You have deleted your reviewsuccessfully', data: [`user`]}
+DELETE | /users/profile/reviews/:reviewId    | YES   | user | Delete one of his/her reviews       | `params: reviewId`                              | { message: 'You have deleted your reviewsuccessfully', data: [`user`]}
 GET    | /users            | YES   | admin| Get All Users           |                                                                             | { message: 'Here are all users', data: [`users`]}
 GET    | /users/:userId    | YES   | admin | Get One User            | `params: userId`                                                            |  { message: 'Here is the ${userId} profile ', data: [`user:id`]}
 POST   | /users            | YES   | admin | Create one User         | `name`, `surname` `email`, `password`, `dni` , `phone`                    |{ message: 'User created successfully', data: [`user`]}
@@ -44,14 +44,14 @@ DELETE | /apartments/:apartmentId| YES   | user | Delete one apartment          
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
-GET    | /reviews/:apartmentId   | NO    | user | Get all reviews of one apartment       |                                  | { message: 'List of all reviews', data: [`reviews`]}
-GET    | /reviews/:sportId          | NO    | user | Get all reviews filtered by sport      |   `params: reviewsId, sportId`     | { message: 'List of all reviews by sport', data: [`reviews`]}
-GET    | /reviews/:userId           | YES   | user | Get all reviews the user booked        |  `params: userId, reviewsId`       | { message: 'List of booked reviews', data: [`reviews`]}
-POST   | /reviews/bookreviews         | YES   | user | Book a reviews                           |   `params: userId, reviewsId`      | { message: 'reviews booked successfully', data: [`reviews`]}
-POST   | /reviews/             | YES   | admin | Create a reviews          |   `params: sportId` , `Start`, `Finish`,`Duration`,`Days`    | { message: 'reviews created successfully', data: [`reviews`]}
-PATCH  | /reviews/:reviewsId         | YES   | admin| Update reviews information              | `params: reviewsId`,`sportId` , `Start`, `Finish`,`Duration`,`Days` | { message: 'reviews updated successfully', data: [`reviews`]}
-DELETE | /reviews/:reviewsId   | YES   | admin | Delete a reviews          |   `params: reviewsId`                               | { message: 'reviews deleted successfully', data: `reviews`}
-DELETE | /reviews/:reviewsId/:userId        | YES   | user | cancel a booked reviews                   |   `params: userId, reviewsId`      | { message: 'reviews canceled successfully', data: [`reviews`]}
+GET    | /reviews/:apartmentId   | NO    | user | See all reviews of one apartment       |   `params: reviewsId`            | { message: 'List of all reviews', data: [`reviews`]}
+GET    | /reviews/:apartmentId   | YES   | admin | See all the reviews of one apartment   |   `params: reviewsId`     | { message: 'Here you have all the reviews of the apartment ${apartmentId}', data: [`reviews`]}
+GET    | /reviews/:apartmentId/:reviewId | YES   | admin | See one review of one apartment  |   `params: apartmentId, reviewsId`     | { message: 'Here you have the review ${reviewId}{', data: [`reviews`]}
+POST   | /reviews/:apartmentId/create | YES   | user | Create a review   |   `params: apartmentId` `content, media`    | { message: 'We will inform you about the status of your review in 24h', data: [`reviews`]}
+POST   | /reviews/:apartmentId/userId/create | YES   | admin | Create a review for an user|   `params: apartmentId, userId` , `content, media`     | { message: 'review created successfully', data: [`reviews`]}
+PATCH  | /reviews/:reviewId         | YES   | admin| Update a review information              | `params: reviewId`, `content, media`| { message: 'Review updated successfully', data: [`reviews`]}
+DELETE | /reviews/:reviewId   | YES   | admin | Delete a review          |   `params: reviewId`                               | { message: 'Reviews deleted successfully', data: `reviews`}
+
 
 
 ### Sports Endpoints

@@ -16,6 +16,9 @@ METHOD | ENDPOINT         | TOKEN | ROLE | DESCRIPTION              | POST PARAM
 GET    | /users/profile    | YES   | user | Can read/see own profile |                                                                             |  { message: 'Here is your profile', data: [`user`]}
 PATCH  | /users/profile    | YES   | user | Update/edit own profile  | `name`, `surname` `email`, `password`, `dni` , `phone`                     | { message: 'You have edited your profile succesfully', data: [`user`]}
 DELETE | /users/profile    | YES   | user | Delete own profile       | `params: userId`                                                            | { message: 'You have deleted your account successfully', data: [`user`]}
+GET    | /users/profile/reviews    | YES   | user | Can see all his/her reviews |                                                                   |  { message: 'Here are your reviews, data: [`user`]}
+GET    | /users/profile/reviews/:reviewId    | YES   | user | Can see one review | `params: reviewId`                                              |  { message: 'Here is your review ${reviewId}', data: [`user`]}
+DELETE | /users/profile/reviews/:reviewID    | YES   | user | Delete one of his/her reviews       | `params: reviewId`                              | { message: 'You have deleted your reviewsuccessfully', data: [`user`]}
 GET    | /users            | YES   | admin| Get All Users           |                                                                             | { message: 'Here are all users', data: [`users`]}
 GET    | /users/:userId    | YES   | admin | Get One User            | `params: userId`                                                            |  { message: 'Here is the ${userId} profile ', data: [`user:id`]}
 POST   | /users            | YES   | admin | Create one User         | `name`, `surname` `email`, `password`, `dni` , `phone`                    |{ message: 'User created successfully', data: [`user`]}
@@ -41,14 +44,14 @@ DELETE | /apartments/:apartmentId| YES   | user | Delete one apartment          
 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
-GET    | /class                   | NO    | user | Get all classes of all sports          |                                  | { message: 'List of all classes', data: [`class`]}
-GET    | /class/:sportId          | NO    | user | Get all classes filtered by sport      |   `params: classId, sportId`     | { message: 'List of all classes by sport', data: [`class`]}
-GET    | /class/:userId           | YES   | user | Get all classes the user booked        |  `params: userId, classId`       | { message: 'List of booked classes', data: [`class`]}
-POST   | /class/bookClass         | YES   | user | Book a class                           |   `params: userId, classId`      | { message: 'Class booked successfully', data: [`class`]}
-POST   | /class/             | YES   | admin | Create a class          |   `params: sportId` , `Start`, `Finish`,`Duration`,`Days`    | { message: 'Class created successfully', data: [`class`]}
-PATCH  | /class/:classId         | YES   | admin| Update class information              | `params: classId`,`sportId` , `Start`, `Finish`,`Duration`,`Days` | { message: 'Class updated successfully', data: [`class`]}
-DELETE | /class/:classId   | YES   | admin | Delete a class          |   `params: classId`                               | { message: 'Class deleted successfully', data: `class`}
-DELETE | /class/:classId/:userId        | YES   | user | cancel a booked class                   |   `params: userId, classId`      | { message: 'Class canceled successfully', data: [`class`]}
+GET    | /reviews/:apartmentId   | NO    | user | Get all reviews of one apartment       |                                  | { message: 'List of all reviews', data: [`reviews`]}
+GET    | /reviews/:sportId          | NO    | user | Get all reviews filtered by sport      |   `params: reviewsId, sportId`     | { message: 'List of all reviews by sport', data: [`reviews`]}
+GET    | /reviews/:userId           | YES   | user | Get all reviews the user booked        |  `params: userId, reviewsId`       | { message: 'List of booked reviews', data: [`reviews`]}
+POST   | /reviews/bookreviews         | YES   | user | Book a reviews                           |   `params: userId, reviewsId`      | { message: 'reviews booked successfully', data: [`reviews`]}
+POST   | /reviews/             | YES   | admin | Create a reviews          |   `params: sportId` , `Start`, `Finish`,`Duration`,`Days`    | { message: 'reviews created successfully', data: [`reviews`]}
+PATCH  | /reviews/:reviewsId         | YES   | admin| Update reviews information              | `params: reviewsId`,`sportId` , `Start`, `Finish`,`Duration`,`Days` | { message: 'reviews updated successfully', data: [`reviews`]}
+DELETE | /reviews/:reviewsId   | YES   | admin | Delete a reviews          |   `params: reviewsId`                               | { message: 'reviews deleted successfully', data: `reviews`}
+DELETE | /reviews/:reviewsId/:userId        | YES   | user | cancel a booked reviews                   |   `params: userId, reviewsId`      | { message: 'reviews canceled successfully', data: [`reviews`]}
 
 
 ### Sports Endpoints
@@ -66,10 +69,10 @@ DELETE | /sports/:sportId    | YES   | admin | Delete Sport          |    `param
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
 GET    | /rooms                    | YES   | admin | Get all rooms          |                                  | { message: 'List of rooms', data: [`room`]}
-GET    | /rooms/:roomId          | YES   | admin | Get one room      |   `params: classId, sportId`     | { message: 'Room fetched successfully', data: [`room`]}
-POST   | /rooms/         | YES   | admin | create a room                           |   `params: userId, classId`      | { message: 'Room created successfully', data: [`room`]}
+GET    | /rooms/:roomId          | YES   | admin | Get one room      |   `params: reviewsId, sportId`     | { message: 'Room fetched successfully', data: [`room`]}
+POST   | /rooms/         | YES   | admin | create a room                           |   `params: userId, reviewsId`      | { message: 'Room created successfully', data: [`room`]}
 PATCH    | /rooms/:roomId    | YES   | admin| Edit one room          | `params: fullName`, `email`, `password`, `dni` , `phone`                    | { message: 'Room updated successfully', data: [`room`]}
-DELETE | /rooms/:roomId        | YES   | admin | delete a room                   |   `params: userId, classId`      | { message: 'Room deleted successfully', data: [`room`]}
+DELETE | /rooms/:roomId        | YES   | admin | delete a room                   |   `params: userId, reviewsId`      | { message: 'Room deleted successfully', data: [`room`]}
 
 ### materials Endpoints
 

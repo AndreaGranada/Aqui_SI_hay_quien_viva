@@ -71,9 +71,9 @@ DELETE | /districts/:districtId    | YES   | admin | Delete district          | 
 METHOD | ENDPOINT                | TOKEN | ROLE | DESCRIPTION              | POST PARAMS                                     | RETURNS
 -------|-------------------------|-------|------|--------------------------|-------------------------------------------------|--------------------
 GET    | /legalDocs              | YES   | admin | See all legalDocs       |                                  | { message: 'List of all legal documents', data: [`room`]}
-GET    | /legalDocs/:Id    | YES   | admin | See the legal documentation of one review     |   `params: reviewId`     | { message: 'This is the legal document of this ${reviewId} review', data: [`room`]}
-POST   | /legalDocs/:Id   | YES   | user | Add legal info to a review  |   `params: reviewId` `document`      | { message: 'Legal documentation added successfully', data: [`room`]}
-POST   | /legalDocs/:Id   | YES   | admin | Add legal info to a review   |   `params: reviewId` `document, status`      | { message: 'Legal documentation added successfully', data: [`room`]}
-PATCH  | /legalDocs/:Id   | YES   | admin| Accept or decline onew review and edit  | `params: reviewId` `document, status`| { message: 'Room updated successfully', data: [`room`]}
-DELETE | /legalDocs/:I d  | YES   | admin | Delete legal documentation of a review  |   `params: reviewId`      | { message: 'Legal Doc deleted successfully', data: [`room`]}
+GET    | /legalDocs/:ReviewId    | YES   | admin | See the legal documentation of one review     |   `params: reviewId`     | { message: 'This is the legal document of this ${reviewId} review', data: [`room`]}
+POST   | /legalDocs/:ReviewId   | YES   | user | Add legal doc to a review  |   `params: reviewId` `document`      | { message: 'Legal documentation added successfully', data: [`room`]}
+POST   | /legalDocs/:ReviewId    | YES   | admin | Add legal docu to a review   |   `params: reviewId` `document, status`      | { message: 'Legal documentation added successfully', data: [`room`]}
+PATCH  | /legalDocs/:ReviewId   | YES   | admin| Accept or decline one review and edit  | `params: reviewId` `document, status`| { message: 'Room updated successfully', data: [`room`]}
+DELETE | /legalDocs/:Id  | YES   | admin | Delete legal documentation of a review and the review on cascade  |   `params: reviewId`      | { message: 'Legal Doc deleted successfully', data: [`room`]}
 

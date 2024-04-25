@@ -45,7 +45,7 @@ const login = async (req, res) => {
     if (checkPass) {
       const payload = { email: req.body.email }
       const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '100h' })
-      return res.status(200).json({ token: token }, "Loging succesfully")  
+      return res.status(200).json({ token: token, message: "Loging succesfully"})  
     } else {
       return res.status(404).send('Email or password wrong')
     }

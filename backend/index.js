@@ -12,7 +12,7 @@ async function dbConnect() {
     try {
         await checkConnection()
         addRelationsToModels()
-        await syncModels('force') 
+        await syncModels('alter') 
     } catch (error) {
         console.log('Something has gone very wrong 😱', error)  
     }

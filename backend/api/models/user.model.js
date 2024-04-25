@@ -4,33 +4,37 @@ const User = sequelize.define(
 	'user',
 	{
 		name: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(50),
 			allowNull: false,
 		},
 		surname: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(90),
             allowNull: false,
         },
         email: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(90),
             allowNull: false,
+            validate: {
+                isEmail: true
+            }
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
 		},
         dni: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(90),
             allowNull: false,
         },
         phone: {
-			type: DataTypes.STRING,
+			type: DataTypes.STRING(90),
             allowNull: false,
          
         },
         role: {
             type: DataTypes.ENUM("user", "admin"),
             allowNull: false,
+            defaultValue: 'user',
 		},
         
     },

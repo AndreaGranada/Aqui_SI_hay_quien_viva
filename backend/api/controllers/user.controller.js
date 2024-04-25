@@ -31,6 +31,31 @@ async function getOneUser(req, res) {
 	}
 }
 
+//Create one user (admin)
+
+const createUser = async (req, res) => {
+    try {
+
+        const saltRounds = bcrypt.genSaltSync(parseInt(10))
+        const hashedPassword = bcrypt.hashSync(req.body.password, saltRounds)
+        req.body.password = hashedPassword
+                
+        const newUser = await User.create({
+            name: req.body.name,
+            surname: req.body.surname, 
+            email: req.body.email,
+            password: req.body.password,
+            dni: req.body.dni,
+            phone: req.body.phone,
+        })
+    return res.status(200).json(newUser)
+
+} catch (error) {
+    console.log(error)
+    return res.status(500).json({message: "Something went wrong"})
+}
+}
+
 // Get Own Profile - User
 const getOwnUser = async (req,res) => {
     try {
@@ -81,5 +106,7 @@ async function updateOwnUser(req, res) {
 module.exports = {
     getAllUsers,
     getOneUser,
-    getOwnUser
+    getOwnUser,
+    updateOwnUser,
+    createUser,
 }

@@ -51,7 +51,7 @@ async function getOneDistrict(req, res) {
     if (district) {
       return res.status(200).json(district);
     } else {
-      return res.status(404).send("District not found");
+      return res.status(404).send("District not found GetOneDistrict");
     }
   } catch (error) {
     res.status(500).send(error.message);
@@ -71,7 +71,7 @@ async function updateDistrict(req, res) {
 		if (district !== 0) {
 			return res.status(200).json({ message: 'District updated', district })
 		} else {
-			return res.status(404).send('District not found')
+			return res.status(404).send('District not found updateDistrict')
 		}
 	} catch (error) {
 		return res.status(500).send(error.message)
@@ -81,7 +81,7 @@ async function updateDistrict(req, res) {
 
 
 
-// Delete one profile - Admin
+// Delete one district - Admin
 const deleteDistrict = async (req, res) => {
   try {
     const district = await District.destroy({
@@ -92,7 +92,7 @@ const deleteDistrict = async (req, res) => {
     if (district > 0) {
       return res.status(200).json("District deleted");
     } else {
-      return res.status(404).send("District not found");
+      return res.status(404).send("District not found delete district");
     }
   } catch (error) {
     console.log(error);

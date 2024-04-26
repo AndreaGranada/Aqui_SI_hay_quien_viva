@@ -10,6 +10,7 @@ const LegalDoc = sequelize.define(
         status: {
 			type: DataTypes.ENUM('aceptado','rechazado','pendiente'),
 			allowNull: false,
+			defaultValue: 'pendiente',
 		}
 		
     }

@@ -22,7 +22,7 @@ const signup = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '100h' })
     return res.status(200).json({ token: token })
   } catch (error) {
-    console.log('Error signing up user')
+    console.log('Error signing up user', error)
     return res.status(500).json(error)
   }
 }

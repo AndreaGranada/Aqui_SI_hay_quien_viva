@@ -27,8 +27,7 @@ const postOneApartment = async (req, res) => {
         const newApartment = await Apartment.create({
             road: req.body.road,
             roadName: req.body.roadName, 
-            postalCode: 
-
+           // postalCode: 
         })
     } catch (error) {
         console.log(error)

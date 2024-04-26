@@ -32,37 +32,46 @@ const createDistrict = async (req, res) => {
       return res.status(500).json({ message: "Something went wrong" });
     }
   };
-/*
-// Get One User (admin)
-async function getOneUser(req, res) {
+
+  // Get All District - User y admin
+  const getAllDistrict = async (req, res) => {
+    try {
+      const district = await District.findAll();
+      return res.status(200).json(district);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Something went wrong" });
+    }
+  };
+
+// Get One District (user y admin)
+async function getOneDistrict(req, res) {
   try {
-    const user = await User.findByPk(req.params.userId);
-    if (user) {
-      return res.status(200).json(user);
+    const district = await District.findByPk(req.params.districtId);
+    if (district) {
+      return res.status(200).json(district);
     } else {
-      return res.status(404).send("User not found");
+      return res.status(404).send("District not found");
     }
   } catch (error) {
     res.status(500).send(error.message);
   }
 }
 
+//Update District (admin)
 
-
-//Update User (admin)
-
-async function updateUser(req, res) {
+async function updateDistrict(req, res) {
 	try {
-		const [user] = await User.update(req.body, {
+		const district = await District.update(req.body, {
 			returning: true,
 			where: {
-				id: req.params.userId,
+				id: req.params.districtId,
 			},
 		})
-		if (user !== 0) {
-			return res.status(200).json({ message: 'User updated', user: user })
+		if (district !== 0) {
+			return res.status(200).json({ message: 'District updated', district })
 		} else {
-			return res.status(404).send('User not found')
+			return res.status(404).send('District not found')
 		}
 	} catch (error) {
 		return res.status(500).send(error.message)
@@ -70,85 +79,32 @@ async function updateUser(req, res) {
 }
 
 
-// Get Own Profile - User
-const getOwnUser = async (req, res) => {
-  try {
-    const user = await User.findByPk(res.locals.user.id, {
-      attributes: {
-        exclude: "password",
-      },
-    });
-    console.log(user);
-    if (user) {
-      return res.status(200).json(user);
-    } else {
-      return res.status(404).send("User not found cont");
-    }
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
-  }
-};
 
-// Update Own Profile - User
 
-async function updateOwnUser(req, res) {
-  try {
-    const user = await User.findByPk(res.locals.user.id, {
-      attributes: {
-        exclude: ["password", "role"],
-      },
-    });
-
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    delete req.body.role;
-    const updatedUser = await user.update(req.body);
-
-    return res.status(200).json({ message: "User updated", user: updatedUser });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-}
-
-// Delete Own Profile - User
-const deleteOwnProfile = async (req, res) => {
-  try {
-    const user = await User.destroy({
-      where: {
-        id: res.locals.user.id,
-      },
-    });
-    if (user > 0) {
-      return res.status(200).json("User deleted");
-    } else {
-      return res.status(404).send("User not found");
-    }
-  } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
-  }
-};
 // Delete one profile - Admin
-const deleteUser = async (req, res) => {
+const deleteDistrict = async (req, res) => {
   try {
-    const user = await User.destroy({
+    const district = await District.destroy({
       where: {
-        id: req.params.userId,
+        id: req.params.districtId,
       },
     });
-    if (user > 0) {
-      return res.status(200).json("User deleted");
+    if (district > 0) {
+      return res.status(200).json("District deleted");
     } else {
-      return res.status(404).send("User not found");
+      return res.status(404).send("District not found");
     }
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Something went wrong" });
   }
 };
-*/
+
 module.exports = {
-    bulkCreateDistrict
+    bulkCreateDistrict,
+    createDistrict,
+    getAllDistrict,
+    getOneDistrict, 
+    updateDistrict,
+    deleteDistrict
 };

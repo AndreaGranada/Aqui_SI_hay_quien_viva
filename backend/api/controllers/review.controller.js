@@ -2,6 +2,7 @@ const Review = require('../models/review.model');
 const LegalDoc = require('../models/legalDoc.model');
 const Apartment = require('../models/apartment.model');
 
+// Create a review - admin y user
 const createReview = async (req, res) => {
     try {
         const idUser = res.locals.user.id;
@@ -36,7 +37,129 @@ const createReview = async (req, res) => {
     }
 };
 
-module.exports = {
-   createReview
-  };
+// Gell all reviews - user y admin
+const getAllReviews = async (req, res) => {
+    try {
+        const review = await Review.findAll();
+        return res.status(200).json(review);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
+};
+
+// Get One review id - admin
+async function getOneReview(req, res) {
+    try {
+      const review = await Review.findByPk(req.params.reviewId);
+      if (review) {
+        return res.status(200).json(review);
+      } else {
+        return res.status(404).send("Review not found");
+      }
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  }
   
+
+// Get all apartmentId reviews - user y admin
+const getAllApartmentReviews = async (req, res) => {
+    try {
+        const review = await Review.findAll({
+            where: {
+                apartmentId: req.params.apartmentId,
+            }
+        });
+        return res.status(200).json(review);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
+};
+
+// Get all userId reviews - user y admin
+const getAllUserReviews = async (req, res) => {
+    try {
+        const review = await Review.findAll({
+            where: {
+                userId: req.params.userId,
+            }
+        });
+        return res.status(200).json(review);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
+};
+
+// Get owner user reviews 
+
+const getAllOwnerUserReviews = async (req, res) => {
+    try {
+        const idUser = res.locals.user.id;
+
+        const review = await Review.findAll({
+            where: {
+                userId: idUser,
+            }
+        });
+        return res.status(200).json(review);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
+};
+
+// Update one review - admin
+
+
+const updateReviews = async (req, res) => {
+    try {
+		const review = await Review.update(req.body, {
+			returning: true,
+			where: {
+				id: req.params.reviewId,
+			},
+		})
+		if (review !== 0) {
+			return res.status(200).json({ message: 'Review updated', review })
+		} else {
+			return res.status(404).send('Review not found')
+		}
+	} catch (error) {
+		return res.status(500).send(error.message)
+	}
+};
+
+// Delete one review - admin y user
+// Si elimino un id de legalDoc si se elimina la review pero al contrario no
+
+const deleteReviews = async (req, res) => {
+    try {
+		const review = await Review.destroy({
+			where: {
+				id: req.params.reviewId,
+			},
+		})
+		if (review !== 0) {
+			return res.status(200).json({ message: 'Review deleted', review })
+		} else {
+			return res.status(404).send('Review not found')
+		}
+	} catch (error) {
+		return res.status(500).send(error.message)
+	}
+};
+
+
+module.exports = {
+    createReview,
+    getAllReviews,
+    getAllApartmentReviews,
+    getAllUserReviews,
+    getAllOwnerUserReviews,
+    getOneReview,
+    updateReviews,
+    deleteReviews
+};

@@ -12,8 +12,11 @@ const {
 } = require('../controllers/apartment.controller')
 
 router
+    
     .get('/', getAllApartments)
     .get('/:apartmentId', getOneApartment)
-    .post('/',checkAuth,checkAdmin,createOneApartment)
+    .post('/',checkAuth, createOneApartment)
+    .patch('/:apartmentId', checkAuth, checkAdmin, updateApartment)
+    .delete('/:apartmentId', checkAuth, checkAdmin, deleteApartment)
 
 module.exports = router

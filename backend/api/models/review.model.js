@@ -21,6 +21,7 @@ const Review = sequelize.define(
         postedStatus: {
 			type: DataTypes.ENUM('yes','no'),
             allowNull: false,
+            defaultValue: 'no'
         },
     }
    

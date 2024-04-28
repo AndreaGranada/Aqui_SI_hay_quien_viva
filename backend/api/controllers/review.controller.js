@@ -111,6 +111,38 @@ const getAllOwnerUserReviews = async (req, res) => {
     }
 };
 
+
+//El usuario puede eliminar una de sus reviews y la legal doc asociada se elimina también 
+const deleteOwnReview = async (req, res) => {
+  try {
+    const user = res.locals.user.id;
+    const review = await Review.findOne({
+      where: {
+        id: req.params.reviewId,
+        userId: user,
+      },
+    });
+
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+    const legalDocId = review.legalDocId;
+    await review.destroy();
+    await LegalDoc.destroy({
+        where: {
+          id: legalDocId,
+        },
+      });
+  
+    return res.status(200).json({ message: "Review & legalDoc deleted" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+  
+
+
 // Update one review - admin
 
 
@@ -134,6 +166,8 @@ const updateReviews = async (req, res) => {
 
 // Delete one review - admin y user
 // Si elimino un id de legalDoc si se elimina la review pero al contrario no
+//Nota vío: efectivamente, no elimina la legal doc asociada 
+
 
 const deleteReviews = async (req, res) => {
     try {
@@ -161,5 +195,6 @@ module.exports = {
     getAllOwnerUserReviews,
     getOneReview,
     updateReviews,
+    deleteOwnReview,
     deleteReviews
 };

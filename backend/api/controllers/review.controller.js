@@ -162,8 +162,7 @@ const updateReview = async (req, res) => {
 };
 
 // Delete one review - admin
-// Si elimino un id de legalDoc si se elimina la review pero al contrario no
-//Nota vío: efectivamente, no elimina la legal doc asociada
+//ahora sí, si se elimina una review se elimina su legaldoc
 
 const deleteReview = async (req, res) => {
     try {
@@ -193,31 +192,7 @@ const deleteReview = async (req, res) => {
   
 
 
-// const deleteReviews = async (req, res) => {
-//   try {
-//     const review = await Review.destroy({
-//       where: {
-//         id: req.params.reviewId,
-//       },
-//     });
-//  console.log(review)
 
-//     if (review === 0) {
-//       return res.status(404).json({ message: "Review not found" });
-//     }
-//     const legalDocId = review.legalDocId;
-//     console.log(legalDocId)
-//     await LegalDoc.destroy({
-//       where: {
-//         id: legalDocId,
-//       },
-//     });
-//     return res.status(200).json({ message: "Review & legalDoc deleted" });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ message: "Something went wrong" });
-//   }
-// };
 
 module.exports = {
   createReview,

@@ -9,9 +9,9 @@ const{
     getAllUserReviews,
     getAllOwnerUserReviews,
     getOneReview,
-    updateReviews,
+    updateReview,
     deleteOwnReview,
-    deleteReviews
+    deleteReview
 } = require('../controllers/review.controller')
 
 router
@@ -22,10 +22,7 @@ router
     .get('/:reviewId', checkAuth, checkAdmin, getOneReview)
     .get('/apartment/:apartmentId', checkAuth, getAllApartmentReviews)
     .get('/user/:userId', checkAuth, checkAdmin, getAllUserReviews)
-    .patch('/:reviewId', checkAuth, checkAdmin, updateReviews)
-    .delete('/:reviewId', checkAuth, checkAdmin, deleteReviews)
+    .patch('/:reviewId', checkAuth, checkAdmin, updateReview)
+    .delete('/:reviewId', checkAuth, checkAdmin, deleteReview)
     
-
-
-
 module.exports = router

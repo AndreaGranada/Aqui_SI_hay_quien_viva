@@ -190,9 +190,56 @@ const deleteReview = async (req, res) => {
     }
   };
   
+// Mostrar como mucho dos reviews (las mas actuales) de un apartamento
 
+const getTwoRecentApartmentReviews = async (req, res) => {
+  try {
+    const apartmentId = req.params.apartmentId;
 
+    // Obtener las dos reviews más recientes asociadas al apartamento específico
+    const reviews = await Review.findAll({
+      where: {
+        apartmentId: apartmentId,
+      },
+      order: [['datePost', 'DESC']], // Ordenar por fecha de publicación de forma descendente
+      limit: 2, // Limitar a dos resultados
+    });
 
+    return res.status(200).json(reviews);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+// Mostrar seis apartamentos con dos reviews como maximo
+const getSixApartmentsWithReviews = async (req, res) => {
+  try {
+    // Obtener los seis apartamentos con las reviews más actuales
+    const apartments = await Apartment.findAll({
+      include: [{
+        model: Review,
+        order: [['datePost', 'DESC']], // Ordenar las reviews por fecha de publicación de forma descendente
+        limit: 2, // Limitar a dos reviews
+      }],
+    });
+
+    // Ordenar los apartamentos en base a la fecha de la última review asociada a cada apartamento
+    apartments.sort((a, b) => {
+      const dateA = a.Reviews && a.Reviews.length > 0 ? new Date(a.Reviews[0].datePost) : new Date(0);
+      const dateB = b.Reviews && b.Reviews.length > 0 ? new Date(b.Reviews[0].datePost) : new Date(0);
+      return dateB - dateA; // Orden descendente
+    });
+
+    // Limitar a seis resultados
+    const sixApartments = apartments.slice(0, 6);
+
+    return res.status(200).json(sixApartments);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
 
 module.exports = {
   createReview,
@@ -204,4 +251,6 @@ module.exports = {
   updateReview,
   deleteOwnReview,
   deleteReview,
+  getTwoRecentApartmentReviews,
+  getSixApartmentsWithReviews
 };

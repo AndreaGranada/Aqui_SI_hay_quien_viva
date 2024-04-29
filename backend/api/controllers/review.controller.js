@@ -241,6 +241,31 @@ const getSixApartmentsWithReviews = async (req, res) => {
   }
 };
 
+// Mostrar todos los apartamentos con sus reviews asociadas
+const getAllApartmentsWithReviews = async (req, res) => {
+  try {
+    // Obtener todos los apartamentos con todas las reviews
+    const apartments = await Apartment.findAll({
+      include: [{
+        model: Review,
+        order: [['datePost', 'DESC']], // Ordenar las reviews por fecha de publicación de forma descendente
+      }],
+    });
+
+    // Ordenar los apartamentos en base a la fecha de la última review asociada a cada apartamento
+    apartments.sort((a, b) => {
+      const dateA = a.Reviews && a.Reviews.length > 0 ? new Date(a.Reviews[0].datePost) : new Date(0);
+      const dateB = b.Reviews && b.Reviews.length > 0 ? new Date(b.Reviews[0].datePost) : new Date(0);
+      return dateB - dateA; // Orden descendente
+    });
+
+    return res.status(200).json(apartments);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
 module.exports = {
   createReview,
   getAllReviews,
@@ -252,5 +277,6 @@ module.exports = {
   deleteOwnReview,
   deleteReview,
   getTwoRecentApartmentReviews,
-  getSixApartmentsWithReviews
+  getSixApartmentsWithReviews,
+  getAllApartmentsWithReviews 
 };

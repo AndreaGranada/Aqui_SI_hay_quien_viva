@@ -2,7 +2,7 @@ const router = require('express').Router()
 const { checkAuth, checkAdmin } = require('../middleware/index.middleware')
 
 
-const{
+const {
     createReview,
     getAllReviews,
     getAllApartmentReviews,
@@ -13,11 +13,13 @@ const{
     deleteOwnReview,
     deleteReview,
     getTwoRecentApartmentReviews,
-    getSixApartmentsWithReviews
+    getSixApartmentsWithReviews,
+    getAllApartmentsWithReviews
 } = require('../controllers/review.controller')
 
 router
-.get('/sixApartments', getSixApartmentsWithReviews)
+    .get('/sixApartments', getSixApartmentsWithReviews)
+    .get('/apartments', getAllApartmentsWithReviews)
     .delete('/user/:reviewId', checkAuth, deleteOwnReview)
     .post('/', checkAuth, createReview)
     .get('/', checkAuth, getAllReviews)
@@ -28,6 +30,6 @@ router
     .patch('/:reviewId', checkAuth, checkAdmin, updateReview)
     .delete('/:reviewId', checkAuth, checkAdmin, deleteReview)
     .get('/twoReview/:apartmentId', getTwoRecentApartmentReviews)
-    
-    
+
+
 module.exports = router

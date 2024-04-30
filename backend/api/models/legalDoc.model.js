@@ -14,6 +14,7 @@ const LegalDoc = sequelize.define(
 		}
 		
     }
+	
    
 )
 module.exports = LegalDoc

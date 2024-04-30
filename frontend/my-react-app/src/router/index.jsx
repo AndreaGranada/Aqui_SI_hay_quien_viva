@@ -3,6 +3,7 @@ import Home from '../pages/Home/Home'
 import Root from '../layouts'
 import About from '../pages/About/About'
 import LogIn from '../pages/LogIn/LogIn'
+import ApartmentReviewsPage from '../pages/ApartmentReviewsPage/ApartmentReviewsPage'
 //import About from '../pages/About'
 /*import NotFound from '../pages/NotFound'
 import Random from '../pages/Random/Random'
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
       {path: '/login',
       element: <LogIn/>
     
-    } 
+    },
+    {
+      path: '/apartment/:apartmentId', // Ruta con parámetro
+      element: <ApartmentReviewsPage/> // Importa el componente necesario
+    }
 
 
     ]

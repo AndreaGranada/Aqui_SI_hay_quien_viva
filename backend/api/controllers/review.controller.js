@@ -67,14 +67,16 @@ async function getOneReview(req, res) {
 // Get all apartmentId reviews - user y admin
 const getAllApartmentReviews = async (req, res) => {
   try {
-    const review = await Review.findAll({
+    const reviews = await Review.findAll({
       where: {
         apartmentId: req.params.apartmentId,
       },
+      include: Apartment, // Incluir la información del apartamento asociado
     });
-    return res.status(200).json(review);
+console.log(reviews)
+    return res.status(200).json(reviews);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).json({ message: "Something went wrong" });
   }
 };

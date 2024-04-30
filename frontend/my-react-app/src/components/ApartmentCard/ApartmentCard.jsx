@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './ApartmentCard.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
@@ -29,7 +29,9 @@ function ApartmentCard({ apartment }) {
         ))}
         <div className="row btn-ver-todos">
           <div className="col-md-12">
-            <button>Ver todas las reseñas</button>
+          <Link to={`/apartment/${apartment.id}`}>
+          <button>Ver todas las reseñas</button>
+        </Link>
           </div>
         </div>
       </div>

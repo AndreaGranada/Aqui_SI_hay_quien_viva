@@ -16,7 +16,7 @@ export async function getSixApartmentsReviews() {
       // Realizar una solicitud GET al servidor
       const {data} = await api.get(`/reviews/apartment/${apartmentId}`);
       // Devolver los datos de las reseñas obtenidos del servidor
-      console.log(data)
+     // console.log(data)
       return data;
     } catch (error) {
       // Manejar cualquier error que ocurra durante la solicitud
@@ -25,3 +25,16 @@ export async function getSixApartmentsReviews() {
     }
   }
   
+  export async function getAllReviewsByApartmentId() {
+    try {
+      // Realizar una solicitud GET al servidor
+      const {data} = await api.get(`/reviews/apartments`);
+      // Devolver los datos de las reseñas obtenidos del servidor
+      console.log(data)
+      return data;
+    } catch (error) {
+      // Manejar cualquier error que ocurra durante la solicitud
+      console.error('Error al obtener las reseñas del apartamento:', error);
+      throw error; // Lanzar el error para que pueda ser manejado por el componente que llama a esta función
+    }
+  }

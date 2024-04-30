@@ -1,0 +1,15 @@
+*{
+    color: #403529;
+}
+
+.formulario{
+    background-color: #F2913D;
+    padding: 25px;
+    box-shadow: 5px 5px 5px rgb(210, 210, 210);
+}
+
+
+
+.campo {
+    padding: 15px;
+}

@@ -1,0 +1,13 @@
+*{
+    color: #403529;
+}
+.bg-naranja{
+    background-color: #F25D27;
+    padding: 15px;
+}
+.navbar_logo{
+width: 200px;
+}
+.texto-derecha {
+    margin-left: auto;
+  }

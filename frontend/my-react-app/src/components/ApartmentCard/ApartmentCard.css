@@ -1,0 +1,42 @@
+.apartamento{
+    
+    height: auto;
+    /*border: 1px dashed #F2913D;*/
+
+
+}
+.apartamento img{
+    width: 100%;
+}
+
+.btn-ver-todos button{
+    width: 100%;
+}
+
+.reseña{
+    margin: 10px;
+    padding: 5px;
+   background-color:  #FFFF; 
+}
+
+button,
+input[type="submit"]{
+    background-color: #403529;
+    color: #F2E963;
+    padding: 15px 50px;
+}
+
+.btn-reseña{
+    background-color: transparent;
+    border: 1px solid #403529;
+    color: #403529;
+    padding: 5px 15px;
+}
+.card_apartment{
+    margin: 5px;
+   background-color:  #F2E963;
+    border: 1px solid #E2E3E8;
+    padding: 15px;
+    box-shadow: 5px 5px 5px rgb(210, 210, 210);
+   
+}

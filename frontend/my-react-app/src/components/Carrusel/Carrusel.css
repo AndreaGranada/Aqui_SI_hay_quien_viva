@@ -1,0 +1,52 @@
+*{
+    color: #403529;
+}
+.texto-carrusel{
+    background-color: #F2E963;
+    color: #403529;
+   
+padding: 2%;
+
+  
+}
+
+.boton-borde{
+    color: #403529;
+    border: 2px solid #403529;
+    padding: 5px 60px;
+    font-size: 1vw; /* Tamaño de fuente relativo al ancho de la ventana */
+    max-width: 80%; /* Ajusta el ancho máximo del botón al 80% del contenedor */
+}
+
+
+.custom-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%; /* Ajusta el ancho de la caption según tu preferencia */
+
+}
+
+.center-content {
+    text-align: center;
+}
+
+.text-container {
+    max-width: 90%; /* Ajusta el ancho máximo del contenedor de texto al 90% */
+    margin: 0 auto; /* Centra el contenedor de texto horizontalmente */
+    font-size: 1.3vw; /* Tamaño de fuente relativo al ancho de la ventana */
+}
+
+.text-container h3{
+    font-size: 1.8vw;
+}
+
+@media (max-width: 768px) {
+   
+
+    .carousel-item img {
+        width: auto; /* Hacer que la imagen se ajuste automáticamente al ancho del contenedor */
+        height: 300px; /* Establecer la altura al 100% para mantener la proporción de aspecto */
+    }
+}

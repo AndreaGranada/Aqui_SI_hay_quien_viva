@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
-
 import Home from '../pages/Home/Home'
 import Root from '../layouts'
 import About from '../pages/About/About'
+import LogIn from '../pages/LogIn/LogIn'
 //import About from '../pages/About'
 /*import NotFound from '../pages/NotFound'
 import Random from '../pages/Random/Random'
@@ -12,17 +12,23 @@ import ShowCocktail from '../pages/ShowCocktail/ShowCocktail'*/
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <Root/>,
     //errorElement: <NotFound />,
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <Home/>
       },
       {
         path: '/about',
-        element: <About />
-      }
+        element: <About/>
+      }, 
+      {path: '/login',
+      element: <LogIn/>
+    
+    } 
+
+
     ]
   }
 ])

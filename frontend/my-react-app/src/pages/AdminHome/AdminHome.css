@@ -10,13 +10,13 @@ a{
 .barra-lateral{
     background-color: #F2913D;
     color: #403529;
-    min-width: 300px;
+    min-width: 400px;
     min-height: 100vh;
 }
 
 .barra-lateral .logo{
     background-color: #F25D27;
-    color:white;
+    color: #F2E963;
 }
 
 .barra-lateral .logo h2{

@@ -17,13 +17,14 @@ a{
 
 .barra-lateral .logo{
     background-color: #F25D27;
-    color:white;
+    color: #F2E963;
 }
 
 .barra-lateral .logo h2{
     font-size: 30px;
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
+    color: #F2E963;
 }
 
 .barra-lateral .menu a{
@@ -68,6 +69,7 @@ a{
 
     .barra-lateral .logo{
         display: none;
+       
     }
 }
 

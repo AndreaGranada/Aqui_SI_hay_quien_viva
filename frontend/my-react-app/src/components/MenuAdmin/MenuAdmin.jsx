@@ -1,9 +1,9 @@
-function MenuAdmin() {
+import imagen_logo from '../../assets/img/logo_amarillo.png';
 
-  
+function MenuAdmin() {
     return (
         <aside className="barra-lateral col-sm-12 col-md-auto p-0">
-        <div className="logo">
+        <div className="logo pt-3 text-center">
             <h2 className="py-4 m-0 fs-1">Dashboard</h2>
         </div>
         <nav className="menu d-flex d-sm-block justify-content-center flex-wrap">

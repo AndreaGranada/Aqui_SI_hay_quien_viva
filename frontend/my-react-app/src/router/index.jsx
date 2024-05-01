@@ -6,6 +6,7 @@ import LogIn from '../pages/LogIn/LogIn'
 import ApartmentReviewsPage from '../pages/ApartmentReviewsPage/ApartmentReviewsPage'
 import FilteredReviews from '../pages/FilteredReviews/FilteredReviews'
 import SignUp from '../pages/SignUp/SignUp' 
+import AdminHome from '../pages/AdminHome/AdminHome'
 //import About from '../pages/About'
 /*import NotFound from '../pages/NotFound'
 import Random from '../pages/Random/Random'
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/FilteredReviews', // Ruta con parámetro
         element: <FilteredReviews/> // Importa el componente necesario
+      },
+      {
+        path: '/admin', // Ruta con parámetro
+        element: <AdminHome/> // Importa el componente necesario
       }
     ],
   },

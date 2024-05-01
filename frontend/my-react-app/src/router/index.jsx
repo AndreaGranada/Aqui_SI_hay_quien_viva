@@ -37,28 +37,17 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
+      {
+        path: '/apartment/:apartmentId', // Ruta con parámetro
+        element: <ApartmentReviewsPage/> // Importa el componente necesario
+      },
+      {
+        path: '/FilteredReviews', // Ruta con parámetro
+        element: <FilteredReviews/> // Importa el componente necesario
+      }
     ],
   },
 ]);
-        path: '/about',
-        element: <About/>
-      }, 
-      {path: '/login',
-      element: <LogIn/>
     
-    },
-    {
-      path: '/apartment/:apartmentId', // Ruta con parámetro
-      element: <ApartmentReviewsPage/> // Importa el componente necesario
-    },
-    {
-      path: '/FilteredReviews', // Ruta con parámetro
-      element: <FilteredReviews/> // Importa el componente necesario
-    }
-
-
-    ]
-  }
-])
 
 export default router

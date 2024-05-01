@@ -14,33 +14,29 @@ import ShowCocktail from '../pages/ShowCocktail/ShowCocktail'*/
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Root/>,
+    path: "/",
+    element: <Root />,
     //errorElement: <NotFound />,
     children: [
       {
-        path: '/',
-        element: <Home/>
+        path: "/",
+        element: <Home />,
       },
       {
-        path: '/about',
-        element: <About/>
-      }, 
+        path: "/about",
+        element: <About />,
+      },
       {
-        path: '/login',
-        element: <LogIn/>
-    
-    },
+        path: "/login",
+        element: <LogIn />,
+      },
 
-    {
-      path:'/signup',
-      element: <SignUp/>
-    }
-
-
-
-    ]
-  }
-])
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+    ],
+  },
+]);
 
 export default router

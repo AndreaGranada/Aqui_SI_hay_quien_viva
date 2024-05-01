@@ -12,7 +12,7 @@ function ListApartment({sixApartment, setSixApartment}) {
     async function fetchData() {
       const result = await getSixApartmentsReviews();
       setSixApartment(result);
-      console.log(result);
+     // console.log(result);
     }
     
     fetchData();

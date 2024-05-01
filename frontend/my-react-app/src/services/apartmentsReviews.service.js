@@ -25,7 +25,7 @@ export async function getSixApartmentsReviews() {
     }
   }
   
-  export async function getAllReviewsByApartmentId() {
+  export async function getAllReviewsByApartments() {
     try {
       // Realizar una solicitud GET al servidor
       const {data} = await api.get(`/reviews/apartments`);

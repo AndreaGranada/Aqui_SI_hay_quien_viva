@@ -1,6 +1,10 @@
+*{
+    color: #403529;
+}
 .resultados-busqueda{
-    background-color: rgb(215, 212, 212);
-    color: white;
+    background-color: #F2E963;
+    box-shadow: 5px 5px 5px rgb(210, 210, 210);
+   
 
 }
 
@@ -14,8 +18,15 @@ ul{
 
 .reseñas-filtro{
     background-color: white;
+    box-shadow: 5px 5px 5px #ae8231;
 }
 
 .reseña-apartamento{
     background-color:#F2B544; 
+    box-shadow: 5px 5px 5px rgb(210, 210, 210);
+    border-radius: 25px;
+}
+
+.white{
+    color: white;
 }

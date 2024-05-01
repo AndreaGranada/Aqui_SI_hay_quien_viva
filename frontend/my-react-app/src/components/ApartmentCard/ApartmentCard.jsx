@@ -21,16 +21,18 @@ function ApartmentCard({ apartment }) {
           <h4>{apartment.road}</h4>
         </div>
         {apartment.reviews.map(review => (
-          <div key={review.id} className="row reseña align-items-center">
-            <div className="col-md-3">
-              <img src={`${review.media}`} alt="" />
+          // Verifica si el review.postedStatus es "no", si es así, no muestra la revisión
+          review.postedStatus !== "no" && (
+            <div key={review.id} className="row reseña align-items-center">
+              <div className="col-md-3">
+                <img src={`${review.media}`} alt="" />
+              </div>
+              <div className="col-md-9 mt-3">
+                <h6>{review.title}</h6>
+                <p>{truncateText(review.content, 30)}</p>
+              </div>
             </div>
-            <div className="col-md-9 mt-3">
-              <h6>{review.title}</h6>
-              <p>{truncateText(review.content, 30)}</p>
-            </div>
-           
-          </div>
+          )
         ))}
         <div className="row btn-ver-todos">
           <div className="col-md-12">

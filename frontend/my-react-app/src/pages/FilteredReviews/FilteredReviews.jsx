@@ -5,6 +5,7 @@ import ApartmentReviews from "../../components/ApartmentReview/ApartmentReview";
 import { useLocation } from 'react-router-dom';
 import "./FilteredReviews.css"
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 const FilteredReviews = () => {
   const location = useLocation();
   const { reviews, filters } = location.state || {}; // Si location.state es undefined, asigna un objeto vacío por defecto
@@ -86,39 +87,39 @@ const FilteredReviews = () => {
           )}
         </div>
         <h2 className='text-center mt-5'>Resultados de la búsqueda:</h2>
-        <ul className='text-decoration-none'>
+        <div>
           {filteredReviews && filteredReviews.map((review, index) => (
             <div className="col-12 mt-5 mb-5 p-5 reseña-apartamento">
-              <li className="text-decoration-none" style={{ textDecoration: 'none' }} key={index}>
-                <h3>{review.road} {review.roadName}</h3>
-                <p>Código Postal: {review.postalCode}</p>
-                <p>Distrito: {review.districtId} </p>
-                <p>Detalles: {review.extraInfo}</p>
+              <div key={index}>
+                <h3 className='text-center'><strong>{review.road} {review.roadName}</strong></h3>
+                <p className='text-center'><strong>Código Postal: </strong>{review.postalCode}</p>
+                <p className='text-center'><strong>Distrito:</strong> {review.districtId} </p>
+                <p className='text-center'><strong>Detalles:</strong> {review.extraInfo}</p>
                 <div>
                   {review.reviews.map((reviewItem, reviewIndex) => (
                     <div key={reviewIndex}>
                       <div className='row reseñas-filtro p-3 mt-5 align-items-center'>
                         <div className="imagen-reseña col-3">
-                        <img src={reviewItem.media} width="100%" height="auto"></img>
+                          <img src={reviewItem.media} width="100%" height="auto"></img>
                         </div>
                         <div className='col-9'>
-                        <h5>{reviewItem.title}</h5>
-                        <p>{reviewItem.content}</p>
-                        <p>{reviewItem.datePost}</p>
+                          <h5>{reviewItem.title}</h5>
+                          <p>{reviewItem.content}</p>
+                          <p>{reviewItem.datePost}</p>
                         </div>
 
-                        
-                        
+
+
                         {/* Agrega más detalles de la revisión si es necesario */}
                       </div>
                     </div>
                   ))}
-                  <button style={{ width: '100%' }} className='text-center mt-5'>DEJAR RESEÑA</button>
+                  <Link to={`/apartment/${review.id}`}><button style={{ width: '100%' }} className='text-center mt-5'>QUIERO DEJAR UNA RESEÑA</button></Link>
                 </div>
-              </li>
+              </div>
             </div>
           ))}
-        </ul>
+        </div>
       </div>
       <Footer />
     </>

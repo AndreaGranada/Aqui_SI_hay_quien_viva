@@ -30,7 +30,7 @@ export async function getSixApartmentsReviews() {
       // Realizar una solicitud GET al servidor
       const {data} = await api.get(`/reviews/apartments`);
       // Devolver los datos de las reseñas obtenidos del servidor
-      console.log(data)
+      //console.log(data)
       return data;
     } catch (error) {
       // Manejar cualquier error que ocurra durante la solicitud

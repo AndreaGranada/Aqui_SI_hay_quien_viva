@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { getAllReviewsByApartments } from '../../services/apartmentsReviews.service'; // Asegúrate de importar tu función de API correctamente
+import { getAllReviewsByApartments } from '../../services/apartmentsReviews.service';
+import { getAllDistricts } from '../../services/district.service';
 import './Filters.css';
 
 function Filters() {
@@ -14,6 +15,22 @@ function Filters() {
     road: '',
     roadName: ''
   });
+
+  const [districts, setDistricts] = useState([]); // Estado para almacenar los distritos
+
+  useEffect(() => {
+    // Cuando el componente se monta, obtener los distritos disponibles
+    const fetchDistricts = async () => {
+      try {
+        const districtData = await getAllDistricts(); // Obtener los distritos desde la API
+        setDistricts(districtData); // Actualizar el estado con los distritos obtenidos
+      } catch (error) {
+        console.error('Error al obtener los distritos:', error);
+      }
+    };
+
+    fetchDistricts(); // Llamar a la función para obtener los distritos
+  }, []); // El array vacío como segundo argumento asegura que esto solo se ejecute una vez al montar el componente
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,14 +44,10 @@ function Filters() {
     e.preventDefault();
   
     try {
-      // Realiza la solicitud a la API para obtener las reseñas según los filtros
-      const reviews = await getAllReviewsByApartments(filters); // Pasar los filtros a la función getAllReviewsByApartments
-  
-      // Navega a la página FilteredReviews con las reseñas y los filtros como parte del estado
-      navigate('/FilteredReviews', { state: { reviews, filters } }); // Incluir los filtros en el estado
+      const reviews = await getAllReviewsByApartments(filters);
+      navigate('/FilteredReviews', { state: { reviews, filters } });
     } catch (error) {
       console.error('Error al obtener las reseñas:', error);
-      // Aquí puedes manejar el error, mostrar un mensaje al usuario, etc.
     }
   };
 
@@ -49,9 +62,9 @@ function Filters() {
           <label htmlFor="districto" className='form-label'>Distrito</label>
           <select id="districto" name="districtId" value={filters.districtId} onChange={handleInputChange} className='form-select'>
             <option value="">Seleccione un distrito</option>
-            <option value="centro">Centro</option>
-            <option value="moda">Moda</option>
-            <option value="hogar">Hogar</option>
+            {districts.map(district => (
+              <option key={district.id} value={district.id}>{district.name}</option>
+            ))}
           </select>
         </div>
         <div className="col-md-4 campo">

@@ -3,7 +3,7 @@
 }
 .resultados-busqueda{
     background-color: #F2E963;
-    box-shadow: 5px 5px 5px rgb(210, 210, 210);
+   
    
 
 }
@@ -24,7 +24,6 @@ ul{
 .reseña-apartamento{
     background-color:#F2B544; 
     box-shadow: 5px 5px 5px rgb(210, 210, 210);
-    border-radius: 25px;
 }
 
 .white{

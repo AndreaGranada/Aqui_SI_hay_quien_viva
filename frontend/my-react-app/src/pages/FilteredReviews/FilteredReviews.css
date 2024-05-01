@@ -1,0 +1,31 @@
+*{
+    color: #403529;
+}
+.resultados-busqueda{
+    background-color: #F2E963;
+   
+   
+
+}
+
+li{
+    text-decoration: none;
+}
+
+ul{
+    text-decoration: none;
+}
+
+.reseñas-filtro{
+    background-color: white;
+    box-shadow: 5px 5px 5px #ae8231;
+}
+
+.reseña-apartamento{
+    background-color:#F2B544; 
+    box-shadow: 5px 5px 5px rgb(210, 210, 210);
+}
+
+.white{
+    color: white;
+}

@@ -3,6 +3,8 @@ import Home from '../pages/Home/Home'
 import Root from '../layouts'
 import About from '../pages/About/About'
 import LogIn from '../pages/LogIn/LogIn'
+import ApartmentReviewsPage from '../pages/ApartmentReviewsPage/ApartmentReviewsPage'
+import FilteredReviews from '../pages/FilteredReviews/FilteredReviews'
 import SignUp from '../pages/SignUp/SignUp' 
 //import About from '../pages/About'
 /*import NotFound from '../pages/NotFound'
@@ -38,5 +40,25 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+        path: '/about',
+        element: <About/>
+      }, 
+      {path: '/login',
+      element: <LogIn/>
+    
+    },
+    {
+      path: '/apartment/:apartmentId', // Ruta con parámetro
+      element: <ApartmentReviewsPage/> // Importa el componente necesario
+    },
+    {
+      path: '/FilteredReviews', // Ruta con parámetro
+      element: <FilteredReviews/> // Importa el componente necesario
+    }
+
+
+    ]
+  }
+])
 
 export default router

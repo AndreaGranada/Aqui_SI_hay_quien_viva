@@ -25,7 +25,7 @@ router
     .get('/', checkAuth, getAllReviews)
     .get('/user', checkAuth, getAllOwnerUserReviews)
     .get('/:reviewId', checkAuth, checkAdmin, getOneReview)
-    .get('/apartment/:apartmentId', checkAuth, getAllApartmentReviews)
+    .get('/apartment/:apartmentId', getAllApartmentReviews)
     .get('/user/:userId', checkAuth, checkAdmin, getAllUserReviews)
     .patch('/:reviewId', checkAuth, checkAdmin, updateReview)
     .delete('/:reviewId', checkAuth, checkAdmin, deleteReview)

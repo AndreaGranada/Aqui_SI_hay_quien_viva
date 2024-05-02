@@ -8,7 +8,10 @@ import FilteredReviews from "../pages/FilteredReviews/FilteredReviews";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminHome from "../pages/AdminHome/AdminHome";
 import AdminUsers from "../pages/AdminUsers/AdminUsers";
-
+import UserHome from "../pages/UserHome/UserHome";
+import UserReviews from "../pages/UserReviews/UserReviews";
+import UserProfile from "../pages/UserProfile/UserProfile";
+import UserLegalDocs from "../pages/UserLegalDocs/UserLegalDocs";
 
 
 //import NotFound from '../pages/NotFound'
@@ -57,6 +60,44 @@ const router = createBrowserRouter([
           ) : (
             <Navigate to="/" />
           ), // Si el usuario tiene un token y el rol es admin, renderiza AdminUsers, de lo contrario, navega a la página de inicio.
+      },
+      {
+        path: "/user", 
+        element:
+        localStorage.getItem("token") &&
+        localStorage.getItem("role") === "user" ? (
+          <UserHome />
+        ): (
+          <Navigate to="/" />
+        ),
+
+      },
+      {
+        path: "/user/profile", 
+        element: localStorage.getItem("token") &&
+        localStorage.getItem("role") === "user" ? (
+          <UserProfile />
+        ): (
+          <Navigate to="/" />
+        ),
+      },
+      {
+        path: "/user/reviews", 
+        element: localStorage.getItem("token") &&
+        localStorage.getItem("role") === "user" ? (
+          <UserReviews />
+        ): (
+          <Navigate to="/" />
+        ),
+      },
+      {
+        path: "/user/legaldocs", 
+        element: localStorage.getItem("token") &&
+        localStorage.getItem("role") === "user" ? (
+          <UserLegalDocs />
+        ): (
+          <Navigate to="/" />
+        ),
       },
     ],
   },

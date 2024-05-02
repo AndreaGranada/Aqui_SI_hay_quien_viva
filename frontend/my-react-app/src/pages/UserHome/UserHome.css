@@ -1,0 +1,19 @@
+.contenedor{
+    background-color: #F2E963;
+    margin-bottom: 20px;
+}
+
+.contenedor h2{
+    color: #403529,
+}
+
+.boton{
+    background-color:  #F2913D;
+    border-color: #F2913D;
+  
+}
+
+.boton:hover{
+    background-color:#F25D27;
+    border-color: #F25D27;
+}

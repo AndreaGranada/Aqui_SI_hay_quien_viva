@@ -1,7 +1,8 @@
 import "./AdminHome.css"
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin"
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { getAllReviewsByApartments } from "../../services/apartmentsReviews.service";
+import { Link } from "react-router-dom";
 const AdminHome = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -51,7 +52,7 @@ const AdminHome = () => {
                                         <td className="align-middle text-center">{review.postedStatus}</td>
                                         <td className="text-center align-middle">
                                                     <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                                        <button className="btn-naranja btn">VER MÁS</button>
+                                                    <Link to={`/admin/apartment/${review.id}`}> <button className="btn-naranja btn">VER MÁS</button></Link>
                                                     </div>
                                                 </td> {/* Botón para cada fila */}
                                     </tr>

@@ -14,7 +14,7 @@ function ApartmentCard({ apartment }) {
   };
 
   return (
-    <div className="col-md-4 apartamento col-sm-12 mb-5">
+    <div className="col-md-4 apartamento col-sm-12">
       <div className="card_apartment">
         <div className="titulo_reseña text-center mb-4">
           <h3>{apartment.roadName}</h3>

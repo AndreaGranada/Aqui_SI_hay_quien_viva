@@ -18,7 +18,7 @@ const AdminHome = () => {
         fetchDistricts(); // Llamar a la función para obtener los distritos
       }, []);
 
-      console.log(data)
+     
     return (
         <>
             <div className="container-fluid row">
@@ -30,24 +30,30 @@ const AdminHome = () => {
                     <div key={apartment.id} className="bt-5">
                         <h4 className="bg-warning">{`Reviews para ${apartment.road} ${apartment.roadName}, ID del Apartamento: ${apartment.id}`}</h4>
                         <div  className="table-responsive">
-                        <table className="table table-striped table-hover">
+                        <table className="table table-striped table-hover mb-5">
                             <thead>
-                                <tr className="table-dark">
-                                    <th>Road</th>
-                                    <th>Road Name</th>
-                                    <th>ID del Apartamento</th>
-                                    <th>Review</th>
-                                    <th>PostedStatus</th>
+                                <tr className="table-dark table-marron">
+                                    <th className="col-1">Road</th>
+                                    <th className="col-2">Road Name</th>
+                                    <th className="col-1">ID del Apartamento</th>
+                                    <th className="col-5">Review</th>
+                                    <th className="col-1">PostedStatus</th>
+                                    <th className="col-2"></th> 
                                 </tr>
                             </thead>
                             <tbody>
                                 {apartment.reviews.map((review, index) => (
                                     <tr key={index} className={review.postedStatus === 'no' ? 'table-danger' : ''}>
-                                        <td>{apartment.road}</td>
-                                        <td>{apartment.roadName}</td>
-                                        <td>{apartment.id}</td>
-                                        <td>{review.content}</td>
-                                        <td>{review.postedStatus}</td>
+                                        <td className="align-middle text-center">{apartment.road}</td>
+                                        <td className="align-middle text-center">{apartment.roadName}</td>
+                                        <td className="align-middle text-center">{apartment.id}</td>
+                                        <td className="align-middle text-center">{review.content}</td>
+                                        <td className="align-middle text-center">{review.postedStatus}</td>
+                                        <td className="text-center align-middle">
+                                                    <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
+                                                        <button className="btn-naranja btn">VER MÁS</button>
+                                                    </div>
+                                                </td> {/* Botón para cada fila */}
                                     </tr>
                                 ))}
                             </tbody>

@@ -7,7 +7,7 @@ import ApartmentReviewsPage from "../pages/ApartmentReviewsPage/ApartmentReviews
 import FilteredReviews from "../pages/FilteredReviews/FilteredReviews";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminHome from "../pages/AdminHome/AdminHome";
-import AdminUsers from "../pages/AdminUsers/AdminUsers";
+//import AdminUsers from "../pages/AdminUsers/AdminUsers";
 import UserHome from "../pages/UserHome/UserHome";
 import UserReviews from "../pages/UserReviews/UserReviews";
 import UserProfile from "../pages/UserProfile/UserProfile";
@@ -15,6 +15,10 @@ import UserLegalDocs from "../pages/UserLegalDocs/UserLegalDocs";
 import AdminReviewsApartmentId from "../pages/AdminReviewsApartmentId/AdminReviewsApartmentId";
 import AdminApartments from "../pages/AdminApartments/AdminApartments";
 import AdminReviews from "../pages/AdminReviews/AdminReviews";
+import AdminUsers from "../pages/AdminUsers/AdminUsers";
+import AdminLegalDocs from "../pages/AdminLegalDocs/AdminLegalDocs";
+import AdminDistricts from "../pages/AdminDistricts/AdminDistricts";
+import AdminSession from "../pages/AdminSession/AdminSession";
 
 //import NotFound from '../pages/NotFound'
 
@@ -133,6 +137,46 @@ const router = createBrowserRouter([
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "admin" ? (
             <AdminReviews/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      },
+      {
+        path: "/admin/users", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminUsers/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      },
+      {
+        path: "/admin/legaldocs", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminLegalDocs/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      },
+      {
+        path: "/admin/districts", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminDistricts/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      },
+      {
+        path: "/admin/session", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminSession/>
           ) : (
             <Navigate to="/" />
           ), // Importa el componente necesario

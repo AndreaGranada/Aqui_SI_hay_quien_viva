@@ -1,6 +1,6 @@
 import api from "./config.service"
 
-
+//Ver sus datos
 export const getOwnProfile = async (token) => {
   
     try {
@@ -17,7 +17,7 @@ export const getOwnProfile = async (token) => {
     }
   };
   
-
+//editar perfil 
   export const UpdateOwnProfile = async (name, surname, email, dni, phone, token) => {
     try {
       const { data } = await api.patch('/users/profile', {
@@ -39,3 +39,21 @@ export const getOwnProfile = async (token) => {
     }
   };
   
+
+  //Ver sus reviews
+
+  export const getOwnReviews = async (token) => {
+  
+    try {
+      const { data } = await api.get('/reviews/user', {
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(data)
+      return data;
+    } catch (error) {
+      console.log('Error getting your reviews: ', error.message);
+      throw error;
+    }
+  };

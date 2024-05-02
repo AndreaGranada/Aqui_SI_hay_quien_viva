@@ -20,25 +20,31 @@ function NavBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <div className="justify-content-end">
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link><Link to="/" className="nav-link" style={{ textDecoration: 'none', color: '#403529' }}>Home</Link></Nav.Link>
-            <Nav.Link><Link to="/about" className="nav-link" style={{ textDecoration: 'none', color: '#403529' }}>Sobre Nosotros</Link></Nav.Link>
-            <NavDropdown title="Mi perfil" className="nav-link" id="basic-nav-dropdown" style={{ textDecoration: 'none', color: '#403529' }}>
-              <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Registrate
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Inicia Sesión</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Mi perfil
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link><Link to="/" className="nav-link" style={{ textDecoration: 'none', color: '#403529' }}>Home</Link></Nav.Link>
+              <Nav.Link><Link to="/about" className="nav-link" style={{ textDecoration: 'none', color: '#403529' }}>Sobre Nosotros</Link></Nav.Link>
+              <NavDropdown title="Mi perfil" className="nav-link" id="basic-nav-dropdown" style={{ textDecoration: 'none', color: '#403529' }}>
+                <NavDropdown.Item></NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/signup">Registrate</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/login">Inicia Sesión</Link>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  {localStorage.getItem("role") === "admin" ? (
+                    <Link to="/admin">Panel de administrador</Link>
+                  ) : (
+                    <Link to="/user">Mi perfil</Link>
+                  )}
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
         </div>
-      
+
       </Container>
     </Navbar>
   );

@@ -8,7 +8,7 @@ import FilteredReviews from "../pages/FilteredReviews/FilteredReviews";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminHome from "../pages/AdminHome/AdminHome";
 import AdminUsers from "../pages/AdminUsers/AdminUsers";
-
+import AdminReviewsApartmentId from "../pages/AdminReviewsApartmentId/AdminReviewsApartmentId";
 
 
 //import NotFound from '../pages/NotFound'
@@ -46,7 +46,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin", // Ruta con parámetro
-        element: <AdminHome />, // Importa el componente necesario
+        element:
+          localStorage.getItem("token") &&
+          localStorage.getItem("role") === "admin" ? (
+            <AdminHome />
+          ) : (
+            <Navigate to="/" />
+          ),
       },
       {
         path: "/admin/users",
@@ -57,6 +63,16 @@ const router = createBrowserRouter([
           ) : (
             <Navigate to="/" />
           ), // Si el usuario tiene un token y el rol es admin, renderiza AdminUsers, de lo contrario, navega a la página de inicio.
+      },
+      {
+        path: "/admin/apartment/:apartmentReviewId", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+          localStorage.getItem("role") === "admin" ? (
+            <AdminReviewsApartmentId />
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
       },
     ],
   },

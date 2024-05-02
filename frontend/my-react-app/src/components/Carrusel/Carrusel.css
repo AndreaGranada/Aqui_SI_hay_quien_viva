@@ -18,22 +18,22 @@
 }
 
 .texto-carrusel-tr{
-    background-color: #F25D27;
-    color: #F2913D;
+    background-color: #ffffff;
+    color: #F25D27;
     padding: 2%;
     box-shadow: 5px 5px 5px #6d521f;
 }
 
 
 .texto-sg{
-    color: #F2B544;
+    color: #F2E963;
 }
 
 .texto-tr{
-    color: #faf38e;
+    color: #F25D27;
 }
 
-.boton-marron {
+.boton-marron:hover {
     color: #403529;
     border: 2px solid #403529;
     padding: 5px 60px;
@@ -43,7 +43,7 @@
     /* Ajusta el ancho máximo del botón al 80% del contenedor */
 }
 
-.boton-marron:hover {
+.boton-marron {
     color: #F2E963;
     border: 2px solid #F2E963; 
     background-color: #403529;
@@ -55,9 +55,9 @@
 }
 
 
-.boton-amarillo {
-    color: #F2B544;
-    border: 2px solid #F2B544;
+.boton-amarillo:hover  {
+    color: #F2E963;
+    border: 2px solid #F2E963;
     padding: 5px 60px;
     font-size: 1vw;
     /* Tamaño de fuente relativo al ancho de la ventana */
@@ -65,20 +65,10 @@
     /* Ajusta el ancho máximo del botón al 80% del contenedor */
 }
 
-.boton-amarillo:hover {
+.boton-amarillo{
     color:  #403529;
     border: 2px solid #F2E963; 
-    background-color: #F2B544;
-    padding: 5px 60px;
-    font-size: 1vw;
-    /* Tamaño de fuente relativo al ancho de la ventana */
-    max-width: 80%;
-    /* Ajusta el ancho máximo del botón al 80% del contenedor */
-}
-
-.boton-blanco {
-    color: #faf38e;
-    border: 2px solid #faf38e;
+    background-color: #F2E963;
     padding: 5px 60px;
     font-size: 1vw;
     /* Tamaño de fuente relativo al ancho de la ventana */
@@ -87,9 +77,19 @@
 }
 
 .boton-blanco:hover {
-    color: #403529;
-    border: 2px solid #faf38e; 
-    background-color: #faf38e;
+    color: #F25D27;
+    border: 2px solid #F25D27;;
+    padding: 5px 60px;
+    font-size: 1vw;
+    /* Tamaño de fuente relativo al ancho de la ventana */
+    max-width: 80%;
+    /* Ajusta el ancho máximo del botón al 80% del contenedor */
+}
+
+.boton-blanco {
+    color: #ffffff;
+    border: 2px solid #F25D27;; 
+    background-color: #F25D27;;
     padding: 5px 60px;
     font-size: 1vw;
     /* Tamaño de fuente relativo al ancho de la ventana */

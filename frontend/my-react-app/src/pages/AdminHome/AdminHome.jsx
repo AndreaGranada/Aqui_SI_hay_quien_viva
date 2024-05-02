@@ -5,17 +5,17 @@ import { getAllReviewsByApartments } from "../../services/apartmentsReviews.serv
 const AdminHome = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        // Cuando el componente se monta, obtener los distritos disponibles
-        const fetchDistricts = async () => {
+    
+        const fetchReviewsByApartments = async () => {
           try {
             const reviews = await getAllReviewsByApartments();
-            setData(reviews); // Actualizar el estado con los distritos obtenidos
+            setData(reviews); 
           } catch (error) {
             console.error('Error al obtener los distritos:', error);
           }
         };
     
-        fetchDistricts(); // Llamar a la función para obtener los distritos
+        fetchReviewsByApartments(); 
       }, []);
 
      

@@ -4,12 +4,11 @@ import './Footer.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container';
 import { CardFooter, Image } from 'react-bootstrap';
-
 import imagen_logo from '../../assets/img/logo_amarillo.png';
 
 function Footer() {
   return (
-    <CardFooter expand="lg" className="bg-naranja fs-5">
+    <CardFooter expand="lg" className="bg-naranja fs-5 footer-bottom">
       <Container>
        <div className="row justify-content-between align-items-center" >
         <div className="col-3">

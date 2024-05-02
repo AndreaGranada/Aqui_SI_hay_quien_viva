@@ -9,9 +9,7 @@
     width: 100%;
 }
 
-.btn-ver-todos button{
-    width: 100%;
-}
+
 
 .reseña{
     margin: 10px;
@@ -22,9 +20,21 @@
 button,
 input[type="submit"]{
     background-color: #403529;
-    color: #F2E963;
-    padding: 15px 50px;
+    color:  #F2E963;
+    padding: 15px 20px;
+    border: 1px solid #403529;
+    border-radius: 10px;
+    
 
+}
+
+button:hover{
+    background-color: transparent;
+    color: #403529;
+    padding: 15px 20px;
+    border: 1px solid #403529;
+    border-radius: 10px;
+    
 }
 
 .btn-reseña{
@@ -39,5 +49,6 @@ input[type="submit"]{
     border: 1px solid #E2E3E8;
     padding: 15px;
     box-shadow: 5px 5px 5px rgb(210, 210, 210);
+    height: 100%;
    
 }

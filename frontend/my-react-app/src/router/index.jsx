@@ -8,14 +8,11 @@ import FilteredReviews from "../pages/FilteredReviews/FilteredReviews";
 import SignUp from "../pages/SignUp/SignUp";
 import AdminHome from "../pages/AdminHome/AdminHome";
 import AdminUsers from "../pages/AdminUsers/AdminUsers";
-<<<<<<< HEAD
 import UserHome from "../pages/UserHome/UserHome";
 import UserReviews from "../pages/UserReviews/UserReviews";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import UserLegalDocs from "../pages/UserLegalDocs/UserLegalDocs";
-=======
 import AdminReviewsApartmentId from "../pages/AdminReviewsApartmentId/AdminReviewsApartmentId";
->>>>>>> andrea
 
 
 //import NotFound from '../pages/NotFound'
@@ -55,7 +52,7 @@ const router = createBrowserRouter([
         path: "/admin", // Ruta con parámetro
         element:
           localStorage.getItem("token") &&
-          localStorage.getItem("role") === "admin" ? (
+            localStorage.getItem("role") === "admin" ? (
             <AdminHome />
           ) : (
             <Navigate to="/" />
@@ -65,60 +62,59 @@ const router = createBrowserRouter([
         path: "/admin/users",
         element:
           localStorage.getItem("token") &&
-          localStorage.getItem("role") === "admin" ? (
+            localStorage.getItem("role") === "admin" ? (
             <AdminUsers />
           ) : (
             <Navigate to="/" />
           ), // Si el usuario tiene un token y el rol es admin, renderiza AdminUsers, de lo contrario, navega a la página de inicio.
       },
       {
-<<<<<<< HEAD
-        path: "/user", 
+        path: "/user",
         element:
-        localStorage.getItem("token") &&
-        localStorage.getItem("role") === "user" ? (
-          <UserHome />
-        ): (
-          <Navigate to="/" />
-        ),
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "user" ? (
+            <UserHome />
+          ) : (
+            <Navigate to="/" />
+          ),
 
       },
       {
-        path: "/user/profile", 
+        path: "/user/profile",
         element: localStorage.getItem("token") &&
-        localStorage.getItem("role") === "user" ? (
+          localStorage.getItem("role") === "user" ? (
           <UserProfile />
-        ): (
+        ) : (
           <Navigate to="/" />
         ),
       },
       {
-        path: "/user/reviews", 
+        path: "/user/reviews",
         element: localStorage.getItem("token") &&
-        localStorage.getItem("role") === "user" ? (
+          localStorage.getItem("role") === "user" ? (
           <UserReviews />
-        ): (
+        ) : (
           <Navigate to="/" />
         ),
       },
       {
-        path: "/user/legaldocs", 
+        path: "/user/legaldocs",
         element: localStorage.getItem("token") &&
-        localStorage.getItem("role") === "user" ? (
+          localStorage.getItem("role") === "user" ? (
           <UserLegalDocs />
-        ): (
+        ) : (
           <Navigate to="/" />
         ),
-=======
+      },
+      {
         path: "/admin/apartment/:apartmentReviewId", // Ruta con parámetro
         element:
           localStorage.getItem("token") &&
-          localStorage.getItem("role") === "admin" ? (
+            localStorage.getItem("role") === "admin" ? (
             <AdminReviewsApartmentId />
           ) : (
             <Navigate to="/" />
           ), // Importa el componente necesario
->>>>>>> andrea
       },
     ],
   },

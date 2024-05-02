@@ -1,0 +1,14 @@
+.btn-naranja{
+    background-color: #F25D27 ;
+    color: #403529;
+    padding: 15px 50px;
+    font-weight: 600;
+    color: #F2E963;
+}
+
+.btn-naranja:hover{
+    background-color: #F2E963;
+    padding: 15px 50px;
+    font-weight: 600;
+    color: #F25D27 ;
+}

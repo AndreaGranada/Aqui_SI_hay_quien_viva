@@ -39,21 +39,6 @@ export async function getSixApartmentsReviews() {
     }
   }
 
-   /*
-  export async function getOneReview(apartmentId) {
-    try {
-      // Realizar una solicitud GET al servidor
-      const {data} = await api.get(`/reviews/${apartmentId}`);
-      // Devolver los datos de las reseñas obtenidos del servidor
-      //console.log(data)
-      return data;
-    } catch (error) {
-      // Manejar cualquier error que ocurra durante la solicitud
-      console.error('Error al obtener las reseñas del apartamento:', error);
-      throw error; // Lanzar el error para que pueda ser manejado por el componente que llama a esta función
-    }
-  }
-  */
   export async function getOneReview(reviewId, token) {
     try {
         const response = await api.get(`/reviews/${reviewId}`, {
@@ -65,4 +50,30 @@ export async function getSixApartmentsReviews() {
     } catch (error) {
         throw error;
     }
+}
+
+export async function getAllApartment(token) {
+  try {
+      const response = await api.get(`/apartments`, {
+          headers: {
+              Authorization: `${token}`,
+          },
+      });
+      return response.data;
+  } catch (error) {
+      throw error;
+  }
+}
+
+export async function getAllReviews(token) {
+  try {
+      const response = await api.get(`/reviews`, {
+          headers: {
+              Authorization: `${token}`,
+          },
+      });
+      return response.data;
+  } catch (error) {
+      throw error;
+  }
 }

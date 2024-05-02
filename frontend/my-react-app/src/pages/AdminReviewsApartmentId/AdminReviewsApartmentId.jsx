@@ -25,45 +25,54 @@ const AdminReviewsApartmentId = () => {
         <>
             <div className="container-fluid row">
                 <MenuAdmin />
+
                 <main className="name col ms-5 mt-5 mb-5">
-                    <h1 className="mb-5 text-center">Bienvenido al panel del administrador</h1>
-                    <div className="tabla table-responsive">
-                        <main className="name col ms-5 mt-5 mb-5">
-                            <h1 className="mb-5 text-center">Reseña del Apartamento</h1>
-                            <table className="table table-striped table-hover mb-5">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Título</th>
-                                        <th>Contenido</th>
-                                        <th>Imagen</th>
-                                        <th>Legal Doc</th>
-                                        <th>User Id</th>
-                                        <th>Apartment Id</th>
-                                        <th>Fecha de Publicación</th>
-                                        <th>Posted Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                        <tr key={data.id}>
-                                            <td>{data.id}</td>
-                                            <td>{data.title}</td>
-                                            <td>{data.content}</td>
-                                            <td><img src={data.media} alt="" /></td>
-                                            <td>{data.legalDocId}</td>
-                                            <td>{data.userId}</td>
-                                            <td>{data.aparmentId}</td>
-                                            <td>{data.datePost}</td>
-                                            <td>{data.postedStatus}</td>
-                                        </tr>
-                                  
-                                </tbody>
-                            </table>
-                        </main>
-                    </div>
+                    <h2 className="mb-5 text-center">Reseña del Apartamento</h2>
+                    <table className="table table-striped table-hover mb-5 table-responsive">
+                        <thead>
+                            <tr className="table-dark">
+                                <th className="align-middle text-center">ID</th>
+                                <th className="align-middle text-center">Título</th>
+                                <th className="align-middle text-center">Contenido</th>
+                                <th className="align-middle text-center">Imagen</th>
+                                <th className="align-middle text-center">Legal Doc</th>
+                                <th className="align-middle text-center">User Id</th>
+                                <th className="align-middle text-center">Apartment Id</th>
+                                <th className="align-middle text-center">Fecha de Publicación</th>
+                                <th className="align-middle text-center">Posted Status</th>
+                                <th className="align-middle text-center"></th>
+                                <th className="align-middle text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr key={data.id}>
+                                <td className="align-middle text-center">{data.id}</td>
+                                <td className="align-middle text-center">{data.title}</td>
+                                <td className="align-middle text-center">{data.content}</td>
+                                <td className="align-middle text-center"><img src={data.media} alt="" /></td>
+                                <td className="align-middle text-center">{data.legalDocId}</td>
+                                <td className="align-middle text-center">{data.userId}</td>
+                                <td className="align-middle text-center">{data.apartmentId}</td>
+                                <td className="align-middle text-center">{data.datePost}</td>
+                                <td className={data.postedStatus === 'yes' ? 'table-success align-middle text-center' : 'table-danger align-middle text-center'}>{data.postedStatus}</td>
+                                <td className="text-center align-middle">
+                                    <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
+                                        <button className="btn-primary btn">Editar</button>
+                                    </div>
+                                </td>
+                                <td className="text-center align-middle">
+                                    <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
+                                        <button className="btn-danger btn">Borrar</button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </main>
             </div>
+
 
         </>
     )

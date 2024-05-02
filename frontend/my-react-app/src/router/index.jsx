@@ -13,7 +13,8 @@ import UserReviews from "../pages/UserReviews/UserReviews";
 import UserProfile from "../pages/UserProfile/UserProfile";
 import UserLegalDocs from "../pages/UserLegalDocs/UserLegalDocs";
 import AdminReviewsApartmentId from "../pages/AdminReviewsApartmentId/AdminReviewsApartmentId";
-
+import AdminApartments from "../pages/AdminApartments/AdminApartments";
+import AdminReviews from "../pages/AdminReviews/AdminReviews";
 
 //import NotFound from '../pages/NotFound'
 
@@ -116,6 +117,26 @@ const router = createBrowserRouter([
             <Navigate to="/" />
           ), // Importa el componente necesario
       },
+      {
+        path: "/admin/apartments", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminApartments/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      },
+      {
+        path: "/admin/reviews", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminReviews/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      }
     ],
   },
 ]);

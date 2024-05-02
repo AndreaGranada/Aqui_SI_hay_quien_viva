@@ -1,6 +1,4 @@
 import api from "./config.service";
-
-
 export const login = async (email, password) => {
   try {
     const { data } = await api.post('/auth/login', {

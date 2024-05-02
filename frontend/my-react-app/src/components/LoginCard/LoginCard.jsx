@@ -30,6 +30,8 @@ function LoginCard() {
       console.log(data);
       if (data) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("name", data.user.name);
+        localStorage.setItem("role", data.user.role);
         navigate("/");
       }
     } catch (error) {

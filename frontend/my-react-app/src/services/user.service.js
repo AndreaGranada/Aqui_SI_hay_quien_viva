@@ -20,7 +20,7 @@ export const getOwnProfile = async (token) => {
 
   export const UpdateOwnProfile = async (name, surname, email, dni, phone, token) => {
     try {
-      const { data } = await api.post('/users/profile', {
+      const { data } = await api.patch('/users/profile', {
         name: name,
         surname: surname,
         email: email,
@@ -28,10 +28,10 @@ export const getOwnProfile = async (token) => {
         phone: phone
       }, {
         headers: {
-          Authorization: token
+          Authorization: token,
         }
       });
-  
+    
       return data;
     } catch (error) {
       console.log('Error updating own profile: ', error.message);

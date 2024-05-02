@@ -11,3 +11,9 @@ width: 200px;
 .texto-derecha {
     margin-left: auto;
   }
+
+.nav-link:hover{
+    
+    border: 1px solid #F2E963;
+    color: #F2E963;
+}

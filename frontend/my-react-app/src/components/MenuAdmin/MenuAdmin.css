@@ -1,0 +1,78 @@
+*{
+    color: #403529;
+   
+}
+
+a{
+    text-decoration: none;
+    color: #403529;
+}
+
+.barra-lateral{
+    background-color: #F2913D;
+    color: #403529;
+    min-width: 300px;
+    min-height: 100vh;
+}
+
+.barra-lateral .logo{
+    background-color: #F25D27;
+    color: #F2E963;
+}
+
+.barra-lateral .logo h2{
+    font-size: 30px;
+    text-align: center;
+    font-weight: 400;
+    color: #F2E963;
+}
+
+.barra-lateral .menu a{
+    font-size: 20px;
+    display: block;
+    padding: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid #F25D27;
+    
+}
+
+.barra-lateral .menu a:hover{
+    background-color: #F2E963;
+    display: block;
+    padding: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid #F25D27;
+}
+
+.barra-lateral .menu a svg {
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 320px) {
+    
+}
+
+@media screen and (max-width: 566px) {
+    .barra-lateral{
+        min-height: auto;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    
+}
+
+@media screen and (max-width: 1200px) {
+    .barra-lateral{
+        min-width: auto;
+    }
+
+    .barra-lateral .logo{
+        display: none;
+       
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+}

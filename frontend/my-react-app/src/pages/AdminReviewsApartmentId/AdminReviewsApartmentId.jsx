@@ -58,7 +58,7 @@ const AdminReviewsApartmentId = () => {
                                 <td className={data.postedStatus === 'yes' ? 'table-success align-middle text-center' : 'table-danger align-middle text-center'}>{data.postedStatus}</td>
                                 <td className="text-center align-middle">
                                     <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                        <button className="btn-primary btn">Editar</button>
+                                        <button className="btn-secondary btn">Editar</button>
                                     </div>
                                 </td>
                                 <td className="text-center align-middle">

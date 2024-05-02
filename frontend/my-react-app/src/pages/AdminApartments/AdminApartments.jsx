@@ -51,7 +51,7 @@ function AdminApartments() {
                                     <td className="align-middle text-center">{item.extraInfo}</td>
                                     <td className="text-center align-middle d-flex">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                            <button className="btn-primary btn me-3">Editar</button>
+                                            <button className="btn-secondary btn me-3">Editar</button>
                                         </div>
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
                                             <button className="btn-danger btn">Borrar</button>

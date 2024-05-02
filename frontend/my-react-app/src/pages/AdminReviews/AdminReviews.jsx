@@ -57,7 +57,7 @@ function AdminReviews() {
                                     <td className={item.postedStatus === 'no' ? 'table-danger align-middle text-center' : 'align-middle text-center table-success'}>{item.postedStatus}</td>
                                     <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                            <button className="btn-primary btn me-3 align-middle">Editar</button>
+                                            <button className="btn-secondary btn me-3 align-middle">Editar</button>
                                             <button className="btn-danger btn">Borrar</button>
                                         </div>
                                        

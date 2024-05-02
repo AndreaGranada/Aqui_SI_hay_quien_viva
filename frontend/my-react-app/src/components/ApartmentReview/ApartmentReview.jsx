@@ -47,7 +47,7 @@ function ApartmentReviews() {
           {reviews && reviews.map(review => (
             <div className='row mb-5 reseña-review' key={review.id}>
               <div className="col-3">
-                <img src={review.media} alt="Imagen de la reseña" />
+                <img width="100%" src={review.media} alt="Imagen de la reseña" />
               </div>
               <div className="col-8 ms-5">
                 <h3>{review.title}</h3>

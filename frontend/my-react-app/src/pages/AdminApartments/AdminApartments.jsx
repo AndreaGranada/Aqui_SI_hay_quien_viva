@@ -21,7 +21,7 @@ function AdminApartments() {
         fetchAllApartments();
     }, []);
 
-    console.log(data)
+    //console.log(data)
     const handleDelete = async (id) => {
         try {
             const token = localStorage.getItem('token');

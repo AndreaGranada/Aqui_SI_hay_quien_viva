@@ -19,6 +19,7 @@ import AdminUsers from "../pages/AdminUsers/AdminUsers";
 import AdminLegalDocs from "../pages/AdminLegalDocs/AdminLegalDocs";
 import AdminDistricts from "../pages/AdminDistricts/AdminDistricts";
 import AdminSession from "../pages/AdminSession/AdminSession";
+import AdminApartmentEdit from "../pages/AdminApartmentEdit/AdminApartmentEdit";
 
 //import NotFound from '../pages/NotFound'
 
@@ -177,6 +178,16 @@ const router = createBrowserRouter([
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "admin" ? (
             <AdminSession/>
+          ) : (
+            <Navigate to="/" />
+          ), // Importa el componente necesario
+      },
+      {
+        path: "/admin/apartement/:idApartmentEdit", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminApartmentEdit/>
           ) : (
             <Navigate to="/" />
           ), // Importa el componente necesario

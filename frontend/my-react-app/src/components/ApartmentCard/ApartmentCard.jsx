@@ -37,7 +37,7 @@ function ApartmentCard({ apartment }) {
         <div className="row btn-ver-todos">
           <div className="col-md-12 text-center">
             <Link to={`/apartment/${apartment.id}`}>
-              <button>Ver todas las reseñas</button>
+              <button className='btn-reseñas'>Ver todas las reseñas</button>
             </Link>
           </div>
         </div>

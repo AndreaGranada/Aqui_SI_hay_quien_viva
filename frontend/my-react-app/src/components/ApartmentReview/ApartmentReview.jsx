@@ -29,13 +29,13 @@ function ApartmentReviews() {
 
   return (
     <div className='container'>
-      <div className="row ">
+      <div className="row apartamento-reseña ps-5 pe-5">
         <div className="infoPiso mt-5 mb-3 text-center col-12">
           {/* Renderizar la información del apartamento */}
           {apartmentInfo && (
-            <div>
-              <h2>{apartmentInfo.road} {apartmentInfo.roadName}</h2>
-              <p>{apartmentInfo.extraInfo}</p>
+            <div className='info-apartamento'>
+              <h2 className='fw-bolder'>{apartmentInfo.road} {apartmentInfo.roadName}</h2>
+              <p className='fw-bolder fs-2'>{apartmentInfo.extraInfo}</p>
               {/* Agrega cualquier otra información del apartamento que desees mostrar */}
             </div>
           )}
@@ -46,10 +46,10 @@ function ApartmentReviews() {
           {/* Renderizar las reseñas del apartamento */}
           {reviews && reviews.map(review => (
             <div className='row mb-5 reseña-review' key={review.id}>
-              <div className="col-3">
-                <img width="100%" src={review.media} alt="Imagen de la reseña" />
+              <div className="col-3 align-middle">
+                <img className="imagen-reseña" width="100%" src={review.media} alt="Imagen de la reseña" />
               </div>
-              <div className="col-8 ms-5">
+              <div className="col-8 ms-5 align-middle">
                 <h3>{review.title}</h3>
                 <p>{review.content}</p>
 
@@ -61,7 +61,7 @@ function ApartmentReviews() {
           ))}
         </div>
         <div className="col-12 text-center mb-5">
-          <button type='button' className='text-center px-5'>DEJAR RESEÑA</button>
+          <button type='button' className='text-center px- btn-reseñas-apartamento fw-bolder'>DEJAR RESEÑA</button>
         </div>
       </div>
     </div>

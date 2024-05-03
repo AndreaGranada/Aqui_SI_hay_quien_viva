@@ -17,18 +17,18 @@
    background-color:  #FFFF; 
 }
 
-button,
-input[type="submit"]{
+.btn-reseñas{
     background-color: #403529;
     color:  #F2E963;
     padding: 15px 20px;
     border: 1px solid #403529;
     border-radius: 10px;
+    width: 100%;
     
 
 }
 
-button:hover{
+.btn-reseñas:hover{
     background-color: transparent;
     color: #403529;
     padding: 15px 20px;

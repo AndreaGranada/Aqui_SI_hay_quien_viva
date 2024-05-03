@@ -1,5 +1,58 @@
-.reseña-review{
+.reseña-review {
     margin: 10px;
     padding: 15px;
-   background-color:  #F2E963;; 
+    background-color: #ffffff;
+    
+    
 }
+.info-apartamento{
+    color: #F25D27;;
+    text-shadow: -1px 1px 0 #F2E963,
+    1px 1px 0 #F2E963,
+    1px -1px 0 #F2E963,
+    -1px -1px 0 #F2E963;
+}
+
+
+.info-apartamento p{
+    color: #F2E963;;
+    text-shadow: -1px 1px 0 #F25D27,
+    1px 1px 0 #F25D27,
+    1px -1px 0 #F25D27,
+    -1px -1px 0 #F25D27;
+}
+
+.apartamento-reseña {
+    background-image: url("../../assets/img/banner1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.btn-reseñas-apartamento{
+    background-color: #F2E963;
+    color:  #F25D27;
+    padding: 15px 20px;
+    border: 3px solid #F25D27;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+.btn-reseñas:hover{
+    background-color: #F25D27;
+    color:  #F2E963;
+    padding: 15px 20px;
+    border: 3px solid #F2E963;
+    border-radius: 10px;
+    width: 100%;
+}
+
+
+.imagen-reseña{
+    height: 100%;
+    object-fit: contain;
+}
+

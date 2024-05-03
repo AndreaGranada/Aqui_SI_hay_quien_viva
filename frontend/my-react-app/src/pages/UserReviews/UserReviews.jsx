@@ -3,7 +3,8 @@ import { deleteOwnReview, getOwnReviews } from "../../services/user.service"
 import "./UserReviews.css"
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
 
 function UserReviews() {
   const [reviewData, setReviewData] = useState([]); // Estado para almacenar las revisiones propias
@@ -47,11 +48,11 @@ function UserReviews() {
     }
   };
 
+
   return (
     <>
-      <NavBar /> {/* Renderizar el componente NavBar */}
+      <NavBar />
       <div className="container">
-        {/* Mapear las revisiones y renderizar la información de cada una */}
         {reviewData &&
           reviewData.map((review) => (
             <div className="row mb-5 reseña-review" key={review.id}>
@@ -64,8 +65,10 @@ function UserReviews() {
                     <h3>{review.title}</h3>
                     <p>{review.content}</p>
                     <p>Fecha de publicación: {review.datePost}</p>
+                    <Link to={'/user/legaldocs'}>
+                    <p>Ver LegalDoc Asociada</p>
+                    </Link>
                   </div>
-                  {/* Botón para eliminar la revisión */}
                   <button
                     className="btn btn-sm btn-danger btn-delete"
                     onClick={() => handleDeleteReview(review.id)}
@@ -76,8 +79,14 @@ function UserReviews() {
               </div>
             </div>
           ))}
+
+        <div className="text-center mt-5">
+          <button className="btn btn-primary btn-create" onClick={() => console.log("Crear nueva reseña")}>
+            Crear nueva reseña
+          </button>
+        </div>
       </div>
-      <Footer /> {/* Renderizar el componente Footer */}
+      <Footer />
     </>
   );
 }

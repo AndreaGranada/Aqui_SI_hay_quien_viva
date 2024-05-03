@@ -96,12 +96,11 @@ const getAllUserReviews = async (req, res) => {
   }
 };
 
-// Get owner user reviews
+// Get own user reviews
 
 const getAllOwnerUserReviews = async (req, res) => {
   try {
     const idUser = res.locals.user.id;
-
     const review = await Review.findAll({
       where: {
         userId: idUser,

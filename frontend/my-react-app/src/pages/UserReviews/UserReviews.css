@@ -1,9 +1,22 @@
-.btn-delete{
+.btn-delete {
+    background-color: #F2913D;
+    border-color: #F2913D;
+    width: 150px;
+    height: 40px; 
+    margin-top: 55px;
+}
+
+.btn-delete:hover {
+    background-color: #F2B544;
+    border-color: #F2B544;
+}
+
+.btn-create{
     background-color: #F2913D; 
     border-color: #F2913D;
 }
 
-.btn-delete:hover{
+.btn-create:hover{
     background-color: #F2B544; 
     border-color: #F2B544;
 

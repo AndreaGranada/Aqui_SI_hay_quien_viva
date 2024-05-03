@@ -6,11 +6,13 @@ const {getAllLegalDocs,
     createLegalDoc,
     getOneLegalDoc,
     updateLegalDoc,
-    deleteLegalDoc
+    deleteLegalDoc,
+    getUserLegalDoc
 } = require('../controllers/legalDocs.controller')
 
 router
     .get('/', checkAuth, checkAdmin, getAllLegalDocs)
+    .get('/user/:reviewId', checkAuth, getUserLegalDoc)
     .post('/', checkAuth, createLegalDoc)
     .get('/:legalDocId', checkAuth, checkAdmin, getOneLegalDoc)
     .patch('/:legalDocId', checkAuth, checkAdmin, updateLegalDoc)

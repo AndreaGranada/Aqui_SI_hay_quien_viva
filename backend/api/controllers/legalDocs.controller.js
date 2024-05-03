@@ -113,10 +113,42 @@ const deleteLegalDoc = async (req, res) => {
   }
 };
 
+
+//Usuario 
+async function getUserLegalDoc(req, res) {
+  try {
+    const userId = res.locals.user.id; // Suponiendo que tengas el ID del usuario en el objeto de solicitud (req.user)
+    const reviewId = req.params.reviewId; // Obtener el ID de la revisión de la URL
+
+    // Buscar la revisión del usuario actual por su ID y usuario asociado
+    const userReview = await Review.findOne({ where: { id: reviewId, userId } });
+
+    if (!userReview) {
+      return res.status(404).send("User review not found");
+    }
+
+    // Obtener el ID del documento legal asociado a la revisión del usuario
+    const legalDocId = userReview.legalDocId;
+
+    // Buscar y devolver el documento legal asociado
+    const userLegalDoc = await LegalDoc.findByPk(legalDocId);
+
+    if (!userLegalDoc) {
+      return res.status(404).send("Legal document not found");
+    }
+
+    return res.status(200).json(userLegalDoc);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+}
+
+
 module.exports = {
   getAllLegalDocs,
   createLegalDoc,
   getOneLegalDoc,
   updateLegalDoc,
   deleteLegalDoc,
+  getUserLegalDoc
 };

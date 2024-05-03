@@ -1,0 +1,19 @@
+.btn-mas{
+    color: #403529;
+    border: 3px solid #403529;
+    background-color: transparent;
+    padding: 5px 60px;
+    font-size: 1vw;
+    /* Tamaño de fuente relativo al ancho de la ventana */
+    max-width: 100%;
+}
+
+.btn-mas:hover{
+    color: #ffffff;
+    border: 3px solid #403529;
+    background-color: #403529;
+    padding: 5px 60px;
+    font-size: 1vw;
+    /* Tamaño de fuente relativo al ancho de la ventana */
+    max-width: 100%;
+}

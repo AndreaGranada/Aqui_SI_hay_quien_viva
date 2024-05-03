@@ -14,7 +14,7 @@ function ApartmentCard({ apartment }) {
   };
 
   return (
-    <div className="col-md-4 apartamento col-sm-12">
+    <div className="col-md-4 apartamento col-sm-12 align-items-stretch mb-5">
       <div className="card_apartment">
         <div className="titulo_reseña text-center mb-4">
           <h3>{apartment.roadName}</h3>
@@ -35,7 +35,7 @@ function ApartmentCard({ apartment }) {
           )
         ))}
         <div className="row btn-ver-todos">
-          <div className="col-md-12">
+          <div className="col-md-12 text-center">
             <Link to={`/apartment/${apartment.id}`}>
               <button>Ver todas las reseñas</button>
             </Link>

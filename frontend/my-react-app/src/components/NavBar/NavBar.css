@@ -1,6 +1,4 @@
-*{
-    color: #403529;
-}
+
 .bg-naranja{
     background-color: #F25D27;
     padding: 15px;
@@ -16,4 +14,7 @@ width: 200px;
     
     border: 1px solid #F2E963;
     color: #F2E963;
+}
+#basic-nav-dropdown {
+    color: #F2E963; /* Cambia "blue" al color que desees */
 }

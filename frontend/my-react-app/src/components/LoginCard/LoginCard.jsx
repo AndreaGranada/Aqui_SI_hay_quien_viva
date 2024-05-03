@@ -42,7 +42,7 @@ function LoginCard() {
   return (
     <>
     <NavBar/>
-      <Container className="mt-5">
+      <Container className="mt-5 altura">
         <Card className='login'>
           <Card.Body>
             <Card.Title className="text-center mb-4">Logéate</Card.Title>

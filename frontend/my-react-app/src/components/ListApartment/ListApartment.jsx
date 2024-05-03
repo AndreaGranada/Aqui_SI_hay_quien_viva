@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import ApartmentCard from '../ApartmentCard/ApartmentCard';
 import { getSixApartmentsReviews } from '../../services/apartmentsReviews.service';
+import "./ListApartment.css"
 
 function ListApartment({sixApartment, setSixApartment}) {
 
@@ -25,7 +26,7 @@ function ListApartment({sixApartment, setSixApartment}) {
         {sixApartment.map(apartment => (
           <ApartmentCard key={apartment.id} apartment={apartment} />
         ))}
-        <button className='button mb-5 btn-reseña p-4'>No ves tu piso aquí y quieres dejar una reseña? ¡REGISTRALO!</button>
+        <button className='button mb-5 btn-mas p-4 fw-bold'>No ves tu piso aquí y quieres dejar una reseña? ¡REGISTRALO!</button>
       </div>
     </Container>
   );

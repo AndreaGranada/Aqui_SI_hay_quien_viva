@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/admin.service";
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin";
+import { Link } from "react-router-dom";
+
+
 function AdminUsers() {
 
     const [data, setData] = useState([]);
@@ -54,7 +57,9 @@ console.log(data)
                           ))}
                       </tbody>
                   </table>
+                  <Link to={"/admin/users/create"}>
                   <button type="button" className='btn btn-naranja w-100'>REGISTRAR UN USUARIO</button>
+                  </Link>
               </main>
           </div>
       </>

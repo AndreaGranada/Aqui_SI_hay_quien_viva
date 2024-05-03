@@ -20,6 +20,8 @@ import AdminLegalDocs from "../pages/AdminLegalDocs/AdminLegalDocs";
 import AdminDistricts from "../pages/AdminDistricts/AdminDistricts";
 import AdminSession from "../pages/AdminSession/AdminSession";
 import AdminApartmentEdit from "../pages/AdminApartmentEdit/AdminApartmentEdit";
+import AdminUserCreate from "../pages/AdminUsersCreate/AdminUserCreate";
+
 
 //import NotFound from '../pages/NotFound'
 
@@ -191,7 +193,18 @@ const router = createBrowserRouter([
           ) : (
             <Navigate to="/" />
           ), // Importa el componente necesario
-      }
+      },
+
+      {
+        path: "/admin/users/create",
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminUserCreate />
+          ) : (
+            <Navigate to="/" />
+          ), 
+      },
     ],
   },
 ]);

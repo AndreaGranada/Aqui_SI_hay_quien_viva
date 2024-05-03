@@ -13,14 +13,14 @@ const{
 } = require('../controllers/user.controller')
 
 router
-    .patch('/profile', checkAuth, updateOwnUser)
-    .get('/profile', checkAuth, getOwnUser)
-    .delete('/profile',checkAuth, deleteOwnProfile)
-    .get('/', checkAuth, checkAdmin, getAllUsers)
-    .get('/:userId', checkAuth, checkAdmin, getOneUser)
-    .post('/', checkAuth,checkAdmin,createUser)
-    .patch('/:userId', checkAuth, checkAdmin, updateUser)
-    .delete('/:userId',checkAuth, checkAdmin, deleteUser)
+  .post("/", checkAuth, checkAdmin, createUser)
+  .patch("/profile", checkAuth, updateOwnUser)
+  .get("/profile", checkAuth, getOwnUser)
+  .delete("/profile", checkAuth, deleteOwnProfile)
+  .get("/", checkAuth, checkAdmin, getAllUsers)
+  .get("/:userId", checkAuth, checkAdmin, getOneUser)
+  .patch("/:userId", checkAuth, checkAdmin, updateUser)
+  .delete("/:userId", checkAuth, checkAdmin, deleteUser);
 
 
 module.exports = router

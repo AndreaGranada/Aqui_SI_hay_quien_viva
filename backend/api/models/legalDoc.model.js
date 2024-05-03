@@ -4,7 +4,7 @@ const LegalDoc = sequelize.define(
 	'legalDoc',
 	{
 		document: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 		},
         status: {

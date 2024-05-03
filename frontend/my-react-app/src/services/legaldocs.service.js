@@ -12,3 +12,5 @@ export async function getAllLegalDocs(token) {
         throw error;
     }
   }
+
+

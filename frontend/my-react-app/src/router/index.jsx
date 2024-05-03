@@ -103,7 +103,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/user/legaldocs/:legalDocId",
+        path: "/user/legaldocs/:reviewId",
         element: localStorage.getItem("token") &&
           localStorage.getItem("role") === "user" ? (
           <UserLegalDocs />

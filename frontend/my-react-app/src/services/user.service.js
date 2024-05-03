@@ -75,3 +75,22 @@ export const getOwnProfile = async (token) => {
       throw error;
     }
   };
+
+  // Función para obtener la documentación legal asociada a una reseña de un usuario
+
+export const getUserLegalDoc = async (reviewId, token) => {
+  try {
+    // Realizar la solicitud al backend para obtener la documentación legal
+    const { data } = await api.get(`/legalDocs/user/${reviewId}`,{
+      headers: {
+        Authorization: token,
+      },
+    });
+    // Devolver los datos de la documentación legal
+    return data;
+  } catch (error) {
+    // Manejar errores si la solicitud falla
+    console.error('Error al obtener la documentación legal:', error);
+    throw error;
+  }
+};

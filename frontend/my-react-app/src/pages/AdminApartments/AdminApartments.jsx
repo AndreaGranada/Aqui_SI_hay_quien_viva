@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin"
 import { getAllApartment } from '../../services/apartmentsReviews.service';
 import { useState, useEffect } from 'react';
+import { deleteApartment } from '../../services/apartment.service';
 
 function AdminApartments() {
     const [data, setData] = useState([]);
@@ -21,6 +22,17 @@ function AdminApartments() {
     }, []);
 
     console.log(data)
+    const handleDelete = async (id) => {
+        try {
+            const token = localStorage.getItem('token');
+            await deleteApartment(token, id);
+            // Remove the deleted apartment from the data state
+            setData(data.filter(apartment => apartment.id !== id));
+        } catch (error) {
+            console.error('Error deleting apartment:', error);
+        }
+    };
+
     return (
         <>
             <div className="container-fluid row">
@@ -37,7 +49,7 @@ function AdminApartments() {
                                 <th className="align-middle text-center col-1">District ID</th>
                                 <th className="align-middle text-center col-2">Extra Info</th>
                                 <th className="align-middle text-center col-1"></th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -51,13 +63,13 @@ function AdminApartments() {
                                     <td className="align-middle text-center">{item.extraInfo}</td>
                                     <td className="text-center align-middle d-flex">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                            <button className="btn-secondary btn me-3">Editar</button>
+                                            <Link to={`/admin/apartement/${item.id}`} className="btn-secondary btn me-3">Editar</Link>
                                         </div>
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                            <button className="btn-danger btn">Borrar</button>
+                                           <button className="btn-danger btn" onClick={() => handleDelete(item.id)}>Borrar</button>
                                         </div>
                                     </td>
-                                 
+
                                 </tr>
                             ))}
                         </tbody>

@@ -1,6 +1,0 @@
-.imagen {
-    max-width: 400px; /* Tamaño inicial de la imagen */
-    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen para indicar que es clickeable */
-    transition: max-width 0.3s ease; /* Animación de transición suave */
-  }
-  

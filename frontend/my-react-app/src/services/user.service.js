@@ -57,3 +57,21 @@ export const getOwnProfile = async (token) => {
       throw error;
     }
   };
+
+  //Eliminar sus reviews
+
+  export const deleteOwnReview = async (reviewId, token) => {
+  
+    try {
+      const { data } = await api.delete(`/reviews/user/${reviewId}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(data)
+      return data;
+    } catch (error) {
+      console.log('Error deleting your review: ', error.message);
+      throw error;
+    }
+  };

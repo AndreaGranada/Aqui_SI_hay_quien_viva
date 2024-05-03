@@ -18,18 +18,18 @@ const {
 } = require('../controllers/review.controller')
 
 router
-    .get('/sixApartments', getSixApartmentsWithReviews)
-    .get('/apartments', getAllApartmentsWithReviews)
-    .delete('/user/:reviewId', checkAuth, deleteOwnReview)
-    .post('/', checkAuth, createReview)
-    .get('/', checkAuth, getAllReviews)
-    .get('/user', checkAuth, getAllOwnerUserReviews)
-    .get('/:reviewId', checkAuth, checkAdmin, getOneReview)
-    .get('/apartment/:apartmentId', getAllApartmentReviews)
-    .get('/user/:userId', checkAuth, checkAdmin, getAllUserReviews)
-    .patch('/:reviewId', checkAuth, checkAdmin, updateReview)
-    .delete('/:reviewId', checkAuth, checkAdmin, deleteReview)
-    .get('/twoReview/:apartmentId', getTwoRecentApartmentReviews)
+  .delete("/user/:reviewId", checkAuth, deleteOwnReview)
+  .get("/sixApartments", getSixApartmentsWithReviews)
+  .get("/apartments", getAllApartmentsWithReviews)
+  .post("/", checkAuth, createReview)
+  .get("/", checkAuth, getAllReviews)
+  .get("/user", checkAuth, getAllOwnerUserReviews)
+  .get("/:reviewId", checkAuth, checkAdmin, getOneReview)
+  .get("/apartment/:apartmentId", getAllApartmentReviews)
+  .get("/user/:userId", checkAuth, checkAdmin, getAllUserReviews)
+  .patch("/:reviewId", checkAuth, checkAdmin, updateReview)
+  .delete("/:reviewId", checkAuth, checkAdmin, deleteReview)
+  .get("/twoReview/:apartmentId", getTwoRecentApartmentReviews);
 
 
 module.exports = router

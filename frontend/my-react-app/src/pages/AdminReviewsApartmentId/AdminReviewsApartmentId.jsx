@@ -3,6 +3,7 @@ import MenuAdmin from "../../components/MenuAdmin/MenuAdmin"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getOneReview } from "../../services/apartmentsReviews.service.js";
+
 const AdminReviewsApartmentId = () => {
     const { apartmentReviewId } = useParams();
     const [data, setData] = useState([]);

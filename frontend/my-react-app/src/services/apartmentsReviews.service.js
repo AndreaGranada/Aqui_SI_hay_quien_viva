@@ -86,3 +86,25 @@ export const deleteReviews = async (token, id) => {
   });
   return response.data;
 };
+
+export const createReview = async (title, content, media, legalDocId, apartmentId, userId) => {
+  const token = localStorage.getItem('token');
+  console.log(token);
+  try {
+    const { data } = await api.post('/reviews', {
+        title:title,
+        content: content,
+        media: media,
+        legalDocId: legalDocId,
+        apartmentId: apartmentId,
+        userId: userId
+    }, {
+      headers: {
+        Authorization: token,
+      }
+    });
+    return data;
+  } catch (error) {
+    console.log('Error creating review: ', error.message);
+  }
+}

@@ -56,7 +56,7 @@ const SignUp = () => {
           const data = await signup(name, surname, email, password, dni, phone);
           console.log(data)
           if (data) {
-            navigate('/login');
+            navigate('/signup/confirmation');
           }
         } catch (error) {
           console.log(error);
@@ -160,7 +160,7 @@ const SignUp = () => {
                     onChange={handlePhone}
                   />
                 </Form.Group>
-
+               
                 <Button
                   variant="primary"
                   type="submit"

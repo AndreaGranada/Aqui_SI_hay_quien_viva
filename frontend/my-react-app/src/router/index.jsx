@@ -26,6 +26,8 @@ import AdminUsersEdit from "../pages/AdminUsersEdit/AdminUsersEdit";
 import AdminApartmentCreate from "../pages/AdminApartmentCreate/AdminApartmentCreate";
 import AdminDistrictsCreate from "../pages/AdminDistrictCreate/AdminDistrictsCreate";
 import UserSession from "../pages/UserSession/UserSession";
+import SignUpConfirmation from "../pages/SignUpConfirmation/SignUpConfirmation";
+
 
 
 
@@ -58,6 +60,11 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp />,
       },
+      {
+        path: "/signup/confirmation",
+        element: <SignUpConfirmation />,
+      },
+
       {
         path: "/apartment/:apartmentId", // Ruta con parámetro
         element: <ApartmentReviewsPage />, // Importa el componente necesario

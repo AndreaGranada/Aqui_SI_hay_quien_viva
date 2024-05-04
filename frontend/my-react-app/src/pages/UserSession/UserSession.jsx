@@ -1,5 +1,5 @@
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importar useNavigate
 import "./UserSession.css";
 import imagen_logo from "../../assets/img/logo_marron.png";
@@ -7,53 +7,55 @@ import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 
+
+
 const UserSession = () => {
-  const [data, setData] = useState([]);
-  const navigate = useNavigate(); // Instanciar el hook navigate
-
-  console.log(data);
-
-  const handleLogout = () => {
-    // Limpiar el token de autenticación del localStorage
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    localStorage.removeItem("role");
-
-    // Redirigir al usuario al inicio
-    navigate("/"); // Redirigir al usuario a la página de inicio
-  };
-
-  return (
-    <>
-      <div>
-        <NavBar />
-        <main className="name col ms-5 mt-5 mb-5">
-          <div className="d-flex justify-content-center align-items-center vh-100">
-            <div className="cerrar-sesion text-center">
-              <img src={imagen_logo} alt="" />
-              <h2 className="mb-3">¡Hola admin!</h2>
-              <h3 className="mb-4">¿Quieres cerrar sesión?</h3>
-              <div className="botones">
-                <button
-                  type="button"
-                  className="btn btn-secondary me-2"
-                  onClick={handleLogout}
-                >
-                  Cerrar sesión
-                </button>
-                <Link to="/user">
-                  <button type="button" className="btn btn-danger">
-                    Cancelar
+    const [userName, setUserName] = useState("");
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      const name = localStorage.getItem("name");
+      setUserName(name);
+    }, []);
+  
+    const handleLogout = () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
+      localStorage.removeItem("role");
+      navigate("/");
+    };
+  
+    return (
+      <>
+        <div>
+          <NavBar />
+          <main className="name col ms-5 mt-5 mb-5">
+            <div className="d-flex justify-content-center align-items-center vh-100">
+              <div className="cerrar-sesion text-center">
+                <img src={imagen_logo} alt="" />
+                <h2 className="mb-3">¡Hola {userName || "usuario"}!</h2>
+                <h3 className="mb-4">¿Quieres cerrar sesión?</h3>
+                <div className="botones">
+                  <button
+                    type="button"
+                    className="btn btn-secondary me-2"
+                    onClick={handleLogout}
+                  >
+                    Cerrar sesión
                   </button>
-                </Link>
+                  <Link to="/user">
+                    <button type="button" className="btn btn-danger">
+                      Cancelar
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    </>
-  );
-};
-
-export default UserSession;
+          </main>
+          <Footer />
+        </div>
+      </>
+    );
+  };
+  
+  export default UserSession;

@@ -25,7 +25,7 @@ function UserHome() {
       <NavBar />
       <Container className="mt-5 contenedor">
         <div className="border p-4 text-center">
-          <h2>Tus Datos de Perfil</h2>
+          <h2>Tu perfil</h2>
         </div>
         <div className="mt-4 text-center">
           <Row className="justify-content-center contenedorbotones">

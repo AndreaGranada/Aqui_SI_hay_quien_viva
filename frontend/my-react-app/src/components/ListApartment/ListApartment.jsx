@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import ApartmentCard from '../ApartmentCard/ApartmentCard';
 import { getSixApartmentsReviews } from '../../services/apartmentsReviews.service';
 import "./ListApartment.css"
-
+import { Link } from 'react-router-dom';
 function ListApartment({sixApartment, setSixApartment}) {
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function ListApartment({sixApartment, setSixApartment}) {
         {sixApartment.map(apartment => (
           <ApartmentCard key={apartment.id} apartment={apartment} />
         ))}
-        <button className='button mb-5 btn-mas p-4 fw-bold'>No ves tu piso aquí y quieres dejar una reseña? ¡REGISTRALO!</button>
+        <Link to="/user/create"><button className='button mb-5 w-100 btn-mas p-4 fw-bold'>No ves tu piso aquí y quieres dejar una reseña? ¡REGISTRALO!</button></Link>
       </div>
     </Container>
   );

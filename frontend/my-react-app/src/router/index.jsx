@@ -23,10 +23,14 @@ import AdminApartmentEdit from "../pages/AdminApartmentEdit/AdminApartmentEdit";
 import AdminUserCreate from "../pages/AdminUsersCreate/AdminUserCreate";
 import AdminDistrictEdit from "../pages/AdminDistrictsEdit/AdminDistrictsEdit";
 import AdminUsersEdit from "../pages/AdminUsersEdit/AdminUsersEdit";
+<<<<<<< HEAD
 import AdminApartmentCreate from "../pages/AdminApartmentCreate/AdminApartmentCreate";
 
 
 
+=======
+import CreateApartmentReview from "../pages/CreateApartmentReview/CreateApartmentReview";
+>>>>>>> andrea
 
 //import NotFound from '../pages/NotFound'
 
@@ -252,6 +256,16 @@ const router = createBrowserRouter([
             <AdminUsersEdit/>
           ) : (
             <Navigate to="/" />
+          ),
+      },
+      {
+        path: "/user/create", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "user" ? (
+            <CreateApartmentReview/>
+          ) : (
+            <Navigate to="/login" />
           ),
       },
     ],

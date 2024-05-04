@@ -9,7 +9,7 @@ export const getOwnProfile = async (token) => {
           Authorization: token,
         },
       });
-      console.log(data)
+     // console.log(data)
       return data;
     } catch (error) {
       console.log('Error getting own profile: ', error.message);

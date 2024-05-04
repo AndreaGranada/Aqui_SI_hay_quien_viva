@@ -55,8 +55,8 @@ function AdminUsersEdit() {
             <MenuAdmin />
             <main className="name col ms-5 mt-5 mb-5">
 
-                <div className="row w-50 mt-5 mb-5 pt-5 pb-5 pe-5 ps-5 bg-light mx-auto">
-                    <h2 className='text-center mb-4'>Editar información de la vivienda</h2>
+                <div className="row  mt-5 mb-5 pt-5 pb-5 pe-5 ps-5 bg-light mx-auto">
+                    <h2 className='text-center mb-4'>Editar información del usuario</h2>
                     <form className="row" onSubmit={handleSubmit}>
                         <div className="col-2 text-justify">
                             <label className='form-label text-justify'>
@@ -111,7 +111,7 @@ function AdminUsersEdit() {
                         )}
 
                         <div className="col-12 text-center">
-                            <button type="submit" className='btn btn-secondary w-50 text-center mx-0 mt-3'>Guardar cambios</button>
+                            <button type="submit" className='btn btn-secondary text-center mx-0 mt-3'>Guardar cambios</button>
                         </div>
                     </form>
                 </div>

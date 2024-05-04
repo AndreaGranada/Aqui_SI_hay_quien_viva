@@ -103,7 +103,7 @@ function AdminApartmentEdit() {
                         )}
 
                         <div className="col-12 text-center">
-                            <button type="submit" className='btn btn-secondary w-50 text-center mx-0 mt-3'>Guardar cambios</button>
+                            <button type="submit" className='btn btn-secondary text-center mx-0 mt-3'>Guardar cambios</button>
                         </div>
                     </form>
                 </div>

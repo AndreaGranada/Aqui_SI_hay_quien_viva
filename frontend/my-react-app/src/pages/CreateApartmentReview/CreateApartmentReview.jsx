@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar"
 import Footer from "../../components/Footer/Footer"
 import { getAllDistricts } from "../../services/district.service";
+import { createApartmentAdmin } from "../../services/admin.service";
 
 const CreateApartmentReview = () => {
 
@@ -36,7 +37,7 @@ const CreateApartmentReview = () => {
     const handleCreateApartment = async (e) => {
         e.preventDefault();
         try {
-            await createUserAdmin(road, surname, email, password, dni, phone);
+            await createApartmentAdmin(road, surname, postalCode, extraInfo, district);
             setSuccessMessage("¡Usuario creado exitosamente!");
             clearForm();
             console.log("Usuario creado exitosamente");

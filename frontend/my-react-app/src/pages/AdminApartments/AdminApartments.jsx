@@ -73,7 +73,9 @@ function AdminApartments() {
                             ))}
                         </tbody>
                     </table>
+                    <Link to={"/admin/apartment/create"}>
                     <button type="button" className='btn btn-naranja w-100'>REGISTRAR UN APARTAMENTO</button>
+                    </Link>
                 </main>
 
             </div>

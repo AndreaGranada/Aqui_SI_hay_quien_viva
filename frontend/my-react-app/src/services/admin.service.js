@@ -41,3 +41,23 @@ export const createUserAdmin = async (name, surname, email, password, dni, phone
 }
 
 
+export const createApartmentAdmin = async (road, roadName, postalCode, extraInfo, districtId) => {
+  const token = localStorage.getItem('token');
+  console.log(token);
+  try {
+    const { data } = await api.post('/apartments', {
+        road:road,
+        roadName: roadName, 
+        postalCode: postalCode,
+        extraInfo: extraInfo,
+        districtId:districtId
+    }, {
+      headers: {
+        Authorization: token,
+      }
+    });
+    return data;
+  } catch (error) {
+    console.log('Error creating apartment: ', error.message);
+  }
+}

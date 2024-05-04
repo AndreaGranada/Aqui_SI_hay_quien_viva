@@ -23,6 +23,9 @@ import AdminApartmentEdit from "../pages/AdminApartmentEdit/AdminApartmentEdit";
 import AdminUserCreate from "../pages/AdminUsersCreate/AdminUserCreate";
 import AdminDistrictEdit from "../pages/AdminDistrictsEdit/AdminDistrictsEdit";
 import AdminUsersEdit from "../pages/AdminUsersEdit/AdminUsersEdit";
+import AdminApartmentCreate from "../pages/AdminApartmentCreate/AdminApartmentCreate";
+
+
 
 
 //import NotFound from '../pages/NotFound'
@@ -203,6 +206,18 @@ const router = createBrowserRouter([
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "admin" ? (
             <AdminUserCreate />
+          ) : (
+            <Navigate to="/" />
+          ), 
+      },
+
+      {
+        path: "/admin/apartment/create",
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminApartmentCreate/>
+           
           ) : (
             <Navigate to="/" />
           ), 

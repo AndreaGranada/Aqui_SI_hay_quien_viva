@@ -24,6 +24,8 @@ import AdminUserCreate from "../pages/AdminUsersCreate/AdminUserCreate";
 import AdminDistrictEdit from "../pages/AdminDistrictsEdit/AdminDistrictsEdit";
 import AdminUsersEdit from "../pages/AdminUsersEdit/AdminUsersEdit";
 import AdminApartmentCreate from "../pages/AdminApartmentCreate/AdminApartmentCreate";
+import AdminDistrictsCreate from "../pages/AdminDistrictCreate/AdminDistrictsCreate";
+
 
 
 
@@ -216,7 +218,7 @@ const router = createBrowserRouter([
         element:
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "admin" ? (
-            <AdminApartmentCreate/>
+            <AdminDistrictsCreate/>
            
           ) : (
             <Navigate to="/" />

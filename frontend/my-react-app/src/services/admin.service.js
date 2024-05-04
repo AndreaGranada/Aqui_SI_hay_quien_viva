@@ -40,7 +40,6 @@ export const createUserAdmin = async (name, surname, email, password, dni, phone
   }
 }
 
-
 export const createApartmentAdmin = async (road, roadName, postalCode, extraInfo, districtId) => {
   const token = localStorage.getItem('token');
   console.log(token);
@@ -59,5 +58,22 @@ export const createApartmentAdmin = async (road, roadName, postalCode, extraInfo
     return data;
   } catch (error) {
     console.log('Error creating apartment: ', error.message);
+  }
+}
+
+export const createDistrictAdmin = async (name) => {
+  const token = localStorage.getItem('token');
+  console.log(token);
+  try {
+    const { data } = await api.post('/districts', {
+        name:name,
+    }, {
+      headers: {
+        Authorization: token,
+      }
+    });
+    return data;
+  } catch (error) {
+    console.log('Error creating district: ', error.message);
   }
 }

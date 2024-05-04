@@ -63,7 +63,9 @@ function AdminDistricts() {
                             ))}
                         </tbody>
                     </table>
+                    <Link to={"/admin/district/create"}>
                     <button type="button" className='btn btn-naranja w-100'>REGISTRAR UN DISTRITO</button>
+                    </Link>
                 </main>
             </div>
         </>

@@ -17,8 +17,10 @@ function UserHome() {
   };
 
   const handleLogoutClick = () => {
-
-    navigate('/login');
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('role')
+    navigate('/');
   };
 
   return (

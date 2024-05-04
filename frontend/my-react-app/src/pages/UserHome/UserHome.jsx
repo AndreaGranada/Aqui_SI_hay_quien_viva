@@ -2,7 +2,9 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import "./UserHome.css"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import UserSession from '../UserSession/UserSession';
+
 
 
 function UserHome() {
@@ -16,12 +18,7 @@ function UserHome() {
     navigate('/user/profile');
   };
 
-  const handleLogoutClick = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('name');
-    localStorage.removeItem('role')
-    navigate('/');
-  };
+
 
   return (
     <>
@@ -49,14 +46,16 @@ function UserHome() {
               >
                 Datos Personales
               </Button>
+
+              <Link to={"/user/session"}>
               <Button 
                 variant="primary" 
                 size="lg" 
                 className="mb-3 boton"
-                onClick={handleLogoutClick}
               >
                 Cerrar Sesión
               </Button>
+              </Link>
             </Col>
           </Row>
         </div>

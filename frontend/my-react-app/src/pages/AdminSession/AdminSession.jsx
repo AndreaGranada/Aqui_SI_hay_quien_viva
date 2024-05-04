@@ -14,6 +14,8 @@ const AdminSession = () => {
     const handleLogout = () => {
         // Limpiar el token de autenticación del localStorage
         localStorage.removeItem('token');
+        localStorage.removeItem('name')
+        localStorage.removeItem('role')
         
         // Redirigir al usuario al inicio
         navigate("/"); // Redirigir al usuario a la página de inicio

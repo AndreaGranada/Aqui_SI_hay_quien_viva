@@ -212,6 +212,18 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/admin/district/create",
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminApartmentCreate/>
+           
+          ) : (
+            <Navigate to="/" />
+          ), 
+      },
+
+      {
         path: "/admin/apartment/create",
         element:
           localStorage.getItem("token") &&

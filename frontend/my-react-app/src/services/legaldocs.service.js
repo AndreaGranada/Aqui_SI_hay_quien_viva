@@ -13,4 +13,12 @@ export async function getAllLegalDocs(token) {
     }
   }
 
+  export const deleteLegalDocs = async (token, id) => {
+    const response = await api.delete(`/legalDocs/${id}`, {
+        headers: {
+            Authorization: `${token}`
+        }
+    });
+    return response.data;
+  };
 

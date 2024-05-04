@@ -1,7 +1,7 @@
 import imagen_logo from '../../assets/img/logo_amarillo.png';
 import { Link } from 'react-router-dom';
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin"
-import { getAllReviews } from '../../services/apartmentsReviews.service';
+import { getAllReviews, deleteReviews } from '../../services/apartmentsReviews.service';
 import { useState, useEffect } from 'react';
 
 function AdminReviews() {
@@ -20,7 +20,18 @@ function AdminReviews() {
         fetchAllReviews();
     }, []);
 
-    console.log(data)
+    const handleDelete = async (id) => {
+        try {
+            const token = localStorage.getItem('token');
+            await deleteReviews(token, id);
+            // Remove the deleted user from the data state
+            setData(data.filter(users => users.id !== id));
+        } catch (error) {
+            console.error('Error deleting apartment:', error);
+        }
+    };
+
+    //console.log(data)
     return (
         <>
             <div className="container-fluid row">
@@ -58,7 +69,7 @@ function AdminReviews() {
                                     <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
                                             <button className="btn-secondary btn me-3 align-middle">Editar</button>
-                                            <button className="btn-danger btn">Borrar</button>
+                                            <button className="btn-danger btn me-3 align-middle" onClick={() => handleDelete(item.id)}>Borrar</button>
                                         </div>
                                        
                                     </td>

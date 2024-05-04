@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllLegalDocs } from "../../services/legaldocs.service";
+import { getAllLegalDocs, deleteLegalDocs } from "../../services/legaldocs.service";
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin";
 function AdminLegalDocs() {
 
@@ -8,20 +8,29 @@ function AdminLegalDocs() {
     useEffect(() => {
         // Cuando el componente se monta, obtener los distritos disponibles
         const fetchLegalDocs = async () => {
-          try {
-            const token = localStorage.getItem('token');
-            const {docs} = await getAllLegalDocs(token);
-            setData(docs); // Actualizar el estado con los distritos obtenidos
-          } catch (error) {
-            console.error('Error al obtener los legalsDocs:', error);
-          }
+            try {
+                const token = localStorage.getItem('token');
+                const { docs } = await getAllLegalDocs(token);
+                setData(docs); // Actualizar el estado con los distritos obtenidos
+            } catch (error) {
+                console.error('Error al obtener los legalsDocs:', error);
+            }
         };
         fetchLegalDocs(); // Llamar a la función para obtener los distritos
-      }, []);
-console.log(data)
-  
-    
-         return (
+    }, []);
+    console.log(data)
+
+    const handleDelete = async (id) => {
+        try {
+            const token = localStorage.getItem('token');
+            await deleteLegalDocs(token, id);
+            // Remove the deleted user from the data state
+            setData(data.filter(legalDoc => legalDoc.id !== id));
+        } catch (error) {
+            console.error('Error deleting apartment:', error);
+        }
+    };
+    return (
         <>
             <div className="container-fluid row">
                 <MenuAdmin></MenuAdmin>
@@ -45,7 +54,7 @@ console.log(data)
                                     <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
                                             <button className="btn-secondary btn me-3 align-middle">Editar</button>
-                                            <button className="btn-danger btn">Borrar</button>
+                                            <button className="btn-danger btn me-3 align-middle" onClick={() => handleDelete(item.id)}>Borrar</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -57,7 +66,7 @@ console.log(data)
             </div>
         </>
     );
-  
+
 }
 
 export default AdminLegalDocs

@@ -45,10 +45,10 @@ function AdminApartments() {
                                 <th className="align-middle text-center col-1">ID</th>
                                 <th className="align-middle text-center col-2">Road Name</th>
                                 <th className="align-middle text-center col-2">Road</th>
-                                <th className="align-middle text-center col-2">Postal Code</th>
+                                <th className="align-middle text-center col-1">Postal Code</th>
                                 <th className="align-middle text-center col-1">District ID</th>
                                 <th className="align-middle text-center col-2">Extra Info</th>
-                                <th className="align-middle text-center col-1"></th>
+                                <th className="align-middle text-center col-2"></th>
 
                             </tr>
                         </thead>
@@ -61,13 +61,12 @@ function AdminApartments() {
                                     <td className="align-middle text-center">{item.postalCode}</td>
                                     <td className="align-middle text-center">{item.districtId}</td>
                                     <td className="align-middle text-center">{item.extraInfo}</td>
-                                    <td className="text-center align-middle d-flex">
+                                    <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                            <Link to={`/admin/apartement/${item.id}`} className="btn-secondary btn me-3">Editar</Link>
+                                            <Link to={`/admin/apartement/${item.id}`}><button className="btn-secondary btn me-3 align-middle">Editar</button></Link>
+                                            <button className="btn-danger btn me-3 align-middle" onClick={() => handleDelete(item.id)}>Borrar</button>
                                         </div>
-                                        <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                           <button className="btn-danger btn" onClick={() => handleDelete(item.id)}>Borrar</button>
-                                        </div>
+
                                     </td>
 
                                 </tr>

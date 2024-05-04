@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getApartmentById, updateApartment } from '../../services/apartment.service';
+//import { getApartmentById, updateApartment } from '../../services/apartment.service';
 import MenuAdmin from '../../components/MenuAdmin/MenuAdmin';
+import { getUserById, updateUser } from '../../services/users.service';
 
-function AdminApartmentEdit() {
-    const { idApartmentEdit } = useParams();
+function AdminUsersEdit() {
+    const { idUserEdit } = useParams();
     const [formData, setFormData] = useState({});
     const [loading, setLoading] = useState(true);
     const [showAlert, setShowAlert] = useState(false); // Estado para controlar la visibilidad de la alerta
@@ -14,16 +15,17 @@ function AdminApartmentEdit() {
         const fetchApartment = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const apartmentData = await getApartmentById(idApartmentEdit, token);
-                setFormData(apartmentData);
+                const userData = await getUserById(idUserEdit, token);
+                setFormData(userData);
                 setLoading(false);
+                console.log(userData); // Mueve esta línea dentro del bloque try
             } catch (error) {
-                console.error('Error fetching apartment:', error);
+                console.error('Error fetching user:', error);
             }
         };
         fetchApartment();
-    }, [idApartmentEdit]);
-
+    }, [idUserEdit]);
+    //console.log(formData)
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -32,11 +34,11 @@ function AdminApartmentEdit() {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            await updateApartment(idApartmentEdit, token, formData);
+            await updateUser(idUserEdit, token, formData);
             // Muestra la alerta
             setShowAlert(true);
         } catch (error) {
-            console.error('Error updating apartment:', error);
+            console.error('Error updating user:', error);
             // Muestra la alerta de error y establece el mensaje de error
             setShowAlert(true);
             setErrorMessage("No se ha podido actualizar: " + error.message);
@@ -53,8 +55,8 @@ function AdminApartmentEdit() {
             <MenuAdmin />
             <main className="name col ms-5 mt-5 mb-5">
 
-                <div className="row w-50 mt-5 mb-5 pt-5 pb-5 pe-5 ps-5 bg-light mx-auto">
-                    <h2 className='text-center mb-4'>Editar información de la vivienda</h2>
+                <div className="row  mt-5 mb-5 pt-5 pb-5 pe-5 ps-5 bg-light mx-auto">
+                    <h2 className='text-center mb-4'>Editar información del usuario</h2>
                     <form className="row" onSubmit={handleSubmit}>
                         <div className="col-2 text-justify">
                             <label className='form-label text-justify'>
@@ -65,33 +67,39 @@ function AdminApartmentEdit() {
                         </div>
                         <div className="col-5">
                             <label className='form-label w-100'>
-                                Tipo de vía:
-                                <input type="text" name="road" value={formData.road || ''} onChange={handleChange} className='form-control' />
+                                Nombre:
+                                <input type="text" name="name" value={formData.name || ''} onChange={handleChange} className='form-control' />
                             </label>
                         </div>
                         <div className="col-5">
                             <label className='form-label w-100'>
-                                Nombre de la vía:
-                                <input type="text" name="roadName" value={formData.roadName || ''} onChange={handleChange} className='form-control' />
+                                Apellido:
+                                <input type="text" name="surname" value={formData.surname || ''} onChange={handleChange} className='form-control' />
                             </label>
                         </div>
                         <div className="col-2">
                             <label className='form-label w-100'>
-                                Código Postal:
-                                <input type="text" name="postalCode" value={formData.postalCode || ''} onChange={handleChange} className='form-control' />
+                                DNI:
+                                <input type="text" name="dni" value={formData.dni || ''} onChange={handleChange} className='form-control' />
                             </label>
 
                         </div>
-                        <div className="col-8">
+                        <div className="col-6">
                             <label className='form-label w-100'>
-                                Detalles de la vivienda:
-                                <input type="text" name="extraInfo" value={formData.extraInfo || ''} onChange={handleChange} className='form-control' />
+                                Correo electronico:
+                                <input type="text" name="email" value={formData.email || ''} onChange={handleChange} className='form-control' />
                             </label>
                         </div>
                         <div className="col-2">
                             <label className='form-label w-100'>
-                                Districto Id:
-                                <input type="text" name="districtId" value={formData.districtId || ''} onChange={handleChange} className='form-control' />
+                                Telefono:
+                                <input type="text" name="phone" value={formData.phone || ''} onChange={handleChange} className='form-control' />
+                            </label>
+                        </div>
+                        <div className="col-2">
+                            <label className='form-label w-100'>
+                                Rol:
+                                <input type="text" name="role" value={formData.role || ''} onChange={handleChange} className='form-control' />
                             </label>
                         </div>
 
@@ -112,4 +120,4 @@ function AdminApartmentEdit() {
     );
 }
 
-export default AdminApartmentEdit;
+export default AdminUsersEdit;

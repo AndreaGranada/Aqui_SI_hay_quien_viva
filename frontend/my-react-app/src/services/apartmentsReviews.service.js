@@ -77,3 +77,12 @@ export async function getAllReviews(token) {
       throw error;
   }
 }
+
+export const deleteReviews = async (token, id) => {
+  const response = await api.delete(`/reviews/${id}`, {
+      headers: {
+          Authorization: `${token}`
+      }
+  });
+  return response.data;
+};

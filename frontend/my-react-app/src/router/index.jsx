@@ -21,6 +21,8 @@ import AdminDistricts from "../pages/AdminDistricts/AdminDistricts";
 import AdminSession from "../pages/AdminSession/AdminSession";
 import AdminApartmentEdit from "../pages/AdminApartmentEdit/AdminApartmentEdit";
 import AdminUserCreate from "../pages/AdminUsersCreate/AdminUserCreate";
+import AdminDistrictEdit from "../pages/AdminDistrictsEdit/AdminDistrictsEdit";
+import AdminUsersEdit from "../pages/AdminUsersEdit/AdminUsersEdit";
 
 
 //import NotFound from '../pages/NotFound'
@@ -204,6 +206,26 @@ const router = createBrowserRouter([
           ) : (
             <Navigate to="/" />
           ), 
+      },
+      {
+        path: "/admin/district/:idDistrictEdit", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminDistrictEdit/>
+          ) : (
+            <Navigate to="/" />
+          ),
+      },
+      {
+        path: "/admin/users/:idUserEdit", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminUsersEdit/>
+          ) : (
+            <Navigate to="/" />
+          ),
       },
     ],
   },

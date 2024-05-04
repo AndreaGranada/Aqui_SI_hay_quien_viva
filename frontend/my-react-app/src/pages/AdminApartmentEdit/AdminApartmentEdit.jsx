@@ -8,6 +8,7 @@ function AdminApartmentEdit() {
     const [formData, setFormData] = useState({});
     const [loading, setLoading] = useState(true);
     const [showAlert, setShowAlert] = useState(false); // Estado para controlar la visibilidad de la alerta
+    const [errorMessage, setErrorMessage] = useState(""); // Estado para almacenar el mensaje de error
 
     useEffect(() => {
         const fetchApartment = async () => {
@@ -36,12 +37,16 @@ function AdminApartmentEdit() {
             setShowAlert(true);
         } catch (error) {
             console.error('Error updating apartment:', error);
+            // Muestra la alerta de error y establece el mensaje de error
+            setShowAlert(true);
+            setErrorMessage("No se ha podido actualizar: " + error.message);
         }
     };
 
     if (loading) {
         return <div>Loading...</div>;
     }
+    
 
     return (
         <div className="container-fluid row">
@@ -49,12 +54,12 @@ function AdminApartmentEdit() {
             <main className="name col ms-5 mt-5 mb-5">
 
                 <div className="row w-50 mt-5 mb-5 pt-5 pb-5 pe-5 ps-5 bg-light mx-auto">
-                    <h2 className='text-center mb-3'>Edit Apartment</h2>
+                    <h2 className='text-center mb-4'>Editar información de la vivienda</h2>
                     <form className="row" onSubmit={handleSubmit}>
                         <div className="col-2 text-justify">
                             <label className='form-label text-justify'>
                                 Id:
-                                <input type="text" name="id" value={formData.id || ''} onChange={handleChange} className='form-control' />
+                                <input type="text" name="id" value={formData.id || ''} onChange={handleChange} className='form-control bg-light' readOnly />
                             </label>
 
                         </div>
@@ -91,14 +96,14 @@ function AdminApartmentEdit() {
                         </div>
 
 
-                        {/* Alerta para mostrar la confirmación */}
                         {showAlert && (
-                            <div className="alert alert-success" role="alert">
-                                ¡La información ha sido editada exitosamente!
+                            <div className={errorMessage ? "alert alert-danger" : "alert alert-success"} role="alert">
+                                {errorMessage ? errorMessage : "¡La información ha sido editada exitosamente!"}
                             </div>
                         )}
+
                         <div className="col-12 text-center">
-                            <button type="submit" className='btn btn-secondary w-50 text-center mx-0 mt-3'>Save</button>
+                            <button type="submit" className='btn btn-secondary w-50 text-center mx-0 mt-3'>Guardar cambios</button>
                         </div>
                     </form>
                 </div>

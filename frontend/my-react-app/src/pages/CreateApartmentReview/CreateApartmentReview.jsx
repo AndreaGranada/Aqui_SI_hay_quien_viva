@@ -138,7 +138,7 @@ const CreateApartmentReview = () => {
     const handleCreateReview = async (e) => {
         e.preventDefault();
         setIsCreatingReview(false);
-        if (!title || !content || !media) {
+        if (!title || !content || !media || !legalDocID || !apartmentID || !userID) {
             setErrorMessageReview("Por favor, complete todos los campos antes de continuar.");
             return;
         }

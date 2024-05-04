@@ -23,22 +23,10 @@ import AdminApartmentEdit from "../pages/AdminApartmentEdit/AdminApartmentEdit";
 import AdminUserCreate from "../pages/AdminUsersCreate/AdminUserCreate";
 import AdminDistrictEdit from "../pages/AdminDistrictsEdit/AdminDistrictsEdit";
 import AdminUsersEdit from "../pages/AdminUsersEdit/AdminUsersEdit";
-<<<<<<< HEAD
-<<<<<<< HEAD
 import AdminApartmentCreate from "../pages/AdminApartmentCreate/AdminApartmentCreate";
 import AdminDistrictsCreate from "../pages/AdminDistrictCreate/AdminDistrictsCreate";
 import UserSession from "../pages/UserSession/UserSession";
 import SignUpConfirmation from "../pages/SignUpConfirmation/SignUpConfirmation";
-
-
-
-
-
-
-
-=======
-=======
->>>>>>> andrea
 import CreateApartmentReview from "../pages/CreateApartmentReview/CreateApartmentReview";
 
 //import NotFound from '../pages/NotFound'

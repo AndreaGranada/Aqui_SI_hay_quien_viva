@@ -1,3 +1,4 @@
+const cloudinary = require('../../Cloudinary/index.cloudinary');
 const LegalDoc = require("../models/legalDoc.model");
 const Review = require("../models/review.model");
 
@@ -11,10 +12,28 @@ const createLegalDoc = async (req, res) => {
       },
     });
     delete req.body.status;
-    return res.status(200).json(legalDoc);
+    const uploadImage = await cloudinary.uploader.upload(
+      legalDoc.document,
+      {
+        upload_preset: "aquisi_unsigned",
+        public_id: `document`,
+        allowed_formasts: [
+          "png",
+          "jpg",
+          "jpeg",
+          "svg",
+          "ico",
+          "jfif",
+          "webp",
+          "pdf",
+        ],
+      },
+
+    );
+    return res.status(200).json({legalDoc, uploadImage});
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: "Something went wrong", error});
   }
 };
 
@@ -47,7 +66,6 @@ async function getOneLegalDoc(req, res) {
 
 //updateLegalDoc - Admin
 
-
 async function updateLegalDoc(req, res) {
   try {
     const [rowCount] = await LegalDoc.update(req.body, {
@@ -58,22 +76,25 @@ async function updateLegalDoc(req, res) {
 
     if (rowCount > 0) {
       const updatedLegalDoc = await LegalDoc.findByPk(req.params.legalDocId);
-      
-      if (updatedLegalDoc.status === "aceptado") {
 
+      if (updatedLegalDoc.status === "aceptado") {
         const findReviews = await Review.findAll({
           where: {
             legalDocId: req.params.legalDocId,
-          }
+          },
         });
 
-        await Promise.all(findReviews.map(async (review) => {
-          await review.update({ postedStatus: 'yes' });
-        }));
+        await Promise.all(
+          findReviews.map(async (review) => {
+            await review.update({ postedStatus: "yes" });
+          })
+        );
       }
 
       console.log(updatedLegalDoc);
-      return res.status(200).json({ message: "Legal Doc updated", legalDoc: updatedLegalDoc });
+      return res
+        .status(200)
+        .json({ message: "Legal Doc updated", legalDoc: updatedLegalDoc });
     } else {
       return res.status(404).send("Legal doc not found");
     }
@@ -81,7 +102,6 @@ async function updateLegalDoc(req, res) {
     return res.status(500).send(error.message);
   }
 }
-
 
 // Método para eliminar un LegalDoc y su Review asociada
 const deleteLegalDoc = async (req, res) => {
@@ -113,7 +133,6 @@ const deleteLegalDoc = async (req, res) => {
   }
 };
 
-
 //Usuario obtiene la LegalDoc asociada a su review
 async function getUserLegalDoc(req, res) {
   try {
@@ -142,12 +161,11 @@ async function getUserLegalDoc(req, res) {
   }
 }
 
-
 module.exports = {
   getAllLegalDocs,
   createLegalDoc,
   getOneLegalDoc,
   updateLegalDoc,
   deleteLegalDoc,
-  getUserLegalDoc
+  getUserLegalDoc,
 };

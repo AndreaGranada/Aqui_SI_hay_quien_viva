@@ -6,7 +6,7 @@ const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 const router = require('./api/routes/index.routes.js')
-const cloudinary = require("../backend/Cloudinary/index.cloudinary.js")
+const cloudinary = require('./Cloudinary/index.cloudinary.js')
 
 
 

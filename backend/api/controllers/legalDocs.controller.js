@@ -3,6 +3,7 @@ const LegalDoc = require("../models/legalDoc.model");
 const Review = require("../models/review.model");
 
 // Create legalDoc Admin y user
+
 const createLegalDoc = async (req, res) => {
   try {
     const legalDoc = await LegalDoc.create({
@@ -40,6 +41,7 @@ const createLegalDoc = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong", error});
   }
 };
+
 
 // Gel All LegalDocs - Admin
 const getAllLegalDocs = async (req, res) => {

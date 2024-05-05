@@ -49,7 +49,7 @@ function AdminLegalDocs() {
                             {data.map((item) => (
                                 <tr key={item.id}>
                                     <td className="align-middle text-center">{item.id}</td>
-                                    <td className="align-middle text-center">{item.document}</td>
+                                    <td className="align-middle text-center"><a href={item.document}><img src={item.document} width="200px" alt="" /></a></td>
                                     <td className={item.status === 'aceptado' ? 'align-middle text-center table-success' : (item.status === 'pendiente' ? 'align-middle text-center table-warning' : 'table-danger align-middle text-center')}>{item.status}</td>
                                     <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>

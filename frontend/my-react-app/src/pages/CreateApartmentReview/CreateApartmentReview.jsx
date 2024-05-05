@@ -77,11 +77,11 @@ const CreateApartmentReview = () => {
         district
       );
       setApartmentID(data.newApartment.id);
-      setSuccessMessage("¡Usuario creado exitosamente!");
+      setSuccessMessage("¡Apartamento creado exitosamente!");
       clearForm();
-      console.log("Usuario creado exitosamente");
+      console.log("Apartamento creado exitosamente");
     } catch (error) {
-      console.error("Error al crear usuario:", error.message);
+      console.error("Error al crear el apartamento:", error.message);
       setErrorMessage(
         "Ha ocurrido un error al crear el apartamento. Por favor, inténtelo de nuevo."
       ); // Establecer el mensaje de error
@@ -133,9 +133,9 @@ const CreateApartmentReview = () => {
       setLegalDocID(data);
       setSuccessMessageLegalDoc("¡Documento legal añadido exitosamente!");
       clearForm();
-      console.log("Usuario creado exitosamente");
+      console.log("Documento legal añadido exitosamente");
     } catch (error) {
-      console.error("Error al crear usuario:", error.message);
+      console.error("Error al añadir el documento legal:", error.message);
       setErrorMessageLegalDoc(
         "Ha ocurrido un error al subir el archivo. Por favor, inténtelo de nuevo."
       ); // Establecer el mensaje de error
@@ -247,7 +247,7 @@ const CreateApartmentReview = () => {
             </div>
             <div className="col-md-6">
               <label className="form-label">
-                Postal, piso, escalera y numero
+                Número, piso, escalera, etc
               </label>
               <input
                 type="text"
@@ -391,8 +391,8 @@ const CreateApartmentReview = () => {
               >
                 {isCreatingReview ? "Archivo subido" : "Subir imagen y enviar"}
               </button>
-              <img src={imageReview} alt="" />
             </div>
+            <img src={imageReview} alt="" />
           </form>
           {successMessageReview && (
             <div className="alert alert-success mt-3">

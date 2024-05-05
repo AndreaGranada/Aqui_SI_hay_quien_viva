@@ -58,7 +58,7 @@ function AdminReviews() {
                             {data.map((item) => (
                                 <tr key={item.id}>
                                     <td className="align-middle text-center">{item.id}</td>
-                                    <td className="align-middle text-center"><img src={item.media} alt="" /></td>
+                                    <td className="align-middle text-center"><a href={item.media}><img width="100px" height="100px"src={item.media} alt="" /></a></td>
                                     <td className="align-middle text-center">{item.title}</td>
                                     <td className="align-middle text-center">{item.content}</td>
                                     <td className="align-middle text-center">{item.datePost}</td>

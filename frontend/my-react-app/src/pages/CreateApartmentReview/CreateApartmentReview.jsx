@@ -28,6 +28,8 @@ const CreateApartmentReview = () => {
     const [successMessageLegalDoc, setSuccessMessageLegalDoc] = useState("");
     const [isCreatingLegalDoc, setIsCreatingLegalDoc] = useState(false);
     const [errorMessageLegalDoc, setErrorMessageLegalDoc] = useState("");
+    const [file, setFile] = useState("");
+    
 
     // VARIABLES PARA REVIEWS
     const [title, setTitle] = useState("");
@@ -96,13 +98,13 @@ const CreateApartmentReview = () => {
 
     const handleCreateLegalDoc = async (e) => {
         e.preventDefault();
-        setIsCreatingLegalDoc(false);
+        setIsCreatingLegalDoc(false); 
         if (!document) {
             setErrorMessageLegalDoc("Por favor,suba el archivo antes de continuar");
             return;
         }
         try {
-            let data = await createLegalDoc(document);
+            let data = await createLegalDoc(file);
             setLegalDocID(data.id)
             setSuccessMessageLegalDoc("¡Usuario creado exitosamente!");
             clearForm();
@@ -117,7 +119,7 @@ const CreateApartmentReview = () => {
 
     };
 
-    console.log(legalDocID)
+    console.log(file)
 
     // FORMULARIO PARA REVIEWS
 
@@ -256,8 +258,9 @@ const CreateApartmentReview = () => {
                                 <input
                                     type="file"
                                     className="form-control"
-                                    value={document}
-                                    onChange={(e) => setDocument(e.target.value)}
+                                    onChange={(e) => setFile(e.target.files[0])}
+                                    required
+                                    accept="image/png, image/jpeg, image/jpg, image/jfif"
                                 />
 
                                 <button type="submit" className="btn btn-secondary" disabled={isCreatingLegalDoc}>

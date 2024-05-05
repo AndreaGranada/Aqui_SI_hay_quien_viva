@@ -12,7 +12,7 @@ const Review = sequelize.define(
             allowNull: false,
         },
         media: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
         },
         datePost: {
             type: DataTypes.DATE,

@@ -20,7 +20,7 @@ const CreateApartmentReview = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   // VARIABLES PARA LEGAL DOC
-  const [document, setDocument] = useState("");
+  //const [document, setDocument] = useState("");
   const [legalDocID, setLegalDocID] = useState("");
   const [successMessageLegalDoc, setSuccessMessageLegalDoc] = useState("");
   const [isCreatingLegalDoc, setIsCreatingLegalDoc] = useState(false);
@@ -40,6 +40,8 @@ const CreateApartmentReview = () => {
   const [successMessageReview, setSuccessMessageReview] = useState("");
   const [isCreatingReview, setIsCreatingReview] = useState(false);
   const [errorMessageReview, setErrorMessageReview] = useState("");
+  const [fileReview, setFileReview] = useState("");
+  const [imageReview, setImageReview] = useState("");
 
   // FORMULARIO PARA APARTAMENTO
 
@@ -146,6 +148,23 @@ const CreateApartmentReview = () => {
 
   // FORMULARIO PARA REVIEWS
 
+  function previewFilesReview(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+      setImageReview(reader.result);
+    };
+  }
+
+  const handleOnChangeReview = (e) => {
+    const file = e.target.files[0];
+    setFileReview(file);
+    previewFilesReview(file);
+  };
+
+
+
   useEffect(() => {
     const fetchUserOwnProfile = async () => {
       try {
@@ -163,7 +182,7 @@ const CreateApartmentReview = () => {
   const handleCreateReview = async (e) => {
     e.preventDefault();
     setIsCreatingReview(false);
-    if (!title || !content || !media) {
+    if (!title || !content || !imageReview || !legalDocID || !apartmentID || !userID) {
       setErrorMessageReview(
         "Por favor, complete todos los campos antes de continuar."
       );
@@ -173,7 +192,7 @@ const CreateApartmentReview = () => {
       let data = await createReview(
         title,
         content,
-        media,
+        imageReview,
         legalDocID,
         apartmentID,
         userID
@@ -199,7 +218,7 @@ const CreateApartmentReview = () => {
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar/>
       <div className="container">
         <div className="crear-apartamento row mt-5 mb-5 bg-warning mx-0 p-5">
           <h2>Crear nuevo apartamento</h2>
@@ -360,8 +379,9 @@ const CreateApartmentReview = () => {
               <input
                 type="file"
                 className="form-control"
-                value={media}
-                onChange={(e) => setMedia(e.target.value)}
+                onChange={handleOnChangeReview}
+                required
+                accept="image/png, image/jpeg, image/jpg, image/jfif"
               />
 
               <button
@@ -371,6 +391,7 @@ const CreateApartmentReview = () => {
               >
                 {isCreatingReview ? "Archivo subido" : "Subir imagen y enviar"}
               </button>
+              <img src={imageReview} alt="" />
             </div>
           </form>
           {successMessageReview && (

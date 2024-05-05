@@ -1,6 +1,8 @@
 const Review = require("../models/review.model");
 const LegalDoc = require("../models/legalDoc.model");
 const Apartment = require("../models/apartment.model");
+const cloudinary = require('../../Cloudinary/index.cloudinary');
+
 
 // Create a review - admin y user
 const createReview = async (req, res) => {
@@ -30,6 +32,26 @@ const createReview = async (req, res) => {
       userId: idUser, // Establecer la relación con el usuario
     });
 
+    const uploadImage = await cloudinary.uploader.upload(
+      review.media,
+      {
+        upload_preset: "aquisi_unsigned",
+        public_id: `review`,
+        allowed_formasts: [
+          "png",
+          "jpg",
+          "jpeg",
+          "svg",
+          "ico",
+          "jfif",
+          "webp",
+          "pdf",
+        ],
+
+      }
+    )
+    review.media = uploadImage.secure_url
+    await review.save();
     return res
       .status(201)
       .json({ review, message: "Review created successfully" });

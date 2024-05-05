@@ -38,3 +38,6 @@ export async function getAllLegalDocs(token) {
       console.log('Error creating legal doc: ', error.message);
     }
   }
+
+
+  

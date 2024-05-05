@@ -29,7 +29,7 @@ const CreateApartmentReview = () => {
     const [isCreatingLegalDoc, setIsCreatingLegalDoc] = useState(false);
     const [errorMessageLegalDoc, setErrorMessageLegalDoc] = useState("");
     const [file, setFile] = useState("");
-    
+    const [image, setImage] = useState("");
 
     // VARIABLES PARA REVIEWS
     const [title, setTitle] = useState("");
@@ -96,17 +96,34 @@ const CreateApartmentReview = () => {
 
     // FORMULARIO PARA LEGAL DOCS
 
+function previewFiles(file) {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+  reader.onloadend = () => {
+    setImage(reader.result);
+  };
+}
+
+console.log(image);
+
+    const handleOnChange = (e) => {
+      const file = e.target.files[0];
+      setFile(file);
+      previewFiles(file);
+    };
+
     const handleCreateLegalDoc = async (e) => {
         e.preventDefault();
         setIsCreatingLegalDoc(false); 
-        if (!document) {
+        if (!image) {
             setErrorMessageLegalDoc("Por favor,suba el archivo antes de continuar");
             return;
         }
         try {
-            let data = await createLegalDoc(file);
+            let data = await createLegalDoc(image);
             setLegalDocID(data.id)
-            setSuccessMessageLegalDoc("¡Usuario creado exitosamente!");
+            setSuccessMessageLegalDoc("¡Documento legal añadido exitosamente!");
             clearForm();
             console.log("Usuario creado exitosamente");
         } catch (error) {
@@ -161,7 +178,7 @@ const CreateApartmentReview = () => {
 
     };
 
-    console.log(reviewID)
+    //console.log(reviewID)
 
 
 
@@ -258,7 +275,7 @@ const CreateApartmentReview = () => {
                                 <input
                                     type="file"
                                     className="form-control"
-                                    onChange={(e) => setFile(e.target.files[0])}
+                                    onChange={handleOnChange}
                                     required
                                     accept="image/png, image/jpeg, image/jpg, image/jfif"
                                 />
@@ -267,7 +284,7 @@ const CreateApartmentReview = () => {
                                     {isCreatingLegalDoc ? "Archivo subido" : "Subir archivo"}
                                 </button>
                             </div>
-                        
+                        <img src={image} alt="" />
                         </div>
                     </form>
                     {successMessageLegalDoc && (

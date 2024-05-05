@@ -30,6 +30,10 @@ const createLegalDoc = async (req, res) => {
       },
 
     );
+    legalDoc.document = uploadImage.secure_url;
+    await legalDoc.save();
+
+    console.log(uploadImage)
     return res.status(200).json({legalDoc, uploadImage});
   } catch (error) {
     console.log(error);

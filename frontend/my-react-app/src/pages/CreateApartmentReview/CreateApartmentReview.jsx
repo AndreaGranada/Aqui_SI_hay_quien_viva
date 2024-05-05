@@ -121,7 +121,9 @@ console.log(image);
             return;
         }
         try {
-            let data = await createLegalDoc(image);
+            let {legalDoc, uploadImage} = await createLegalDoc(image);
+            
+            console.log(uploadImage)
             setLegalDocID(data.id)
             setSuccessMessageLegalDoc("¡Documento legal añadido exitosamente!");
             clearForm();

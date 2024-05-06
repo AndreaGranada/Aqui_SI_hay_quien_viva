@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getReviewsByApartmentId } from '../../services/apartmentsReviews.service';
 import './ApartmentReview.css'
+
 
 function ApartmentReviews() {
   const { apartmentId } = useParams();
@@ -61,7 +62,9 @@ function ApartmentReviews() {
           ))}
         </div>
         <div className="col-12 text-center mb-5">
+          <Link to={`/user/create/${apartmentId}`}>
           <button type='button' className='text-center px- btn-reseñas-apartamento fw-bolder'>DEJAR RESEÑA</button>
+          </Link>
         </div>
       </div>
     </div>

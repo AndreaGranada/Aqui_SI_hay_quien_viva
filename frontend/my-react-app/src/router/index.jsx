@@ -28,6 +28,7 @@ import AdminDistrictsCreate from "../pages/AdminDistrictCreate/AdminDistrictsCre
 import UserSession from "../pages/UserSession/UserSession";
 import SignUpConfirmation from "../pages/SignUpConfirmation/SignUpConfirmation";
 import CreateApartmentReview from "../pages/CreateApartmentReview/CreateApartmentReview";
+import CreateReview from "../pages/CreateReview/CreateReview";
 
 //import NotFound from '../pages/NotFound'
 
@@ -279,6 +280,16 @@ const router = createBrowserRouter([
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "user" ? (
             <CreateApartmentReview/>
+          ) : (
+            <Navigate to="/login" />
+          ),
+      },
+      {
+        path: "/user/create/:idApartmentCreateReview", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "user" ? (
+            <CreateReview/>
           ) : (
             <Navigate to="/login" />
           ),

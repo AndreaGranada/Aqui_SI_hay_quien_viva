@@ -33,7 +33,7 @@ import PostReview from "../pages/PostReview/PostReview";
 import AdminReviewsCreate from "../pages/AdminReviewsCreate/AdminReviewsCreate";
 import AdminLegalDocsCreate from "../pages/AdminLegalDocsCreate/AdminLegalDocsCreate";
 import AdminReviewsEdit from "../pages/AdminReviewsEdit/AdminReviewsEdit";
-
+import AdminLegalDocsEdit from "../pages/AdminLegalDocsEdit/AdminLegalDocsEdit";
 //import NotFound from '../pages/NotFound'
 
 const router = createBrowserRouter([
@@ -324,6 +324,16 @@ const router = createBrowserRouter([
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "admin" ? (
             <AdminReviewsEdit/>
+          ) : (
+            <Navigate to="/" />
+          ),
+      },
+      {
+        path: "/admin/legaldocs/:idLegalDocsEdit", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminLegalDocsEdit/>
           ) : (
             <Navigate to="/" />
           ),

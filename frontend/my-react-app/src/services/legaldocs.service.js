@@ -39,3 +39,29 @@ export async function getAllLegalDocs(token) {
     }
   }
   
+  export const updateLegalDoc = async (id, token, formData) => {
+    try {
+        const response = await api.patch(`/legalDocs/${id}`, formData, {
+            headers: {
+                Authorization: `${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.log('Error updating legal doc: ', error.message);
+        throw error;
+    }
+  };
+
+  export async function getOneLegalDoc(id, token) {
+    try {
+        const response = await api.get(`/legalDocs/${id}`, {
+            headers: {
+                Authorization: `${token}`,
+            },
+        });
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}

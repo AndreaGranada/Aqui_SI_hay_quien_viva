@@ -65,6 +65,7 @@ function UserReviews() {
                     <h3>{review.title}</h3>
                     <p>{review.content}</p>
                     <p>Fecha de publicación: {review.datePost}</p>
+                    <p>{review.postedStatus}</p>
                     <Link to={`/user/legaldocs/${review.id}`}>
                     <p>Ver LegalDoc Asociada</p>
                     </Link>

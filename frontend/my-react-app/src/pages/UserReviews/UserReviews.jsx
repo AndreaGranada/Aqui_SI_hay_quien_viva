@@ -79,12 +79,6 @@ function UserReviews() {
               </div>
             </div>
           ))}
-
-        <div className="text-center mt-5">
-          <button className="btn btn-primary btn-create" onClick={() => console.log("Crear nueva reseña")}>
-            Crear nueva reseña
-          </button>
-        </div>
       </div>
       <Footer />
     </>

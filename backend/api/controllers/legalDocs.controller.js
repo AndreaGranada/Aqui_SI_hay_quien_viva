@@ -5,15 +5,9 @@ const Review = require("../models/review.model");
 // Create legalDoc Admin y user
 const createLegalDoc = async (req, res) => {
   try {
-    const legalDoc = await LegalDoc.create({
-      document: req.body.document,
-      attributes: {
-        exclude: ["status"],
-      },
-    });
-    delete req.body.status;
+
     const uploadImage = await cloudinary.uploader.upload(
-      legalDoc.document,
+      req.body.document,
       {
         upload_preset: "aquisi_unsigned",
         public_id: `document`,
@@ -30,8 +24,18 @@ const createLegalDoc = async (req, res) => {
       },
 
     );
-    legalDoc.document = uploadImage.secure_url;
-    await legalDoc.save();
+
+    const legalDoc = await LegalDoc.create({
+      document: uploadImage.secure_url,
+      attributes: {
+        exclude: ["status"],
+      },
+    });
+
+    delete req.body.status;
+    
+    // legalDoc.document = uploadImage.secure_url;
+    // await legalDoc.save();
 
     console.log(uploadImage)
     return res.status(200).json({legalDoc, uploadImage});

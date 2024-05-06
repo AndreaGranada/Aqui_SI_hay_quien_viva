@@ -21,19 +21,8 @@ const createReview = async (req, res) => {
       return res.status(404).json({ message: "Apartment not found" });
     }
 
-    // Crear la revisión y establecer las relaciones con el usuario, el documento legal y el apartamento
-    const review = await Review.create({
-      title: req.body.title,
-      content: req.body.content,
-      media: req.body.media,
-      datePost: currentDate,
-      legalDocId: legalDoc.id, // Establecer la relación con el documento legal
-      apartmentId: apartment.id, // Establecer la relación con el apartamento
-      userId: idUser, // Establecer la relación con el usuario
-    });
-
     const uploadImage = await cloudinary.uploader.upload(
-      review.media,
+      req.body.media,
       {
         upload_preset: "aquisi_unsigned",
         public_id: `review`,
@@ -50,8 +39,20 @@ const createReview = async (req, res) => {
 
       }
     )
-    review.media = uploadImage.secure_url
-    await review.save();
+    // Crear la revisión y establecer las relaciones con el usuario, el documento legal y el apartamento
+    const review = await Review.create({
+      title: req.body.title,
+      content: req.body.content,
+      media: uploadImage.secure_url,
+      datePost: currentDate,
+      legalDocId: legalDoc.id, // Establecer la relación con el documento legal
+      apartmentId: apartment.id, // Establecer la relación con el apartamento
+      userId: idUser, // Establecer la relación con el usuario
+    });
+
+
+    //review.media = uploadImage.secure_url
+    //await review.save();
     return res
       .status(201)
       .json({ review, message: "Review created successfully" });

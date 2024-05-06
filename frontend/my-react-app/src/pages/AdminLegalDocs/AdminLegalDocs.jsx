@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllLegalDocs, deleteLegalDocs } from "../../services/legaldocs.service";
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin";
+import { Link } from "react-router-dom";
+
 function AdminLegalDocs() {
 
     const [data, setData] = useState([]);
@@ -33,7 +35,7 @@ function AdminLegalDocs() {
     return (
         <>
             <div className="container-fluid row">
-                <MenuAdmin></MenuAdmin>
+                <MenuAdmin/>
                 <main className="name col ms-5 mt-5 mb-5">
                     <h2 className='mt-5 mb-5'>Documentos legales registrados</h2>
                     <table className='table table-striped table-hover mb-5 table-responsive'>
@@ -61,7 +63,9 @@ function AdminLegalDocs() {
                             ))}
                         </tbody>
                     </table>
+                    <Link to={"/admin/legaldoc/create"}>
                     <button type="button" className='btn btn-naranja w-100'>REGISTRAR UN DOCUMENTO LEGAL</button>
+                    </Link>
                 </main>
             </div>
         </>

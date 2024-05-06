@@ -32,6 +32,7 @@ import CreateReview from "../pages/CreateReview/CreateReview";
 import PostReview from "../pages/PostReview/PostReview";
 import AdminReviewsCreate from "../pages/AdminReviewsCreate/AdminReviewsCreate";
 import AdminLegalDocsCreate from "../pages/AdminLegalDocsCreate/AdminLegalDocsCreate";
+import AdminReviewsEdit from "../pages/AdminReviewsEdit/AdminReviewsEdit";
 
 //import NotFound from '../pages/NotFound'
 
@@ -315,6 +316,16 @@ const router = createBrowserRouter([
             <CreateReview/>
           ) : (
             <Navigate to="/login" />
+          ),
+      },
+      {
+        path: "/admin/reviews/:idReviewEdit", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminReviewsEdit/>
+          ) : (
+            <Navigate to="/" />
           ),
       },
 

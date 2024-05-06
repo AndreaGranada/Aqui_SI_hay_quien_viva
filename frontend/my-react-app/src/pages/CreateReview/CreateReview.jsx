@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { getOwnProfile } from "../../services/user.service";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
@@ -8,15 +8,11 @@ import { createLegalDoc } from "../../services/legaldocs.service";
 import { createReview } from "../../services/apartmentsReviews.service";
 
 
-
-
 function CreateReview() {
-
 
 //VARIABLES PARA APARTMENT
 const { idApartmentCreateReview } = useParams();
 const [infoApartment, setInfoApartment] = useState("")
-
 
  // VARIABLES PARA LEGAL DOC
   //const [document, setDocument] = useState("");
@@ -41,6 +37,8 @@ const [infoApartment, setInfoApartment] = useState("")
   const [errorMessageReview, setErrorMessageReview] = useState("");
   const [fileReview, setFileReview] = useState("");
   const [imageReview, setImageReview] = useState("");
+  const [showGoToHomeButton, setShowGoToHomeButton] = useState(false);
+
 
 
 useEffect(() => {
@@ -170,13 +168,13 @@ useEffect(() => {
       );
       setReviewID(data);
       console.log(data);
-      setSuccessMessageReview("¡Reseña creada exitosamente!");
-      console.log("Reseña creado exitosamente");
+      setSuccessMessageReview("¡Reseña creada exitosamente! En 24h te informaremos sobre su estado de publicación.");
+      setShowGoToHomeButton(true); // Mostrar el botón "Ir al inicio"
     } catch (error) {
       console.error("Error al crear la reseña:", error.message);
       setErrorMessageReview(
         "Ha ocurrido un error al crear la reseña Por favor, inténtelo de nuevo."
-      ); // Establecer el mensaje de error
+      ); 
     } finally {
       setIsCreatingReview(true); // Habilitar el botón de creación nuevamente
     }
@@ -291,13 +289,18 @@ useEffect(() => {
             <img src={imageReview} alt="" />
           </form>
           {successMessageReview && (
-            <div className="alert alert-success mt-3">
-              {successMessageReview}
-            </div>
-          )}
-          {errorMessageReview && (
-            <div className="alert alert-danger mt-3">{errorMessageReview}</div> // Mostrar el mensaje de error
-          )}
+          <div className="alert alert-success mt-3">
+            {successMessageReview}
+          </div>
+        )}
+        {errorMessageReview && (
+          <div className="alert alert-danger mt-3">{errorMessageReview}</div>
+        )}
+        {showGoToHomeButton && successMessageReview && (
+          <div className="text-center mt-3">
+            <Link to="/" className="btn btn-primary">Ir al inicio</Link>
+          </div>
+        )}
         </div>
       </div>
       <Footer></Footer>

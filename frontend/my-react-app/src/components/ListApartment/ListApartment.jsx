@@ -18,7 +18,7 @@ function ListApartment({sixApartment, setSixApartment}) {
     
     fetchData();
   }, []);
-
+console.log(sixApartment)
   return (
     <Container>
       <div className="row">

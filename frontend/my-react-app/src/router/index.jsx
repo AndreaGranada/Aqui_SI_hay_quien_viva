@@ -29,6 +29,7 @@ import UserSession from "../pages/UserSession/UserSession";
 import SignUpConfirmation from "../pages/SignUpConfirmation/SignUpConfirmation";
 import CreateApartmentReview from "../pages/CreateApartmentReview/CreateApartmentReview";
 import CreateReview from "../pages/CreateReview/CreateReview";
+import PostReview from "../pages/PostReview/PostReview";
 
 //import NotFound from '../pages/NotFound'
 
@@ -275,7 +276,7 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/user/create", // Ruta con parámetro
+        path: "/user/create", 
         element:
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "user" ? (
@@ -290,6 +291,16 @@ const router = createBrowserRouter([
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "user" ? (
             <CreateReview/>
+          ) : (
+            <Navigate to="/login" />
+          ),
+      },
+      {
+        path: "/postreview", 
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "user" ? (
+            <PostReview/>
           ) : (
             <Navigate to="/login" />
           ),

@@ -6,6 +6,9 @@ import { createApartmentAdmin } from "../../services/admin.service";
 import { createLegalDoc } from "../../services/legaldocs.service";
 import { createReview } from "../../services/apartmentsReviews.service";
 import { getOwnProfile } from "../../services/user.service";
+import { Link } from "react-router-dom";
+
+
 const CreateApartmentReview = () => {
   // VARIABLES PARA APARTAMENTO
   const [road, setRoad] = useState("");
@@ -42,6 +45,7 @@ const CreateApartmentReview = () => {
   const [errorMessageReview, setErrorMessageReview] = useState("");
   const [fileReview, setFileReview] = useState("");
   const [imageReview, setImageReview] = useState("");
+  const [showGoToHomeButton, setShowGoToHomeButton] = useState(false);
 
   // FORMULARIO PARA APARTAMENTO
 
@@ -163,8 +167,6 @@ const CreateApartmentReview = () => {
     previewFilesReview(file);
   };
 
-
-
   useEffect(() => {
     const fetchUserOwnProfile = async () => {
       try {
@@ -182,7 +184,14 @@ const CreateApartmentReview = () => {
   const handleCreateReview = async (e) => {
     e.preventDefault();
     setIsCreatingReview(false);
-    if (!title || !content || !imageReview || !legalDocID || !apartmentID || !userID) {
+    if (
+      !title ||
+      !content ||
+      !imageReview ||
+      !legalDocID ||
+      !apartmentID ||
+      !userID
+    ) {
       setErrorMessageReview(
         "Por favor, complete todos los campos antes de continuar."
       );
@@ -197,11 +206,9 @@ const CreateApartmentReview = () => {
         apartmentID,
         userID
       );
-      setReviewID(data);
-      console.log(data);
-      setSuccessMessageReview("¡Reseña creada exitosamente!");
+      setSuccessMessageReview("¡Reseña creada exitosamente! En 24h te informaremos sobre su estado de publicación.");
+      setShowGoToHomeButton(true); // Mostrar el botón "Ir al inicio"
       clearForm();
-      console.log("Reseña creado exitosamente");
     } catch (error) {
       console.error("Error al crear la reseña:", error.message);
       setErrorMessageReview(
@@ -211,14 +218,13 @@ const CreateApartmentReview = () => {
       setIsCreatingReview(true); // Habilitar el botón de creación nuevamente
     }
   };
-
   //console.log(reviewID)
 
   //console.log(userID)
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <div className="container">
         <div className="crear-apartamento row mt-5 mb-5 bg-warning mx-0 p-5">
           <h2>Crear nuevo apartamento</h2>
@@ -246,9 +252,7 @@ const CreateApartmentReview = () => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">
-                Número, piso, escalera, etc
-              </label>
+              <label className="form-label">Número, piso, escalera, etc</label>
               <input
                 type="text"
                 className="form-control"
@@ -395,13 +399,18 @@ const CreateApartmentReview = () => {
             <img src={imageReview} alt="" />
           </form>
           {successMessageReview && (
-            <div className="alert alert-success mt-3">
-              {successMessageReview}
-            </div>
-          )}
-          {errorMessageReview && (
-            <div className="alert alert-danger mt-3">{errorMessageReview}</div> // Mostrar el mensaje de error
-          )}
+          <div className="alert alert-success mt-3">
+            {successMessageReview}
+          </div>
+        )}
+        {errorMessageReview && (
+          <div className="alert alert-danger mt-3">{errorMessageReview}</div>
+        )}
+        {showGoToHomeButton && successMessageReview && (
+          <div className="text-center mt-3">
+            <Link to="/" className="btn btn-primary">Ir al inicio</Link>
+          </div>
+        )}
         </div>
       </div>
       <Footer></Footer>

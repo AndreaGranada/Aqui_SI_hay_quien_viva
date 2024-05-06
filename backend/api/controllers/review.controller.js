@@ -242,6 +242,7 @@ const getSixApartmentsWithReviews = async (req, res) => {
     const apartments = await Apartment.findAll({
       include: [{
         model: Review,
+        where: { postedStatus: 'yes' },
         order: [['datePost', 'DESC']], // Ordenar las reviews por fecha de publicación de forma descendente
         limit: 2, // Limitar a dos reviews
       }],

@@ -7,8 +7,8 @@ import { Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Image } from 'react-bootstrap';
-
 import imagen_logo from '../../assets/img/logo_amarillo.png';
+
 
 function NavBar() {
   const [roleUser, setRoleUser] = useState("");

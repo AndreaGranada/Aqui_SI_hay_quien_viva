@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllLegalDocs, deleteLegalDocs } from "../../services/legaldocs.service";
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin";
+import { Link } from "react-router-dom";
+
 function AdminLegalDocs() {
 
     const [data, setData] = useState([]);
@@ -33,7 +35,7 @@ function AdminLegalDocs() {
     return (
         <>
             <div className="container-fluid row">
-                <MenuAdmin></MenuAdmin>
+                <MenuAdmin/>
                 <main className="name col ms-5 mt-5 mb-5">
                     <h2 className='mt-5 mb-5'>Documentos legales registrados</h2>
                     <table className='table table-striped table-hover mb-5 table-responsive'>
@@ -49,7 +51,7 @@ function AdminLegalDocs() {
                             {data.map((item) => (
                                 <tr key={item.id}>
                                     <td className="align-middle text-center">{item.id}</td>
-                                    <td className="align-middle text-center">{item.document}</td>
+                                    <td className="align-middle text-center"><a href={item.document}><img src={item.document} width="200px" alt="" /></a></td>
                                     <td className={item.status === 'aceptado' ? 'align-middle text-center table-success' : (item.status === 'pendiente' ? 'align-middle text-center table-warning' : 'table-danger align-middle text-center')}>{item.status}</td>
                                     <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
@@ -61,7 +63,9 @@ function AdminLegalDocs() {
                             ))}
                         </tbody>
                     </table>
+                    <Link to={"/admin/legaldoc/create"}>
                     <button type="button" className='btn btn-naranja w-100'>REGISTRAR UN DOCUMENTO LEGAL</button>
+                    </Link>
                 </main>
             </div>
         </>

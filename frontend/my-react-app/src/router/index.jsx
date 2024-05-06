@@ -28,6 +28,10 @@ import AdminDistrictsCreate from "../pages/AdminDistrictCreate/AdminDistrictsCre
 import UserSession from "../pages/UserSession/UserSession";
 import SignUpConfirmation from "../pages/SignUpConfirmation/SignUpConfirmation";
 import CreateApartmentReview from "../pages/CreateApartmentReview/CreateApartmentReview";
+import CreateReview from "../pages/CreateReview/CreateReview";
+import PostReview from "../pages/PostReview/PostReview";
+import AdminReviewsCreate from "../pages/AdminReviewsCreate/AdminReviewsCreate";
+import AdminLegalDocsCreate from "../pages/AdminLegalDocsCreate/AdminLegalDocsCreate";
 
 //import NotFound from '../pages/NotFound'
 
@@ -254,6 +258,26 @@ const router = createBrowserRouter([
           ), 
       },
       {
+        path: "/admin/review/create",
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminReviewsCreate/>           
+          ) : (
+            <Navigate to="/" />
+          ), 
+      },
+      {
+        path: "/admin/legaldoc/create",
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "admin" ? (
+            <AdminLegalDocsCreate/>      
+          ) : (
+            <Navigate to="/" />
+          ), 
+      },
+      {
         path: "/admin/district/:idDistrictEdit", // Ruta con parámetro
         element:
           localStorage.getItem("token") &&
@@ -274,7 +298,7 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/user/create", // Ruta con parámetro
+        path: "/user/create", 
         element:
           localStorage.getItem("token") &&
             localStorage.getItem("role") === "user" ? (
@@ -283,6 +307,17 @@ const router = createBrowserRouter([
             <Navigate to="/login" />
           ),
       },
+      {
+        path: "/user/create/:idApartmentCreateReview", // Ruta con parámetro
+        element:
+          localStorage.getItem("token") &&
+            localStorage.getItem("role") === "user" ? (
+            <CreateReview/>
+          ) : (
+            <Navigate to="/login" />
+          ),
+      },
+
     ],
   },
 ]);

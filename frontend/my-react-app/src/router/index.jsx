@@ -29,7 +29,6 @@ import UserSession from "../pages/UserSession/UserSession";
 import SignUpConfirmation from "../pages/SignUpConfirmation/SignUpConfirmation";
 import CreateApartmentReview from "../pages/CreateApartmentReview/CreateApartmentReview";
 import CreateReview from "../pages/CreateReview/CreateReview";
-import PostReview from "../pages/PostReview/PostReview";
 import AdminReviewsCreate from "../pages/AdminReviewsCreate/AdminReviewsCreate";
 import AdminLegalDocsCreate from "../pages/AdminLegalDocsCreate/AdminLegalDocsCreate";
 

@@ -9,27 +9,27 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Image } from "react-bootstrap";
 import imagen_logo from "../../assets/img/logo_amarillo.png";
 
+
 function NavBar() {
   const [roleUser, setRoleUser] = useState("");
 
   useEffect(() => {
-    // Función para manejar el cambio de rol de usuario
     const handleRoleChange = () => {
       const role = localStorage.getItem("role");
       setRoleUser(role);
     };
 
-    // Ejecutar la función una vez al cargar el componente
     handleRoleChange();
 
-    // Escuchar cambios en localStorage
     window.addEventListener("storage", handleRoleChange);
 
-    // Limpiar el event listener cuando el componente se desmonta
     return () => {
       window.removeEventListener("storage", handleRoleChange);
     };
   }, []);
+
+  // Verificar si hay un token en el local storage
+  const isLoggedIn = localStorage.getItem("token");
 
   return (
     <Navbar expand="lg" className="bg-naranja fs-5">
@@ -59,28 +59,37 @@ function NavBar() {
                   Sobre Nosotros
                 </Link>
               </Nav.Link>
-              <NavDropdown
-                title="Mi perfil"
-                className="nav-link"
-                id="basic-nav-dropdown"
-                style={{ textDecoration: "none", color: "#403529" }}
-              >
-                <NavDropdown.Item></NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/signup">Registrate</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/login">Inicia Sesión</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  {roleUser === "admin" ? (
-                    <Link to="/admin">Panel de administrador</Link>
-                  ) : roleUser === "user" ? (
-                    <Link to="/user">Mi perfil</Link>
-                  ) : null}
-                </NavDropdown.Item>
-              </NavDropdown>
+              {isLoggedIn ? ( // Verificar si el usuario está loggeado
+                <NavDropdown
+                  title="Mi perfil"
+                  className="nav-link"
+                  id="basic-nav-dropdown"
+                  style={{ textDecoration: "none", color: "#403529" }}
+                >
+                  <NavDropdown.Item>
+                    {roleUser === "admin" ? (
+                      <Link to="/admin">Panel de administrador</Link>
+                    ) : roleUser === "user" ? (
+                      <Link to="/user">Mi perfil</Link>
+                    ) : null}
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <NavDropdown
+                  title="Mi perfil"
+                  className="nav-link"
+                  id="basic-nav-dropdown"
+                  style={{ textDecoration: "none", color: "#403529" }}
+                  
+                >
+                  <NavDropdown.Item>
+                    <Link to="/signup">Registrate</Link>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item>
+                    <Link to="/login">Inicia Sesión</Link>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
             </Nav>
           </Navbar.Collapse>
         </div>

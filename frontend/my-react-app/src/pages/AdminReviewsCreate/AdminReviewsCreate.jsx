@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MenuAdmin from "../../components/MenuAdmin/MenuAdmin";
 import { createReview } from "../../services/apartmentsReviews.service";
 
@@ -8,7 +8,6 @@ function AdminReviewsCreate() {
   const [legalDocId, setLegalDocId] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [media, setMedia] = useState("");
   const [successMessageReview, setSuccessMessageReview] = useState("");
   const [isCreatingReview, setIsCreatingReview] = useState(false);
   const [errorMessageReview, setErrorMessageReview] = useState("");
@@ -29,20 +28,6 @@ function AdminReviewsCreate() {
     setFileReview(file);
     previewFilesReview(file);
   };
-
-  useEffect(() => {
-    const fetchUserOwnProfile = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const { id } = await getOwnProfile(token);
-        setUserID(id);
-      } catch (error) {
-        console.error("Error al obtener los datos del usuario:", error);
-      }
-    };
-
-    fetchUserOwnProfile();
-  }, []);
 
   const handleCreateReview = async (e) => {
     e.preventDefault();

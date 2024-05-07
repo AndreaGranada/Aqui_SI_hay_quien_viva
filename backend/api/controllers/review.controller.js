@@ -5,17 +5,20 @@ const cloudinary = require('../../Cloudinary/index.cloudinary');
 
 
 // Create a review - admin y user
+
 const createReview = async (req, res) => {
   try {
-    const idUser = res.locals.user.id;
+    let idUser = req.body.userId; 
+    if (!idUser) {
+      idUser = res.locals.user.id; 
+    }
     const currentDate = new Date();
-    // Buscar el documento legal por su ID
+    
     const legalDoc = await LegalDoc.findByPk(req.body.legalDocId);
     if (!legalDoc) {
       return res.status(404).json({ message: "Legal document not found" });
     }
 
-    // Buscar el apartamento por su ID
     const apartment = await Apartment.findByPk(req.body.apartmentId);
     if (!apartment) {
       return res.status(404).json({ message: "Apartment not found" });
@@ -39,20 +42,17 @@ const createReview = async (req, res) => {
 
       }
     )
-    // Crear la revisión y establecer las relaciones con el usuario, el documento legal y el apartamento
+
     const review = await Review.create({
       title: req.body.title,
       content: req.body.content,
       media: uploadImage.secure_url,
       datePost: currentDate,
-      legalDocId: legalDoc.id, // Establecer la relación con el documento legal
-      apartmentId: apartment.id, // Establecer la relación con el apartamento
-      userId: idUser, // Establecer la relación con el usuario
+      legalDocId: legalDoc.id,
+      apartmentId: apartment.id,
+      userId: idUser,
     });
 
-
-    //review.media = uploadImage.secure_url
-    //await review.save();
     return res
       .status(201)
       .json({ review, message: "Review created successfully" });
@@ -62,7 +62,10 @@ const createReview = async (req, res) => {
   }
 };
 
-// Gell all reviews - user y admin
+
+
+
+// Get all reviews - user y admin
 const getAllReviews = async (req, res) => {
   try {
     const review = await Review.findAll();

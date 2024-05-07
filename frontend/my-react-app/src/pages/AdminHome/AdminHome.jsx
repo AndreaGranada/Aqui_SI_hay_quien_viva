@@ -34,25 +34,31 @@ const AdminHome = () => {
                                     <table className="table table-striped table-hover mb-5">
                                         <thead>
                                             <tr className="table-dark table-marron">
-                                                <th className="col-1">Road</th>
-                                                <th className="col-2">Road Name</th>
-                                                <th className="col-1">ID del Apartamento</th>
-                                                <th className="col-5">Review</th>
+                                                <th className="col-1">ID</th>
+                                                <th className="col-2">Imagen</th>
+                                                <th className="col-1">Titulo</th>
+                                                <th className="col-5">Contenido</th>
+                                                <th className="col-1">Fecha</th>
+                                              
                                                 <th className="col-1">PostedStatus</th>
-                                                <th className="col-2"></th>
+                                                <th className="col-1"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {apartment.reviews.map((review, index) => (
                                                 <tr key={index} className={review.postedStatus === 'no' ? 'table-danger' : ''}>
-                                                    <td className="align-middle text-center">{apartment.road}</td>
-                                                    <td className="align-middle text-center">{apartment.roadName}</td>
-                                                    <td className="align-middle text-center">{apartment.id}</td>
+                                                    <td className="align-middle text-center">{review.id}</td>
+                                                    <td className="align-middle text-center">
+                                                        <img src={review.media} width="150px" alt="" />
+                                                    </td>
+                                                    <td className="align-middle text-center">{review.title}</td>
                                                     <td className="align-middle text-center">{review.content}</td>
+                                                    <td className="align-middle text-center">{review.datePost}</td>
+                                                    
                                                     <td className="align-middle text-center">{review.postedStatus}</td>
                                                     <td className="text-center align-middle">
                                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                                            <Link to={`/admin/apartment/${review.id}`}> <button className="btn-naranja btn">VER MÁS</button></Link>
+                                                            <Link to={`/admin/reviews/${review.id}`}> <button className="btn-naranja btn">EDITAR</button></Link>
                                                         </div>
                                                     </td> {/* Botón para cada fila */}
                                                 </tr>

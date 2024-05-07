@@ -55,7 +55,7 @@ function AdminLegalDocs() {
                                     <td className={item.status === 'aceptado' ? 'align-middle text-center table-success' : (item.status === 'pendiente' ? 'align-middle text-center table-warning' : 'table-danger align-middle text-center')}>{item.status}</td>
                                     <td className="text-center align-middle">
                                         <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
-                                            <button className="btn-secondary btn me-3 align-middle">Editar</button>
+                                            <Link to={`/admin/legaldocs/${item.id}`}><button className="btn-secondary btn me-3 align-middle">Editar</button></Link>
                                             <button className="btn-danger btn me-3 align-middle" onClick={() => handleDelete(item.id)}>Borrar</button>
                                         </div>
                                     </td>

@@ -108,3 +108,17 @@ export const createReview = async (title, content, media, legalDocId, apartmentI
     console.log('Error creating review: ', error.message);
   }
 }
+
+export const updateReview = async (id, token, formData) => {
+  try {
+      const response = await api.patch(`/reviews/${id}`, formData, {
+          headers: {
+              Authorization: `${token}`,
+          },
+      });
+      return response.data;
+  } catch (error) {
+      console.log('Error updating review: ', error.message);
+      throw error;
+  }
+};

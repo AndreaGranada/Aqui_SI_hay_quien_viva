@@ -96,9 +96,9 @@ function AdminReviews() {
                       className="d-flex justify-content-center align-items-center"
                       style={{ height: "100%" }}
                     >
-                      <button className="btn-secondary btn me-3 align-middle">
+                     <Link to={`/admin/reviews/${item.id}`}> <button className="btn-secondary btn me-3 align-middle">
                         Editar
-                      </button>
+                      </button></Link>
                       <button
                         className="btn-danger btn me-3 align-middle"
                         onClick={() => handleDelete(item.id)}

@@ -39,7 +39,6 @@ const AdminHome = () => {
                                                 <th className="col-1">Titulo</th>
                                                 <th className="col-5">Contenido</th>
                                                 <th className="col-1">Fecha</th>
-                                              
                                                 <th className="col-1">PostedStatus</th>
                                                 <th className="col-1"></th>
                                             </tr>

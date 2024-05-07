@@ -5,6 +5,7 @@ import "./AdminSession.css"
 import imagen_logo from '../../assets/img/logo_marron.png';
 import { Link } from "react-router-dom";
 
+
 const AdminSession = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate(); // Instanciar el hook navigate
@@ -19,6 +20,7 @@ const AdminSession = () => {
         
         // Redirigir al usuario al inicio
         navigate("/"); // Redirigir al usuario a la página de inicio
+        window.location.reload(); // Recarga la página después de cerrar sesión
     };
 
     return (

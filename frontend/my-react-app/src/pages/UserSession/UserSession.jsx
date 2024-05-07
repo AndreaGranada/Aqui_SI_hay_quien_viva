@@ -8,54 +8,54 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 
 
-
 const UserSession = () => {
-    const [userName, setUserName] = useState("");
-    const navigate = useNavigate();
-  
-    useEffect(() => {
-      const name = localStorage.getItem("name");
-      setUserName(name);
-    }, []);
-  
-    const handleLogout = () => {
-      localStorage.removeItem("token");
-      localStorage.removeItem("name");
-      localStorage.removeItem("role");
-      navigate("/");
-    };
-  
-    return (
-      <>
-        <div>
-          <NavBar />
-          <main className="name col ms-5 mt-5 mb-5">
-            <div className="d-flex justify-content-center align-items-center vh-100">
-              <div className="cerrar-sesion text-center">
-                <img src={imagen_logo} alt="" />
-                <h2 className="mb-3">¡Hola {userName || "usuario"}!</h2>
-                <h3 className="mb-4">¿Quieres cerrar sesión?</h3>
-                <div className="botones">
-                  <button
-                    type="button"
-                    className="btn btn-secondary me-2"
-                    onClick={handleLogout}
-                  >
-                    Cerrar sesión
+  const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    setUserName(name);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("role");
+    navigate("/");
+    window.location.reload(); // Recarga la página después de cerrar sesión
+  };
+
+  return (
+    <>
+      <div>
+        <NavBar />
+        <main className="name col ms-5 mt-5 mb-5">
+          <div className="d-flex justify-content-center align-items-center vh-100">
+            <div className="cerrar-sesion text-center">
+              <img src={imagen_logo} alt="" />
+              <h2 className="mb-3">¡Hola {userName || "usuario"}!</h2>
+              <h3 className="mb-4">¿Quieres cerrar sesión?</h3>
+              <div className="botones">
+                <button
+                  type="button"
+                  className="btn btn-secondary me-2"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </button>
+                <Link to="/user">
+                  <button type="button" className="btn btn-danger">
+                    Cancelar
                   </button>
-                  <Link to="/user">
-                    <button type="button" className="btn btn-danger">
-                      Cancelar
-                    </button>
-                  </Link>
-                </div>
+                </Link>
               </div>
             </div>
-          </main>
-          <Footer />
-        </div>
-      </>
-    );
-  };
-  
-  export default UserSession;
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+};
+
+export default UserSession;

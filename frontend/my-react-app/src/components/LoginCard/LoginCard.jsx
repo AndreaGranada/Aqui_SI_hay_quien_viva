@@ -9,7 +9,6 @@ import { login } from '../../services/auth.service';
 import { useState } from 'react';
 import { Card } from 'react-bootstrap';
 
-
 function LoginCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +32,7 @@ function LoginCard() {
         localStorage.setItem("name", data.user.name);
         localStorage.setItem("role", data.user.role);
         navigate("/");
+        window.location.reload(); // Recarga la página después de iniciar sesión
       }
     } catch (error) {
       console.log(error);
@@ -41,7 +41,7 @@ function LoginCard() {
 
   return (
     <>
-    <NavBar/>
+      <NavBar/> {/* Asegúrate de incluir el NavBar */}
       <Container className="mt-5 altura">
         <Card className='login'>
           <Card.Body>
@@ -78,7 +78,7 @@ function LoginCard() {
           </Card.Body>
         </Card>
       </Container>
-      <Footer/>
+      <Footer/> {/* Asegúrate de incluir el Footer */}
     </>
   );
 }

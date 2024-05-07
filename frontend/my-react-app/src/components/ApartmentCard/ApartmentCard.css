@@ -15,6 +15,7 @@
     margin: 10px;
     padding: 5px;
    background-color:  #FFFF; 
+   min-height: 130px;
 }
 
 .btn-reseñas{

@@ -22,10 +22,23 @@ ul{
 }
 
 .reseña-apartamento{
-    background-color:#F2B544; 
+    background-color:#f8deae; 
     box-shadow: 5px 5px 5px rgb(210, 210, 210);
+    margin: 0 auto;
 }
 
 .white{
     color: white;
+}
+
+.titulo-reseñas{
+    background-color:  #F25D27;
+    color: #F2E963;
+}
+.btn-leer{
+    background-color: #403529;
+    color: #F2E963;
+    padding: 10px 60px;
+    border-radius: 10px;
+    margin: 0 auto;
 }

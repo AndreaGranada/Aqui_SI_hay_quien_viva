@@ -17,8 +17,8 @@ function ApartmentCard({ apartment }) {
     <div className="col-md-4 apartamento col-sm-12 align-items-stretch mb-5">
       <div className="card_apartment">
         <div className="titulo_reseña text-center mb-4">
-          <h3>{apartment.roadName}</h3>
-          <h4>{apartment.road}</h4>
+          <h3>{apartment.road}</h3>
+          <h4>{apartment.roadName}</h4>
         </div>
         {apartment.reviews.map(review => (
           // Verifica si el review.postedStatus es "no", si es así, no muestra la revisión

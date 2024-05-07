@@ -1,0 +1,31 @@
+.crear-apartamento {
+    background-color: #F2B544;
+}
+
+.crear-legaldoc {
+    background-color: #F2E963;
+}
+
+.crear-review {
+    background-color: #F2B544;
+}
+
+.btn-crear {
+    background-color: #403529;
+    color: #F2E963;
+    border: 1px solid #F2E963;;
+}
+
+.btn-crear:hover {
+    background-color: #F25D27;
+    color: #403529;
+    border: 1px solid #403529;;
+}
+
+.info-crear{
+    background-color: #403529;
+    color: #F2E963;
+}
+ .c-a{
+    color: #F2E963;
+ }

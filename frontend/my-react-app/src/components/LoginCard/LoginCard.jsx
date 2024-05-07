@@ -43,37 +43,37 @@ function LoginCard() {
     <>
       <NavBar/> {/* Asegúrate de incluir el NavBar */}
       <Container className="mt-5 altura">
-        <Card className='login'>
+        <Card className='login w-75'>
           <Card.Body>
-            <Card.Title className="text-center mb-4">Logéate</Card.Title>
+            <Card.Title className="text-center mb-4">Iniciar Sesión</Card.Title>
 
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Correo electrónico</Form.Label>
                 <Form.Control
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Correo eletrónico"
                   value={email}
                   onChange={handleEmail}
                 />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Contraseña</Form.Label>
                 <Form.Control
                   type="password"
-                  placeholder="Password"
+                  placeholder="Contraseña"
                   value={password}
                   onChange={handlePassword}
                 />
               </Form.Group>
 
-              <Button variant="primary" type="login" onClick={handleLogin}>
-                LogIn
+              <Button variant="primary" type="login" onClick={handleLogin} className="btn-crear">
+                Entrar
               </Button>
             </Form>
             <Link to={"/signup"}>
-              <p>Quiero crearme una cuenta</p>
+              <p>*¿Aún no te has registrado?<u>Quiero crearme una cuenta</u></p>
             </Link>
           </Card.Body>
         </Card>

@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import { getApartmentById } from "../../services/apartment.service";
 import { createLegalDoc } from "../../services/legaldocs.service";
 import { createReview } from "../../services/apartmentsReviews.service";
-
+import "./CreateReview.css"
 
 function CreateReview() {
 
@@ -192,25 +192,14 @@ useEffect(() => {
     <>
       <NavBar/>
       <div className="container">
-        <div className="info-apartamento row mt-5 mb-5 bg-warning mx-0 p-5">
-          <h2>Crear nuevo apartamento</h2>
-          <div  className="row g-3">
-            <div className="col-md-6">
-                <h1>{infoApartment.road} {infoApartment.roadName}</h1>
-
-            </div>
-            
-            <div className="col-md-6">
-              <h3>{infoApartment.extraInfo}</h3>
-            </div>
-            <div className="col-md-6">
-            <h3>{infoApartment.postalCode}</h3>
-            </div>
-          </div>
-          
+        <div className="info-crear text-center row mt-5 mb-5 mx-0 p-3">
+          <h2 className="p-3">Crear nueva reseña</h2>
+          <h3 className="p-3">{infoApartment.road} {infoApartment.roadName}, {infoApartment.extraInfo}, {infoApartment.postalCode}</h3>
+          <h4 className="p-3">Sigue los siguientes pasos. </h4>
+          <p className="p-3 c-a">*Recuerda que una vez creada la reseña será publicada en un plazo inferior a 24h laborables después de que nuestro equipo verifique la información adjuntada al apartamento que confirme que ha vivido en él</p>
         </div>
-        <div className="crear-legaldoc row mt-5 mb-5 bg-primary mx-0 p-5">
-          <h2>Sube un documento que verifique que has vivido en el piso</h2>
+        <div className="crear-legaldoc row mt-5 mb-5 mx-0 p-5">
+          <h2><strong>PASO 1: </strong>Sube un documento que verifique que has vivido en el piso</h2>
           <form onSubmit={handleCreateLegalDoc} className="row g-3">
             <div className="col-md-12">
               <div className="input-group">
@@ -225,7 +214,7 @@ useEffect(() => {
 
                 <button
                   type="submit"
-                  className="btn btn-secondary"
+                  className="btn btn-crear"
                   disabled={isCreatingLegalDoc}
                 >
                   {isCreatingLegalDoc ? "Archivo subido" : "Subir archivo"}
@@ -245,8 +234,8 @@ useEffect(() => {
             </div> // Mostrar el mensaje de error
           )}
         </div>
-        <div className="crear-review row mt-5 mb-5 bg-light mx-0 p-5">
-          <h2>Crear reseña para el apartamento</h2>
+        <div className="crear-review row mt-5 mx-0 p-5 mb-5">
+          <h2><strong>PASO 2: </strong>Crear reseña para el apartamento</h2>
           <form onSubmit={handleCreateReview} className="row g-3">
             <div className="col-md-12">
               <label className="form-label">Titulo de la reseña</label>
@@ -280,7 +269,7 @@ useEffect(() => {
 
               <button
                 type="submit"
-                className="btn btn-secondary"
+                className="btn btn-crear"
                 disabled={isCreatingReview}
               >
                 {isCreatingReview ? "Archivo subido" : "Subir imagen y enviar"}

@@ -60,7 +60,8 @@ function UserReviews() {
   return (
     <>
       <NavBar />
-      <div className="container">
+      <div className="container mt-5 mb-5">
+        <div className="mis_reseñas">
         {reviewData &&
           reviewData.map((review) => (
             <div className="row mb-5 reseña-review" key={review.id}>
@@ -73,21 +74,22 @@ function UserReviews() {
                     <h3>{review.title}</h3>
                     <p>{review.content}</p>
                     <p>Fecha de publicación: {formatDate(review.datePost)}</p>
-                    <p>{review.postedStatus}</p>
+                    <p>¿Está publicada? {review.postedStatus}</p>
                     <Link to={`/user/legaldocs/${review.id}`}>
-                    <p>Ver LegalDoc Asociada</p>
+                    <p><u>Ver LegalDoc Asociada</u></p>
                     </Link>
                   </div>
-                  <button
-                    className="btn btn-sm btn-danger btn-delete"
+                  <button width="20%"
+                    className="btn btn-danger btn-delete ms-3"
                     onClick={() => handleDeleteReview(review.id)}
                   >
-                    Eliminar reseña
+                    Eliminar
                   </button>
                 </div>
               </div>
             </div>
           ))}
+          </div>
       </div>
       <Footer />
     </>

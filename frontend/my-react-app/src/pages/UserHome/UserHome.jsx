@@ -48,63 +48,66 @@ function UserHome() {
     <>
       <NavBar />
       <Container className="mt-5 contenedor">
-        <div className="titulo-perfil w-100  p-4 text-center">
-          <h2>Tu perfil</h2>
-        </div>
-        <div className="info-perfil row">
-          <div className="col-md-4">
-            <img width="100%" src={imagenJuan} alt="" />
-          </div>
-          <div className="col-md-8">
-            {profileData && (
-              <h2 className='mt-5'>{profileData.name} {profileData.surname}</h2>
-            )}
-             {profileData && (
-            <h4 className='mt-5'>DNI: {profileData.dni}</h4>
-          )}
-          {profileData && (
-            <h4 className=''>Email: {profileData.email}</h4>
-          )}
-           {profileData && (
-            <h4 className=''>Teléfono: {profileData.phone}</h4>
-          )}
+        <div className="mi-perfil">
 
-            <div className="botones row mt-5">
-              <div className='col-xs-12 col-md-4'>
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="mr-md-3 mb-3 boton"
-                  onClick={handleReviewClick}
-                >
-                  Mis Reseñas
-                </Button>
-              </div>
-              <div className='col-xs-12 col-md-4'>
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="mr-md-3 mb-3 boton"
-                  onClick={handleProfileClick}
-                >
-                  Datos Personales
-                </Button>
-              </div>
-              <div className='col-xs-12 col-md-4'>
-                <Link to={"/user/session"}>
+
+          <div className="titulo-perfil w-100  mt-5 mb-2 p-4 text-center">
+            <h2>Tu perfil</h2>
+          </div>
+          <div className="info-perfil row">
+            <div className="col-md-4">
+              <img width="100%" src={imagenJuan} alt="" />
+            </div>
+            <div className="col-md-8">
+              {profileData && (
+                <h2 className='mt-5'>{profileData.name} {profileData.surname}</h2>
+              )}
+              {profileData && (
+                <h4 className='mt-5'>DNI: {profileData.dni}</h4>
+              )}
+              {profileData && (
+                <h4 className=''>Email: {profileData.email}</h4>
+              )}
+              {profileData && (
+                <h4 className=''>Teléfono: {profileData.phone}</h4>
+              )}
+
+              <div className="botones row mt-5">
+                <div className='col-xs-12 col-md-4'>
                   <Button
                     variant="primary"
                     size="lg"
-                    className="mb-3 boton"
+                    className="mr-md-3 mb-3 boton"
+                    onClick={handleReviewClick}
                   >
-                    Cerrar Sesión
+                    Mis Reseñas
                   </Button>
-                </Link>
+                </div>
+                <div className='col-xs-12 col-md-4'>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="mr-md-3 mb-3 boton"
+                    onClick={handleProfileClick}
+                  >
+                    Datos Personales
+                  </Button>
+                </div>
+                <div className='col-xs-12 col-md-4'>
+                  <Link to={"/user/session"}>
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      className="mb-3 boton"
+                    >
+                      Cerrar Sesión
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-       
       </Container>
       <Footer />
     </>

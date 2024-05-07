@@ -5,6 +5,8 @@ import Footer from "../../components/Footer/Footer";
 import { Form, Button} from "react-bootstrap";
 import "./UserProfile.css"
 
+
+
 const UserProfile = () => {
   const [profileData, setProfileData] = useState(null);
   const [name, setName] = useState("");

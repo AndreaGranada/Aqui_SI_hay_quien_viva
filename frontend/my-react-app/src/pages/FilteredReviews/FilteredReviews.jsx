@@ -110,61 +110,7 @@ const FilteredReviews = () => {
         </div>
         <h2 className="text-center mt-5">Resultados de la búsqueda:</h2>
         <div>
-          {/* {filteredReviews &&
-            filteredReviews.map((review, index) => (
-              <div className="col-12 mt-5 mb-5 p-5 reseña-apartamento">
-                <div key={index}>
-                  <h3 className="text-center">
-                    <strong>
-                      {review.road} {review.roadName}
-                    </strong>
-                  </h3>
-                  <p className="text-center">
-                    <strong>Código Postal: </strong>
-                    {review.postalCode}
-                  </p>
-                  <p className="text-center">
-                    <strong>Distrito:</strong> {review.districtId}{" "}
-                  </p>
-                  <p className="text-center">
-                    <strong>Detalles:</strong> {review.extraInfo}
-                  </p>
-                  <div>
-                    {review.reviews.map(
-                      (reviewItem, reviewIndex) =>
-                        // Verifica si el reviewItem.postedStatus es "yes", si es así, muestra la revisión
-                        reviewItem.postedStatus === "yes" && (
-                          <div key={reviewIndex}>
-                            <div className="row reseñas-filtro p-3 mt-5 align-items-center">
-                              <div className="imagen-reseña col-3">
-                                <img
-                                  src={reviewItem.media}
-                                  width="100%"
-                                  height="auto"
-                                  alt={reviewItem.title}
-                                ></img>
-                              </div>
-                              <div className="col-9">
-                                <h5>{reviewItem.title}</h5>
-                                <p>{reviewItem.content}</p>
-                                <p>{reviewItem.datePost}</p>
-                              </div>
-                            </div>
-                          </div>
-                        )
-                    )}
-                    <Link to={`/apartment/${review.id}`}>
-                      <button
-                        style={{ width: "100%" }}
-                        className="text-center mt-5"
-                      >
-                        QUIERO DEJAR UNA RESEÑA
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))} */}
+         
           {filteredReviews &&
             filteredReviews.map((review, index) => (
               <div className="col-12 mt-5 mb-5 reseña-apartamento w-75" key={index}>

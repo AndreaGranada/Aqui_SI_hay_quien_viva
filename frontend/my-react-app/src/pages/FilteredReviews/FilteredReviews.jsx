@@ -110,7 +110,7 @@ const FilteredReviews = () => {
         </div>
         <h2 className="text-center mt-5">Resultados de la búsqueda:</h2>
         <div>
-          {filteredReviews &&
+          {/* {filteredReviews &&
             filteredReviews.map((review, index) => (
               <div className="col-12 mt-5 mb-5 p-5 reseña-apartamento">
                 <div key={index}>
@@ -162,6 +162,58 @@ const FilteredReviews = () => {
                       </button>
                     </Link>
                   </div>
+                </div>
+              </div>
+            ))} */}
+          {filteredReviews &&
+            filteredReviews.map((review, index) => (
+              <div className="col-12 mt-5 mb-5 reseña-apartamento w-75" key={index}>
+                <div className="titulo-reseñas p-2">
+
+
+                  <h3 className="text-center titulo-reseñas white">
+                    <strong className="white">
+                      {review.road} {review.roadName} {review.extraInfo}
+                    </strong>
+                  </h3>
+                  <p className="text-center titulo-reseñas">
+                    <strong className="white">Código Postal: </strong>
+                    {review.postalCode} <strong className="white">Distrito:</strong> {review.districtId}{" "}
+                  </p>
+                </div>
+                {review.reviews.length > 0 && (
+                  <div className="varias-reseñas">
+                    <p className="text-center">Tiene {review.reviews.length} reseña(s).</p>
+                    <div className="row">
+                      {review.reviews.map(
+                        (reviewItem, reviewIndex) =>
+                          // Mostrar miniaturas de las imágenes junto a los títulos de las reseñas
+                          reviewItem.postedStatus === "yes" && (
+                            <div key={reviewIndex} className="col-6 d-flex justify-content-center align-items-start">
+                              <div className="text-center">
+                                <img
+                                  src={reviewItem.media}
+                                  alt={reviewItem.title}
+                                  width="100%"
+
+                                  className="mb-2"
+                                />
+                                <p>
+                                  <em>{reviewItem.title}</em>
+                                </p>
+                              </div>
+                            </div>
+                          )
+                      )}
+                    </div>
+                  </div>
+                )}
+                <div className="text-center">
+                  <Link to={`/apartment/${review.id}`}>
+                    <button className="text-center mt-2 mb-4 w-75 btn-leer">
+                      LEER RESEÑAS
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

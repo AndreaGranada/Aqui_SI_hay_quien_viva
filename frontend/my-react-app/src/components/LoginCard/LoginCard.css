@@ -1,6 +1,8 @@
 .login{
     background-color: #F2E963;
+    margin: 0 auto;
+    margin-top: 200px;
 }
 .altura{
-    min-height: 75vh;
+    min-height: 60vh;
 }

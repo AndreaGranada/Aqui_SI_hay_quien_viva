@@ -68,7 +68,7 @@ function AdminReviewsEdit() {
                             </label> 
 
                         </div>
-                        <div className="col-4">
+                        <div className="col-2">
                             <label className='form-label w-100'>
                                 Fecha de publicacion:
                                 <input type="text" name="dni" value={formData.datePost || ''} onChange={handleChange} readOnly disabled className='form-control' />
@@ -94,6 +94,13 @@ function AdminReviewsEdit() {
                                 <input type="text" name="apartmentId" value={formData.apartmentId || ''} onChange={handleChange} className='form-control' />
                             </label>
                         </div>
+                        <div className="col-2">
+                            <label className='form-label w-100'>
+                                ID Usuario:
+                                <input type="text" name="userId" value={formData.userId || ''} onChange={handleChange} className='form-control' />
+                            </label>
+                        </div>
+
 
                         <div className="col-6 text-justify">
                             <label className='form-label text-justify w-100'>

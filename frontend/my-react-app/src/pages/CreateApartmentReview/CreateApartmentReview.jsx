@@ -7,7 +7,7 @@ import { createLegalDoc } from "../../services/legaldocs.service";
 import { createReview } from "../../services/apartmentsReviews.service";
 import { getOwnProfile } from "../../services/user.service";
 import { Link } from "react-router-dom";
-
+import "./CreateApartmentReview.css"
 
 const CreateApartmentReview = () => {
   // VARIABLES PARA APARTAMENTO
@@ -226,8 +226,13 @@ const CreateApartmentReview = () => {
     <>
       <NavBar />
       <div className="container">
-        <div className="crear-apartamento row mt-5 mb-5 bg-warning mx-0 p-5">
-          <h2>Crear nuevo apartamento</h2>
+        <div className="info-crear row mt-5 mb-5 p-3 text-center">
+          <h2 className="p-3">¿Quieres dar de alta un apartamento y dejar una reseña?</h2>
+          <h4 className="p-3">Sigue los siguientes pasos. </h4>
+          <p className="p-3 c-a">*Recuerda que una vez creada la reseña será publicada en un plazo inferior a 24h laborables después de que nuestro equipo verifique la información adjuntada al apartamento que confirme que ha vivido en él</p>
+        </div>
+        <div className="crear-apartamento row mt-5 mb-5 mx-0 p-5">
+          <h2><strong>PASO 1:</strong> Da de alta el apartamento</h2>
           <form onSubmit={handleCreateApartment} className="row g-3">
             <div className="col-md-6">
               <label className="form-label">Tipo de vía</label>
@@ -305,7 +310,7 @@ const CreateApartmentReview = () => {
             <div className="col-12 text-center">
               <button
                 type="submit"
-                className="btn btn-secondary"
+                className="btn btn-crear"
                 disabled={isCreating}
               >
                 {isCreating ? "Apartamento Creado" : "Crear Apartamento"}
@@ -319,8 +324,9 @@ const CreateApartmentReview = () => {
             <div className="alert alert-danger mt-3">{errorMessage}</div> // Mostrar el mensaje de error
           )}
         </div>
-        <div className="crear-legaldoc row mt-5 mb-5 bg-primary mx-0 p-5">
-          <h2>Sube un documento que verifique que has vivido en el piso</h2>
+        <div className="crear-legaldoc row mt-5 mb-5 mx-0 p-5">
+          <h2><strong>PASO 2:</strong> Sube un documento que verifique que has vivido en el piso</h2>
+          <p>Factura de la luz, factura del agua, contrato de alquiler...</p>
           <form onSubmit={handleCreateLegalDoc} className="row g-3">
             <div className="col-md-12">
               <div className="input-group">
@@ -335,7 +341,7 @@ const CreateApartmentReview = () => {
 
                 <button
                   type="submit"
-                  className="btn btn-secondary"
+                  className="btn btn-crear"
                   disabled={isCreatingLegalDoc}
                 >
                   {isCreatingLegalDoc ? "Archivo subido" : "Subir archivo"}
@@ -355,8 +361,8 @@ const CreateApartmentReview = () => {
             </div> // Mostrar el mensaje de error
           )}
         </div>
-        <div className="crear-review row mt-5 mb-5 bg-light mx-0 p-5">
-          <h2>Crear reseña para el apartamento</h2>
+        <div className="crear-review row mt-5 mb-5 mx-0 p-5">
+          <h2><strong>PASO 3:</strong> Crea la reseña para el apartamento</h2>
           <form onSubmit={handleCreateReview} className="row g-3">
             <div className="col-md-12">
               <label className="form-label">Titulo de la reseña</label>
@@ -390,7 +396,7 @@ const CreateApartmentReview = () => {
 
               <button
                 type="submit"
-                className="btn btn-secondary"
+                className="btn btn-crear"
                 disabled={isCreatingReview}
               >
                 {isCreatingReview ? "Archivo subido" : "Subir imagen y enviar"}

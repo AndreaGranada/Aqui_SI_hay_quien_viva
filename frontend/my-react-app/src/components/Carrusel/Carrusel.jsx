@@ -18,8 +18,8 @@ function Carrusel() {
                 <div className="center-content">
                     <div className="text-container">
                         <h3 className='fw-bolder mb-4'>Aquí SÍ hay quien viva</h3>
-                        <p className=''>¿Te vas a vivir a un <strong>piso nuevo</strong>?</p>
-                        <p className=''>Comprueba las <strong>reseñas</strong> antes de tomar la decisión</p>
+                        <p className=''>¿Te vas a vivir a un <strong>piso nuevo</strong> en Madrid?</p>
+                        <p className=''>Comprueba nuestras <strong>reseñas</strong> y evita sorpresas.</p>
                         <button type='button' className='btn boton-marron'>VER MÁS</button>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ function Carrusel() {
                     <div className="text-container">
                         <h3 className='fw-bolder texto-sg mb-4'>¿Te lo estas pensando?</h3>
                         <p className='texto-sg'>Resuelve tus dudas antes de mudarte</p>
-                        <p className='texto-sg'>Nuestros usuarios te cuentan su experiencia</p>
+                        <p className='texto-sg'>Nuestros usuarios te cuentan sus experiencias en pisos de Madrid</p>
                         <button type='button' className='btn boton-amarillo'>VER MÁS</button>
                     </div>
                 </div>
@@ -53,8 +53,8 @@ function Carrusel() {
             <Carousel.Caption className='texto-carrusel-tr opacity-75 custom-caption'>
                 <div className="center-content">
                     <div className="text-container">
-                        <h3 className='fw-bolder texto-tr'>¿Quieres contarnos tu vivencia?</h3>
-                        <p className='texto-tr'>Registrate en nuestra web</p>
+                        <h3 className='fw-bolder texto-tr'>¿Quieres contarnos tu experiencia viviendo en Madrid?</h3>
+                        <p className='texto-tr'>Registrate en nuestra web y añade tu reseña</p>
                         <p className='texto-tr'>Ayuda a otros usuarios a tomar la decisión</p>
                         <button type='button' className='btn boton-blanco'>VER MÁS</button>
                     </div>

@@ -27,6 +27,14 @@ function ApartmentReviews() {
     fetchReviews();
   }, [apartmentId]);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <div className="container">
       <div className="row apartamento-reseña ps-5 pe-5">
@@ -60,7 +68,7 @@ function ApartmentReviews() {
                     <div className="col-8 ms-5 align-middle">
                       <h3>{review.title}</h3>
                       <p>{review.content}</p>
-                      <p>Fecha de publicación: {review.datePost}</p>
+                      <p>Fecha de publicación: {formatDate(review.datePost)}</p>
                     </div>
                   </div>
                 )

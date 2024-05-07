@@ -7,14 +7,14 @@ import { Link, useParams } from "react-router-dom";
 
 
 function UserReviews() {
-  const [reviewData, setReviewData] = useState([]); // Estado para almacenar las revisiones propias
-  const { reviewId } = useParams(); // Obtener el reviewId de los parámetros de la URL
+  const [reviewData, setReviewData] = useState([]); 
+  const { reviewId } = useParams(); 
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // Obtener el token de autenticación del localStorage al montar el componente
+    const token = localStorage.getItem("token"); 
 
     if (token) {
-      showReviews(token); // Llamar a la función showReviews si hay un token
+      showReviews(token); 
     } else {
       console.log("No hay token almacenado en localStorage");
     }
@@ -23,8 +23,8 @@ function UserReviews() {
   // Función asincrónica para obtener las revisiones propias del usuario
   const showReviews = async (token) => {
     try {
-      const data = await getOwnReviews(token); // Obtener las revisiones propias utilizando el token
-      setReviewData(data); // Establecer las revisiones en el estado reviewData
+      const data = await getOwnReviews(token); 
+      setReviewData(data); 
     } catch (error) {
       console.log("Error al obtener el perfil: ", error.message);
     }
@@ -35,17 +35,25 @@ function UserReviews() {
     try {
       console.log(reviewId)
       const token = localStorage.getItem("token")
-      console.log(token); // Obtener el token de autenticación del localStorage
-      await deleteOwnReview(reviewId, token); // Eliminar la revisión utilizando el servicio deleteOwnReview
-      // Actualizar la lista de revisiones después de eliminar una
+      console.log(token); 
+      await deleteOwnReview(reviewId, token); 
+  
       console.log(reviewId)
       const updatedReviews = reviewData.filter((review) => review.id !== reviewId);
       console.log(updatedReviews)
-      setReviewData(updatedReviews); // Actualizar el estado reviewData
+      setReviewData(updatedReviews); 
       console.log("Revisión eliminada con éxito");
     } catch (error) {
       console.error("Error al eliminar tu revisión:", error);
     }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
   };
 
 
@@ -64,7 +72,7 @@ function UserReviews() {
                   <div>
                     <h3>{review.title}</h3>
                     <p>{review.content}</p>
-                    <p>Fecha de publicación: {review.datePost}</p>
+                    <p>Fecha de publicación: {formatDate(review.datePost)}</p>
                     <p>{review.postedStatus}</p>
                     <Link to={`/user/legaldocs/${review.id}`}>
                     <p>Ver LegalDoc Asociada</p>

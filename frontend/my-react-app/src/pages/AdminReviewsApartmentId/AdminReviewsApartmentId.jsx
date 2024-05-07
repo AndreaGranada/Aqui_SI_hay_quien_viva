@@ -22,6 +22,14 @@ const AdminReviewsApartmentId = () => {
     }, []);
 
     console.log(data)
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      };
     return (
         <>
             <div className="container-fluid row">
@@ -55,7 +63,7 @@ const AdminReviewsApartmentId = () => {
                                 <td className="align-middle text-center">{data.legalDocId}</td>
                                 <td className="align-middle text-center">{data.userId}</td>
                                 <td className="align-middle text-center">{data.apartmentId}</td>
-                                <td className="align-middle text-center">{data.datePost}</td>
+                                <td className="align-middle text-center">{formatDate(data.datePost)}</td>
                                 <td className={data.postedStatus === 'yes' ? 'table-success align-middle text-center' : 'table-danger align-middle text-center'}>{data.postedStatus}</td>
                                 <td className="text-center align-middle">
                                     <div className="d-flex justify-content-center align-items-center" style={{ height: "100%" }}>
@@ -68,7 +76,6 @@ const AdminReviewsApartmentId = () => {
                                     </div>
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
                 </main>

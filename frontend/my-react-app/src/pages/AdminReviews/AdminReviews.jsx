@@ -35,6 +35,16 @@ function AdminReviews() {
   };
 
   //console.log(data)
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  };
+
+
+
   return (
     <>
       <div className="container-fluid row">
@@ -74,7 +84,7 @@ function AdminReviews() {
                   </td>
                   <td className="align-middle text-center">{item.title}</td>
                   <td className="align-middle text-center">{item.content}</td>
-                  <td className="align-middle text-center">{item.datePost}</td>
+                  <td className="align-middle text-center">{formatDate(item.datePost)}</td>
                   <td className="align-middle text-center">
                     {item.legalDocId}
                   </td>

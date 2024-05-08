@@ -1,0 +1,19 @@
+.datos-personales{
+    margin: 0 auto;
+    background-color: #F2E963;
+    margin-top: 130px;
+    margin-bottom: 130px;
+}
+
+.boton-perfil{
+    background-color:  #F2913D;
+    border-color: #F2913D;
+   
+
+  
+}
+
+.boton-perfil:hover{
+    background-color:#F25D27;
+    border-color: #F25D27;
+}

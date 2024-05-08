@@ -30,21 +30,21 @@ const UserSession = () => {
       <div>
         <NavBar />
         <main className="name col ms-5 mt-5 mb-5">
-          <div className="d-flex justify-content-center align-items-center vh-100">
+          <div className="sesion-user d-flex justify-content-center align-items-center">
             <div className="cerrar-sesion text-center">
               <img src={imagen_logo} alt="" />
-              <h2 className="mb-3">¡Hola {userName || "usuario"}!</h2>
+              <h2 className="mb-3 mt-5">¡Hola {userName || "usuario"}!</h2>
               <h3 className="mb-4">¿Quieres cerrar sesión?</h3>
               <div className="botones">
                 <button
                   type="button"
-                  className="btn btn-secondary me-2"
+                  className="btn btn-danger me-2"
                   onClick={handleLogout}
                 >
                   Cerrar sesión
                 </button>
                 <Link to="/user">
-                  <button type="button" className="btn btn-danger">
+                  <button type="button" className="btn btn-secondary">
                     Cancelar
                   </button>
                 </Link>

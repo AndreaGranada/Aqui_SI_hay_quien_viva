@@ -82,7 +82,7 @@ const UserProfile = () => {
       <NavBar />
 
       <div className="container">
-        <div>
+        <div className=" w-75 datos-personales p-5">
           {profileData && (
             <Form>
               <h1 className="text-center">Tus Datos personales</h1>
@@ -108,11 +108,12 @@ const UserProfile = () => {
               </Form.Group>
             </Form>
           )}
-        </div>
-      </div>
-      <button variant="primary" onClick={handleUpdate}>
+          <button variant="primary" className="mt-3 mb-3 boton-perfil btn" onClick={handleUpdate}>
         Guardar Cambios editados
       </button>
+        </div>
+      </div>
+      
 
       <Footer />
     </>

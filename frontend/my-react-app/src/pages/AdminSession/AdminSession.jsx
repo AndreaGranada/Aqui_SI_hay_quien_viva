@@ -35,8 +35,8 @@ const AdminSession = () => {
                             <h2 className="mb-3">¡Hola admin!</h2>
                             <h3 className="mb-4">¿Quieres cerrar sesión?</h3>
                             <div className="botones">
-                                <button type="button" className="btn btn-secondary me-2" onClick={handleLogout}>Cerrar sesión</button>
-                                <Link to="/admin"><button type="button" className="btn btn-danger">Cancelar</button></Link>
+                                <button type="button" className="btn btn-danger me-2" onClick={handleLogout}>Cerrar sesión</button>
+                                <Link to="/admin"><button type="button" className="btn btn-secondary">Cancelar</button></Link>
                             </div>
                         </div>
                     </div>

@@ -86,6 +86,7 @@ const FilteredReviews = () => {
       <NavBar />
       <div className="container">
         <div className="resultados-busqueda mt-5 mb-5 p-3">
+
           {filters && ( // Verifica si filters está definido antes de intentar acceder a sus propiedades
             <div>
               <ul className="fs-3">Filtros aplicados:</ul>

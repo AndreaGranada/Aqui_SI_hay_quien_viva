@@ -8,12 +8,11 @@ const cloudinary = require('../../Cloudinary/index.cloudinary');
 
 const createReview = async (req, res) => {
   try {
-    let idUser = req.body.userId; 
+    let idUser = req.body.userId;
     if (!idUser) {
-      idUser = res.locals.user.id; 
+      idUser = res.locals.user.id;
     }
     const currentDate = new Date();
-    
     const legalDoc = await LegalDoc.findByPk(req.body.legalDocId);
     if (!legalDoc) {
       return res.status(404).json({ message: "Legal document not found" });
@@ -24,24 +23,11 @@ const createReview = async (req, res) => {
       return res.status(404).json({ message: "Apartment not found" });
     }
 
-    const uploadImage = await cloudinary.uploader.upload(
-      req.body.media,
-      {
-        upload_preset: "aquisi_unsigned",
-        public_id: `review`,
-        allowed_formasts: [
-          "png",
-          "jpg",
-          "jpeg",
-          "svg",
-          "ico",
-          "jfif",
-          "webp",
-          "pdf",
-        ],
-
-      }
-    )
+    const uploadImage = await cloudinary.uploader.upload(req.body.media, {
+      upload_preset: "aquisi_unsigned",
+      public_id: `review`,
+      allowed_formasts: ["png","jpg","jpeg","svg","ico","jfif","webp","pdf",],
+    });
 
     const review = await Review.create({
       title: req.body.title,
@@ -53,12 +39,9 @@ const createReview = async (req, res) => {
       userId: idUser,
     });
 
-    return res
-      .status(201)
-      .json({ review, message: "Review created successfully" });
+    return res.status(201).json({ review, message: "Review created successfully" });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: "Something went wrong", error});
   }
 };
 

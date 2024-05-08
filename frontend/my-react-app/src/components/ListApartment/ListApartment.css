@@ -6,6 +6,7 @@
     font-size: 1vw;
     /* Tamaño de fuente relativo al ancho de la ventana */
     max-width: 100%;
+    border-radius: 15px;
 }
 
 .btn-mas:hover{

@@ -80,7 +80,7 @@ function Filters() {
           <div className="input-group">
             <label htmlFor="nombre-via" className='input-group-text'>Nombre de la vía</label>
             <input className="input-buscador form-control" type="text" id="nombre-via" name="roadName" value={filters.RoadName} onChange={handleInputChange} placeholder="Ingrese término de búsqueda.." />
-            <button type="submit" className='btn'>Buscar</button>
+            <button type="submit" className='btn btn-buscar'>Buscar</button>
           </div>
         </div>
       </form>

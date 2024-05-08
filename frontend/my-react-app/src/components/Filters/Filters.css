@@ -13,3 +13,22 @@
 .campo {
     padding: 15px;
 }
+
+.btn-buscar{
+    background-color: #403529;
+    color:  #F2E963;
+ 
+    border: 1px solid #403529;
+
+    
+
+}
+
+.btn-buscar:hover{
+    background-color: transparent;
+    color: #403529;
+    
+    border: 1px solid #403529;
+    border-radius: 10px;
+    
+}

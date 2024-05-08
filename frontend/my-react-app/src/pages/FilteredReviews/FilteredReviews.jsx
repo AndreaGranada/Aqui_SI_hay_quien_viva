@@ -9,29 +9,26 @@ import { Link } from "react-router-dom";
 
 const FilteredReviews = () => {
   const location = useLocation();
-  const { reviews, filters } = location.state || {}; // Si location.state es undefined, asigna un objeto vacío por defecto
+  const { reviews, filters } = location.state || {}; 
   const [filteredReviews, setFilteredReviews] = useState([]);
 
-  // Función para eliminar tildes de una cadena
   const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
   useEffect(() => {
-    // Filtra las reseñas según los filtros
     if (reviews && filters) {
       let filtered = reviews;
 
-      // Normaliza las propiedades del objeto filters a minúsculas y sin tildes
       const normalizedFilters = Object.keys(filters).reduce((acc, key) => {
         const value = filters[key];
         if (value !== undefined) {
-          acc[key.toLowerCase()] = removeAccents(value.toLowerCase().trim()); // Convertir a minúsculas, eliminar espacios en blanco adicionales y quitar tildes
+          acc[key.toLowerCase()] = removeAccents(value.toLowerCase().trim()); 
         }
         return acc;
       }, {});
       console.log(normalizedFilters);
-      // Aplica cada filtro
+
       if (normalizedFilters.postalCode) {
         console.log("Filtro de código postal:", normalizedFilters.postalCode); // Agregar un registro para el filtro postal
         const normalizedPostalCode = normalizedFilters.postalCode
@@ -54,7 +51,7 @@ const FilteredReviews = () => {
         console.log("Filtrando por distrito:", normalizedFilters.districtid);
 
         filtered = filtered.filter((review) => {
-          const normalizedReviewDistrict = review.districtId; // No necesitas normalizar el distrito si es un número
+          const normalizedReviewDistrict = review.districtId; 
           console.log("Distrito en la revisión:", normalizedReviewDistrict);
           return review.districtId == normalizedFilters.districtid;
         });
@@ -89,7 +86,6 @@ const FilteredReviews = () => {
       <NavBar />
       <div className="container">
         <div className="resultados-busqueda mt-5 mb-5 p-3">
-          {/* Puedes usar los filtros aquí si es necesario */}
           {filters && ( // Verifica si filters está definido antes de intentar acceder a sus propiedades
             <div>
               <ul className="fs-3">Filtros aplicados:</ul>

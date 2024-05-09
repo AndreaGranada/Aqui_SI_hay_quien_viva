@@ -73,8 +73,8 @@ const SignUp = () => {
     <>
     <NavBar/>
     <Container className="mt-5">
-      <Row className="justify-content-center">
-        <Col md={6}>
+      <Row className="justify-content-center mt-5 mb-5">
+        <Col md={6} className="mt-5 mb-5">
           <Card className='registro'>
             <Card.Body>
               <Card.Title className="text-center mb-4">Regístrate</Card.Title>
@@ -162,6 +162,7 @@ const SignUp = () => {
                 </Form.Group>
                
                 <Button
+                className="btn-crear"
                   variant="primary"
                   type="submit"
                   onClick={handleSignup}
@@ -170,7 +171,7 @@ const SignUp = () => {
                 </Button>
               </Form>
               <Link to="/login">
-                <p>Ya tengo una cuenta</p>
+                <p><u>Ya tengo una cuenta</u></p>
               </Link>
             </Card.Body>
           </Card>

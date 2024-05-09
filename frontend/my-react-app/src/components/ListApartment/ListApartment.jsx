@@ -26,7 +26,7 @@ console.log(sixApartment)
         {sixApartment.map(apartment => (
           <ApartmentCard key={apartment.id} apartment={apartment} />
         ))}
-        <Link to="/user/create"><button className='button mb-5 w-100 btn-mas p-4 fw-bold'>No ves tu piso aquí y quieres dejar una reseña? ¡REGISTRALO!</button></Link>
+        <Link to="/user/create"><button className='button mb-5 w-100 btn-mas p-4 fw-bold'>¿No ves tu piso aquí y quieres dejar una reseña? ¡REGISTRALO!</button></Link>
       </div>
     </Container>
   );

@@ -220,7 +220,7 @@ useEffect(() => {
                   {isCreatingLegalDoc ? "Archivo subido" : "Subir archivo"}
                 </button>
               </div>
-              <img src={image} alt="" />
+              <img width="200px" src={image} alt="" />
             </div>
           </form>
           {successMessageLegalDoc && (
@@ -255,6 +255,7 @@ useEffect(() => {
                 onChange={(e) => setContent(e.target.value)}
               />
             </div>
+            <div className="col-md-12">
             <div className="input-group">
               <label className="form-label w-100">
                 Incluye una imagen a la reseña
@@ -275,7 +276,9 @@ useEffect(() => {
                 {isCreatingReview ? "Archivo subido" : "Subir imagen y enviar"}
               </button>
             </div>
-            <img src={imageReview} alt="" />
+            <img width="200px" src={imageReview} alt="" />
+            </div>
+          
           </form>
           {successMessageReview && (
           <div className="alert alert-success mt-3">
@@ -287,7 +290,7 @@ useEffect(() => {
         )}
         {showGoToHomeButton && successMessageReview && (
           <div className="text-center mt-3">
-            <Link to="/" className="btn btn-primary">Ir al inicio</Link>
+            <Link to="/" className="btn btn-crear">Ir al inicio</Link>
           </div>
         )}
         </div>
